@@ -1,0 +1,1 @@
+<h1 align="center">Methodical Support of Disciplines</h1>
