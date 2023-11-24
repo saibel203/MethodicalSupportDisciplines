@@ -9,7 +9,7 @@ builder.Services.AddInfrastructureServices(applicationConfiguration);
 builder.Services.AddBasicsWebServices();
 
 WebApplication app = builder.Build();
-IWebHostEnvironment environment = app.Environment;
+/*IWebHostEnvironment environment = app.Environment;
 
 if (environment.IsDevelopment())
 {
@@ -18,13 +18,15 @@ if (environment.IsDevelopment())
     SeedDataDbContext initDataContextSeed = scope.ServiceProvider.GetRequiredService<SeedDataDbContext>();
     await initDataContextSeed.InitializeDatabaseAsync();
     await initDataContextSeed.SeedContextDataAsync();
-}
+}*/
 
 app.UseHttpsRedirection();
 app.UseHsts();
 
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

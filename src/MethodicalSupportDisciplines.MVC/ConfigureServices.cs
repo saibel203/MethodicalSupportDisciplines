@@ -1,4 +1,7 @@
-﻿using MethodicalSupportDisciplines.BLL.Models.Identity;
+﻿using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
+using MethodicalSupportDisciplines.BLL.Interfaces;
+using MethodicalSupportDisciplines.BLL.Models.Identity;
+using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using Microsoft.AspNetCore.Identity;
 
@@ -32,6 +35,13 @@ public static class ConfigureServices
                 cookieOptions.Cookie.Name = "Identity.Cookie";
                 cookieOptions.AccessDeniedPath = "/Error/AccessDenied";
             });
+
+        services.AddAutoMapper(typeof(AutomapperProfile));
+        
+        services.AddDistributedMemoryCache();
+        services.AddSession(options => { options.IdleTimeout = TimeSpan.FromDays(1); });
+
+        services.AddTransient<IAuthService, AuthService>();
 
         services.AddControllersWithViews();
         
