@@ -3,8 +3,8 @@ using AutoMapper;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Models.Identity;
 using MethodicalSupportDisciplines.Core.IOptions;
-using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Shared.Dto;
+using MethodicalSupportDisciplines.Shared.Dto.AuthDto;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -17,19 +17,17 @@ public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly DataDbContext _dbContext;
     private readonly IMailService _mailService;
     private readonly WebPathsOptions _webPathsOptions;
     private readonly ILogger<AuthService> _logger;
     private readonly IMapper _mapper;
 
-    public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-        DataDbContext dbContext, IOptions<WebPathsOptions> webPathsOptions, ILogger<AuthService> logger, IMapper mapper, 
+    public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
+        IOptions<WebPathsOptions> webPathsOptions, ILogger<AuthService> logger, IMapper mapper, 
         IMailService mailService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
-        _dbContext = dbContext;
         _webPathsOptions = webPathsOptions.Value;
         _logger = logger;
         _mapper = mapper;
@@ -78,7 +76,7 @@ public class AuthService : IAuthService
             string validEmailToken = WebEncoders.Base64UrlEncode(encodedEmailToken);
 
             string url = $"{_webPathsOptions.WebMvcApplicationUrl}/auth/confirmEmailResult" +
-                         $"?userId={user.Id}&token={validEmailToken}";
+                         $"?value={user.Id}&token={validEmailToken}";
         
             await _mailService.SendEmailAsync(user.Email, "Підтвердження email", 
                 "Підтвердження email на сайті MethodicalSupportDisciplines. Якщо ви не реєструвались, " +
@@ -166,11 +164,20 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<UserAuthResponse> ConfirmEmailAsync(string userId, string token)
+    public async Task<UserAuthResponse> ConfirmEmailAsync(TokenValueDto<string>? tokenValueDto)
     {
         try
         {
-            ApplicationUser? user = await _userManager.FindByIdAsync(userId);
+            if (tokenValueDto?.Value is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "",
+                    IsSuccess = false
+                };
+            }
+            
+            ApplicationUser? user = await _userManager.FindByIdAsync(tokenValueDto.Value);
 
             if (user is null)
             {
@@ -181,7 +188,7 @@ public class AuthService : IAuthService
                 };
             }
         
-            byte[] decodedToken = WebEncoders.Base64UrlDecode(token);
+            byte[] decodedToken = WebEncoders.Base64UrlDecode(tokenValueDto.Token);
             string normalToken = Encoding.UTF8.GetString(decodedToken);
         
             IdentityResult result = await _userManager.ConfirmEmailAsync(user, normalToken);
@@ -209,6 +216,130 @@ public class AuthService : IAuthService
             return new UserAuthResponse
             {
                 Message = "An unknown error occurred while trying to confirm Email",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UserAuthResponse> RemindPasswordAsync(RemindPasswordDto? remindPasswordDto)
+    {
+        try
+        {
+            if (remindPasswordDto is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "The method received an incorrect value, possibly null",
+                    IsSuccess = false
+                };
+            }
+            
+            ApplicationUser? user = await _userManager.FindByEmailAsync(remindPasswordDto.Email);
+
+            if (user is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "User with email not found",
+                    IsSuccess = false
+                };
+            }
+            
+            string defaultToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            byte[] encodedToken = Encoding.UTF8.GetBytes(defaultToken);
+            string currentToken = WebEncoders.Base64UrlEncode(encodedToken);
+
+            string url = $"{_webPathsOptions.WebMvcApplicationUrl}/Auth/ResetPassword?" +
+                         $"value={remindPasswordDto.Email}&token={currentToken}";
+        
+            await _mailService.SendEmailAsync(remindPasswordDto.Email, "Відновлення паролю",
+                "Відновлення паролю на сайті WorkForYou. Якщо ви нічого не змінювали, проігноруйте це повідомлення.",
+                url, "Відновлення паролю");
+        
+            return new UserAuthResponse
+            {
+                Message = "Success",
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "");
+
+            return new UserAuthResponse
+            {
+                Message = "",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UserAuthResponse> ResetPasswordAsync(ResetPasswordDto? resetPasswordDto)
+    {
+        try
+        {
+            if (resetPasswordDto is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "",
+                    IsSuccess = false
+                };
+            }
+            
+            var user = await _userManager.FindByEmailAsync(resetPasswordDto.Email);
+
+            if (user is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "",
+                    IsSuccess = false
+                };
+            }
+
+            if (resetPasswordDto.NewPassword != resetPasswordDto.ConfirmNewPassword)
+            {
+                return new()
+                {
+                    Message = "",
+                    IsSuccess = false
+                };
+            }
+            
+            byte[] decodedToken = WebEncoders.Base64UrlDecode(resetPasswordDto.Token);
+            string normalToken = Encoding.UTF8.GetString(decodedToken);
+            
+            IdentityResult resetPasswordResult = await _userManager.ResetPasswordAsync(user, normalToken, resetPasswordDto.NewPassword);
+
+            if (!resetPasswordResult.Succeeded)
+            {
+                return new()
+                {
+                    Message = "",
+                    IsSuccess = false,
+                    Errors = resetPasswordResult.Errors
+                };
+            }
+
+            await _mailService.SendEmailAsync(resetPasswordDto.Email, "Змінено паролю", 
+                $"На сайті WorkForYou ваш пароль було змінено на {resetPasswordDto.NewPassword}. " +
+                $"Якщо ви нічого не змінювали, проігноруйте цей лист.",
+                "", "Перейти на сайт");
+
+            return new()
+            {
+                Message = "",
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "");
+
+            return new UserAuthResponse
+            {
+                Message = "",
                 IsSuccess = false
             };
         }

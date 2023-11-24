@@ -17,7 +17,13 @@
     <div>
         <input asp-for="Password" placeholder="Password">
     </div>
+    <div>
+        <input asp-for="RememberMe"><label asp-for="RememberMe">Remember me?</label>
+    </div>
     <button type="submit">Login</button>
+    <div>
+        <a asp-controller="Auth" asp-action="RemindPassword">Forget password</a>
+    </div>
 </form>
 </body>
 </html>

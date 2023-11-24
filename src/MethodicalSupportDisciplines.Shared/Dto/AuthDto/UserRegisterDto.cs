@@ -1,4 +1,4 @@
-﻿namespace MethodicalSupportDisciplines.Shared.Dto;
+﻿namespace MethodicalSupportDisciplines.Shared.Dto.AuthDto;
 
 public class UserRegisterDto
 {
