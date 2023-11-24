@@ -39,7 +39,7 @@ public static class ConfigureServices
                 cookieOptions.AccessDeniedPath = "/Error/AccessDenied";
             });
 
-        services.AddAutoMapper(typeof(AutomapperProfile));
+        services.AddAutoMapper(typeof(AuthAutomapperProfile));
 
         services.Configure<SendGridOptions>(configuration.GetSection("SendGridOptions"));
         services.Configure<WebPathsOptions>(configuration.GetSection("WebPathsOptions"));

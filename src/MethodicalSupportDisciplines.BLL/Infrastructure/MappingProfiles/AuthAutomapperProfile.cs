@@ -5,9 +5,9 @@ using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 
 namespace MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 
-public class AutomapperProfile : Profile
+public class AuthAutomapperProfile : Profile
 {
-    public AutomapperProfile()
+    public AuthAutomapperProfile()
     {
         CreateMap<UserRegisterDto, ApplicationUser>();
         CreateMap<RegisterViewModel, UserRegisterDto>();

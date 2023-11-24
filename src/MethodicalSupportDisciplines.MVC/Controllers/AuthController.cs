@@ -35,6 +35,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
+            _notificationService.CustomErrorMessage("Помилка при спробі зареєструватися");
             return View(registerViewModel);
         }
         
@@ -53,9 +54,11 @@ public class AuthController : Controller
                 ModelState.AddModelError("", registerResult.Message);
             }
 
+            _notificationService.CustomErrorMessage("Помилка при спробі зареєструватися");
             return View(registerViewModel);
         }
         
+        _notificationService.CustomSuccessMessage("Користувача успішно створено");
         return RedirectToAction(nameof(ConfirmEmail));
     }
 
@@ -71,10 +74,10 @@ public class AuthController : Controller
     public async Task<IActionResult> Login(LoginViewModel loginViewModel, string? returnUrl)
     {
         returnUrl ??= Url.Content("~/");
-        _notificationService.CustomErrorMessage("Some error!");
+
         if (!ModelState.IsValid)
         {
-            
+            _notificationService.CustomErrorMessage("Помилка при спробі авторизуватися");
             return View(loginViewModel);
         }
 
@@ -84,9 +87,11 @@ public class AuthController : Controller
         if (!loginResult.IsSuccess)
         {
             ModelState.AddModelError("", loginResult.Message);
+            _notificationService.CustomErrorMessage("Помилка при спробі авторизуватися");
             return View(loginViewModel);
         }
         
+        _notificationService.CustomSuccessMessage("Ви успішно авторизувалися");
         return RedirectToLocal(returnUrl);
     }
 
@@ -102,6 +107,7 @@ public class AuthController : Controller
         if (tokenValueDto.Value is null || 
             string.IsNullOrWhiteSpace(tokenValueDto.Value) || string.IsNullOrWhiteSpace(tokenValueDto.Token))
         {
+            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка передачі даних");
             return RedirectToAction(nameof(Login));
         }
         
@@ -119,9 +125,11 @@ public class AuthController : Controller
                 ModelState.AddModelError("", result.Message);
             }
 
+            _notificationService.CustomErrorMessage("Виникла помилка при спробі підтвердити Email");
             return View();
         }
 
+        _notificationService.CustomSuccessMessage("Email успішно підтверджено");
         return View();
     }
     
@@ -142,6 +150,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid || string.IsNullOrWhiteSpace(forgetPasswordViewModel.Email))
         {
+            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка");
             return View(forgetPasswordViewModel);
         }
         
@@ -151,9 +160,11 @@ public class AuthController : Controller
         if (!forgetPasswordResult.IsSuccess)
         {
             ModelState.AddModelError("", forgetPasswordResult.Message);
+            _notificationService.CustomErrorMessage("Виникла помилка при спробі відправити запит на відновлення паролю");
             return View(forgetPasswordViewModel);
         }
         
+        _notificationService.CustomSuccessMessage("Запит на відновлення паролю надіслано. Перевірте ваш Email");
         return RedirectToAction(nameof(RemindPasswordResult));
     }
     
@@ -169,6 +180,7 @@ public class AuthController : Controller
         if (tokenValueDto.Value is null 
             || string.IsNullOrWhiteSpace(tokenValueDto.Value) || string.IsNullOrWhiteSpace(tokenValueDto.Token))
         {
+            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка передачі даних");
             return RedirectToAction(nameof(Login));
         }
 
@@ -181,6 +193,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
+            _notificationService.CustomErrorMessage("Помилка при спробі відновити пароль");
             return View(resetPasswordViewModel);
         }
         
@@ -199,9 +212,11 @@ public class AuthController : Controller
                 ModelState.AddModelError("", resetPasswordResult.Message);
             }
 
+            _notificationService.CustomErrorMessage("Помилка при спробі відновити пароль");
             return View(resetPasswordViewModel);
         }
 
+        _notificationService.CustomSuccessMessage("Пароль успішно змінено");
         return RedirectToAction(nameof(ResetPasswordResult));
     }
     
@@ -210,6 +225,7 @@ public class AuthController : Controller
     {
         HttpContext.Session.Clear();
         await _authService.LogoutAsync();
+        _notificationService.CustomSuccessMessage("Ви успішно вийшли з акаунту");
         return RedirectToAction(nameof(Login));
     }
     
