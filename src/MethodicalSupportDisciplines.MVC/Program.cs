@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification.Extensions;
 using MethodicalSupportDisciplines.Infrastructure;
 using MethodicalSupportDisciplines.MVC;
 
@@ -19,6 +20,7 @@ if (environment.IsDevelopment())
     await initDataContextSeed.SeedContextDataAsync();
 }*/
 
+app.UseNotyf();
 app.UseHttpsRedirection();
 app.UseHsts();
 

@@ -54,7 +54,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "Create user error",
+                    Message = "An error occurred while trying to create a new user",
                     IsSuccess = false,
                     Errors = createUserResult.Errors
                 };
@@ -120,7 +120,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The user was not found according to the entered data",
+                    Message = "The user with the specified Email was not found",
                     IsSuccess = false
                 };
             }
@@ -134,14 +134,14 @@ public class AuthService : IAuthService
                 {
                     return new UserAuthResponse
                     {
-                        Message = "Before login, confirm your Email",
+                        Message = "Before logging in, go to your email and confirm your identity",
                         IsSuccess = false
                     };
                 }
                 
                 return new()
                 {
-                    Message = "Password error",
+                    Message = "The password of the user with the specified Email is incorrect",
                     IsSuccess = false
                 };
             }
@@ -172,7 +172,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "",
+                    Message = "The method received an incorrect value, possibly null",
                     IsSuccess = false
                 };
             }
@@ -183,7 +183,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "No user found with this ID",
+                    Message = "No user with the given ID was found",
                     IsSuccess = false
                 };
             }
@@ -197,7 +197,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "Confirm your email first",
+                    Message = "An error occurred while trying to confirm your email",
                     IsSuccess = false,
                     Errors = result.Errors
                 };
@@ -240,7 +240,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "User with email not found",
+                    Message = "The user with the specified Email was not found",
                     IsSuccess = false
                 };
             }
@@ -258,17 +258,18 @@ public class AuthService : IAuthService
         
             return new UserAuthResponse
             {
-                Message = "Success",
+                Message = "The password change request was successfully sent to the specified e-mail address",
                 IsSuccess = true
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to send an email to " +
+                                 "change the password.");
 
             return new UserAuthResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to send an email to change the password",
                 IsSuccess = false
             };
         }
@@ -282,7 +283,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "",
+                    Message = "The method received an incorrect value, possibly null",
                     IsSuccess = false
                 };
             }
@@ -293,7 +294,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "",
+                    Message = "The user with the specified Email was not found",
                     IsSuccess = false
                 };
             }
@@ -302,7 +303,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "",
+                    Message = "The passwords do not match, please try again",
                     IsSuccess = false
                 };
             }
@@ -310,13 +311,14 @@ public class AuthService : IAuthService
             byte[] decodedToken = WebEncoders.Base64UrlDecode(resetPasswordDto.Token);
             string normalToken = Encoding.UTF8.GetString(decodedToken);
             
-            IdentityResult resetPasswordResult = await _userManager.ResetPasswordAsync(user, normalToken, resetPasswordDto.NewPassword);
+            IdentityResult resetPasswordResult = await _userManager.ResetPasswordAsync(user, normalToken, 
+                resetPasswordDto.NewPassword);
 
             if (!resetPasswordResult.Succeeded)
             {
                 return new()
                 {
-                    Message = "",
+                    Message = "An error occurred while trying to change the password to a new one",
                     IsSuccess = false,
                     Errors = resetPasswordResult.Errors
                 };
@@ -329,17 +331,17 @@ public class AuthService : IAuthService
 
             return new()
             {
-                Message = "",
+                Message = "Password changed successfully",
                 IsSuccess = true
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to change the password to a new one.");
 
             return new UserAuthResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to change the password to a new one",
                 IsSuccess = false
             };
         }

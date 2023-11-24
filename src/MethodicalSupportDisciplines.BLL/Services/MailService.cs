@@ -40,18 +40,20 @@ public class MailService : IMailService
                 htmlText.Replace("#LinkText#", linkText);
             }
 
+            string stringHtmlText = htmlText.ToString();
+
             string apiKey = _sendGridOptions.ApiKey;
             SendGridClient client = new SendGridClient(apiKey);
             EmailAddress from = new EmailAddress(_sendGridOptions.AdminEmail, _sendGridOptions.AdminUsername);
             EmailAddress to = new EmailAddress(toEmail);
             SendGridMessage message = MailHelper.CreateSingleEmail(from, to, subject,
-                htmlText.ToString(), htmlText.ToString());
+                stringHtmlText, stringHtmlText);
             
             await client.SendEmailAsync(message);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error send mail");
+            _logger.LogError(ex, "An unknown error occurred while trying to send an email.");
             throw;
         }
     }
