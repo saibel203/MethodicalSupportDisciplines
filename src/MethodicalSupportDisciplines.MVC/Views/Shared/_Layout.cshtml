@@ -1,11 +1,26 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewData["Title"]</title>
+    <!-- <title>ViewData["Title"]</title> -->
+    <title>Some title</title>
 </head>
 <body>
+<style>
+    .notyf__wrapper .notyf__icon i {
+        margin-top: 3px;
+        color: #fff !important;
+    }
+    .notyf__wrapper .notyf__message {
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 16px !important;
+    }
+</style>
 
 @RenderBody()
 
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0172dea2c0.js" crossorigin="anonymous"></script>
+@await Component.InvokeAsync("Notyf")
 </body>
 </html>

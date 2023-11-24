@@ -1,4 +1,5 @@
-﻿using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
+﻿using AspNetCoreHero.ToastNotification;
+using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
@@ -46,8 +47,16 @@ public static class ConfigureServices
         services.AddDistributedMemoryCache();
         services.AddSession(options => { options.IdleTimeout = TimeSpan.FromDays(1); });
 
+        services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
+        
+        services.AddNotyf(options =>
+        {
+            options.DurationInSeconds = 10;
+            options.IsDismissable = true;
+            options.Position = NotyfPosition.TopRight;
+        });
 
         services.AddControllersWithViews();
         

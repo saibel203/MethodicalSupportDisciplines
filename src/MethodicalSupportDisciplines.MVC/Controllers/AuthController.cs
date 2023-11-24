@@ -14,11 +14,13 @@ public class AuthController : Controller
 {
     private readonly IMapper _mapper;
     private readonly IAuthService _authService;
+    private readonly INotificationService _notificationService;
 
-    public AuthController(IMapper mapper, IAuthService authService)
+    public AuthController(IMapper mapper, IAuthService authService, INotificationService notificationService)
     {
         _mapper = mapper;
         _authService = authService;
+        _notificationService = notificationService;
     }
 
     [HttpGet]
@@ -69,9 +71,10 @@ public class AuthController : Controller
     public async Task<IActionResult> Login(LoginViewModel loginViewModel, string? returnUrl)
     {
         returnUrl ??= Url.Content("~/");
-        
+        _notificationService.CustomErrorMessage("Some error!");
         if (!ModelState.IsValid)
         {
+            
             return View(loginViewModel);
         }
 
