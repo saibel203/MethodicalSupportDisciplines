@@ -10,7 +10,7 @@ public static class ConfigureServices
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, 
         IConfiguration configuration)
     {
-        const string dataDatabaseName = "MethodicalSupportDisciplines_Data";
+        const string dataDatabaseName = "MethodicalSupportDisciplinesData";
 
         string? dataDatabaseConnectionString = configuration.GetConnectionString(dataDatabaseName);
 
