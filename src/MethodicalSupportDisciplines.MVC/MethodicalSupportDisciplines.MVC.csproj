@@ -10,6 +10,8 @@
   <ItemGroup>
     <Folder Include="Resources\Views\Home\" />
     <Folder Include="Resources\Views\Shared\" />
+    <Folder Include="Views\Resources\Scripts\" />
+    <Folder Include="Views\Resources\Styles\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\js\" />
@@ -75,4 +77,8 @@
     </Compile>
   </ItemGroup>
 
+  <Target Name="PrepublishScriptsAndStyles" BeforeTargets="BeforeBuild">
+    <Exec Command="gulp" />
+  </Target>
+  
 </Project>
