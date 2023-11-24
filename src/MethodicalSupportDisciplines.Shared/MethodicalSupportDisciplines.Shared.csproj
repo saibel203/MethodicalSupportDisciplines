@@ -15,4 +15,82 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.14" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\LoginViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\LoginViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\RegisterViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\RegisterViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\RemindPasswordViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPasswordViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\RemindPasswordViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPasswordViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\ResetPasswordViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Auth\ResetPasswordViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ViewModels\Forms\Auth\LoginViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LoginViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\LoginViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LoginViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\RegisterViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegisterViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\RegisterViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegisterViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\RemindPasswordViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPasswordViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\RemindPasswordViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPasswordViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\ResetPasswordViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPasswordViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Auth\ResetPasswordViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPasswordViewModel.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

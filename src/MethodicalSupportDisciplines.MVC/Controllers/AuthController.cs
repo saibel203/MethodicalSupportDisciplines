@@ -6,7 +6,9 @@ using MethodicalSupportDisciplines.Shared.Responses.Services;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace MethodicalSupportDisciplines.MVC.Controllers;
 
@@ -15,12 +17,15 @@ public class AuthController : Controller
     private readonly IMapper _mapper;
     private readonly IAuthService _authService;
     private readonly INotificationService _notificationService;
+    private readonly IStringLocalizer<AuthController> _stringLocalization;
 
-    public AuthController(IMapper mapper, IAuthService authService, INotificationService notificationService)
+    public AuthController(IMapper mapper, IAuthService authService, INotificationService notificationService,
+        IStringLocalizer<AuthController> stringLocalization)
     {
         _mapper = mapper;
         _authService = authService;
         _notificationService = notificationService;
+        _stringLocalization = stringLocalization;
     }
 
     [HttpGet]
@@ -35,7 +40,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
-            _notificationService.CustomErrorMessage("Помилка при спробі зареєструватися");
+            _notificationService.CustomErrorMessage(_stringLocalization["RegisterError"]);
             return View(registerViewModel);
         }
         
@@ -54,11 +59,11 @@ public class AuthController : Controller
                 ModelState.AddModelError("", registerResult.Message);
             }
 
-            _notificationService.CustomErrorMessage("Помилка при спробі зареєструватися");
+            _notificationService.CustomErrorMessage(_stringLocalization["RegisterError"]);
             return View(registerViewModel);
         }
         
-        _notificationService.CustomSuccessMessage("Користувача успішно створено");
+        _notificationService.CustomSuccessMessage(_stringLocalization["RegisterSuccess"]);
         return RedirectToAction(nameof(ConfirmEmail));
     }
 
@@ -77,7 +82,7 @@ public class AuthController : Controller
 
         if (!ModelState.IsValid)
         {
-            _notificationService.CustomErrorMessage("Помилка при спробі авторизуватися");
+            _notificationService.CustomErrorMessage(_stringLocalization["LoginError"]);
             return View(loginViewModel);
         }
 
@@ -87,11 +92,11 @@ public class AuthController : Controller
         if (!loginResult.IsSuccess)
         {
             ModelState.AddModelError("", loginResult.Message);
-            _notificationService.CustomErrorMessage("Помилка при спробі авторизуватися");
+            _notificationService.CustomErrorMessage(_stringLocalization["LoginError"]);
             return View(loginViewModel);
         }
         
-        _notificationService.CustomSuccessMessage("Ви успішно авторизувалися");
+        _notificationService.CustomSuccessMessage(_stringLocalization["LoginSuccess"]);
         return RedirectToLocal(returnUrl);
     }
 
@@ -107,7 +112,7 @@ public class AuthController : Controller
         if (tokenValueDto.Value is null || 
             string.IsNullOrWhiteSpace(tokenValueDto.Value) || string.IsNullOrWhiteSpace(tokenValueDto.Token))
         {
-            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка передачі даних");
+            _notificationService.CustomErrorMessage(_stringLocalization["UserNotFoundError"]);
             return RedirectToAction(nameof(Login));
         }
         
@@ -125,11 +130,11 @@ public class AuthController : Controller
                 ModelState.AddModelError("", result.Message);
             }
 
-            _notificationService.CustomErrorMessage("Виникла помилка при спробі підтвердити Email");
+            _notificationService.CustomErrorMessage(_stringLocalization["ConfirmEmailError"]);
             return View();
         }
 
-        _notificationService.CustomSuccessMessage("Email успішно підтверджено");
+        _notificationService.CustomSuccessMessage(_stringLocalization["ConfirmEmailSuccess"]);
         return View();
     }
     
@@ -150,7 +155,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid || string.IsNullOrWhiteSpace(forgetPasswordViewModel.Email))
         {
-            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка");
+            _notificationService.CustomErrorMessage(_stringLocalization["UserNotFoundError"]);
             return View(forgetPasswordViewModel);
         }
         
@@ -160,11 +165,11 @@ public class AuthController : Controller
         if (!forgetPasswordResult.IsSuccess)
         {
             ModelState.AddModelError("", forgetPasswordResult.Message);
-            _notificationService.CustomErrorMessage("Виникла помилка при спробі відправити запит на відновлення паролю");
+            _notificationService.CustomErrorMessage(_stringLocalization["RemindPasswordError"]);
             return View(forgetPasswordViewModel);
         }
         
-        _notificationService.CustomSuccessMessage("Запит на відновлення паролю надіслано. Перевірте ваш Email");
+        _notificationService.CustomSuccessMessage(_stringLocalization["RemindPasswordSuccess"]);
         return RedirectToAction(nameof(RemindPasswordResult));
     }
     
@@ -180,7 +185,7 @@ public class AuthController : Controller
         if (tokenValueDto.Value is null 
             || string.IsNullOrWhiteSpace(tokenValueDto.Value) || string.IsNullOrWhiteSpace(tokenValueDto.Token))
         {
-            _notificationService.CustomErrorMessage("Користувача не знайдено або виникла помилка передачі даних");
+            _notificationService.CustomErrorMessage(_stringLocalization["UserNotFoundError"]);
             return RedirectToAction(nameof(Login));
         }
 
@@ -193,7 +198,7 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
-            _notificationService.CustomErrorMessage("Помилка при спробі відновити пароль");
+            _notificationService.CustomErrorMessage(_stringLocalization["ResetPasswordError"]);
             return View(resetPasswordViewModel);
         }
         
@@ -212,21 +217,34 @@ public class AuthController : Controller
                 ModelState.AddModelError("", resetPasswordResult.Message);
             }
 
-            _notificationService.CustomErrorMessage("Помилка при спробі відновити пароль");
+            _notificationService.CustomErrorMessage(_stringLocalization["ResetPasswordError"]);
             return View(resetPasswordViewModel);
         }
 
-        _notificationService.CustomSuccessMessage("Пароль успішно змінено");
+        _notificationService.CustomSuccessMessage(_stringLocalization["ResetPasswordSuccess"]);
         return RedirectToAction(nameof(ResetPasswordResult));
     }
     
     [Authorize]
+    [HttpGet]
     public async Task<IActionResult> Logout()
     {
         HttpContext.Session.Clear();
         await _authService.LogoutAsync();
-        _notificationService.CustomSuccessMessage("Ви успішно вийшли з акаунту");
+        _notificationService.CustomSuccessMessage(_stringLocalization["LogoutSuccess"]);
         return RedirectToAction(nameof(Login));
+    }
+
+    [HttpPost]
+    public IActionResult SetCulture(string culture, string returnUrl)
+    {
+        Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions {Expires = DateTimeOffset.UtcNow.AddDays(30)}
+        );
+        
+        return LocalRedirect(returnUrl);
     }
     
     private IActionResult RedirectToLocal(string? returnUrl)

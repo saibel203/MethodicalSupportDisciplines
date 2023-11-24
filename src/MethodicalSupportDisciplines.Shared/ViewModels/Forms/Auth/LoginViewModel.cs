@@ -4,11 +4,11 @@ namespace MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 
 public class LoginViewModel
 {
-    [Required(ErrorMessage = "Email поле обов'язкове")]
+    [Required(ErrorMessage = "EmailRequired")]
     [EmailAddress]
     public string Email { get; set; } = string.Empty;
     
-    [Required(ErrorMessage = "Password поле обов'язкове")]
+    [Required(ErrorMessage = "PasswordRequired")]
     [DataType(DataType.Password)]
     public string Password { get; set; } = string.Empty;
     

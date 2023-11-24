@@ -1,4 +1,6 @@
-﻿using AspNetCoreHero.ToastNotification;
+﻿using System.Globalization;
+using AspNetCoreHero.ToastNotification;
+using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Models.Identity;
@@ -6,6 +8,8 @@ using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace MethodicalSupportDisciplines.MVC;
 
@@ -27,6 +31,7 @@ public static class ConfigureServices
                 identityOptions.User.RequireUniqueEmail = true;
                 identityOptions.SignIn.RequireConfirmedEmail = true;
             })
+            .AddErrorDescriber<MultiLanguageIdentityErrorDescriber>()
             .AddEntityFrameworkStores<DataDbContext>()
             .AddDefaultTokenProviders();
 
@@ -50,6 +55,25 @@ public static class ConfigureServices
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
+
+        services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");
+
+        services.Configure<RequestLocalizationOptions>(localizationOptions =>
+        {
+            const string defaultCulture = "uk";
+            const string englishCultureName = "en";
+
+            CultureInfo[] supportedCultures =
+            {
+                new(defaultCulture),
+                new(englishCultureName)
+            };
+
+            localizationOptions.DefaultRequestCulture = new RequestCulture(defaultCulture);
+            localizationOptions.SetDefaultCulture(defaultCulture);
+            localizationOptions.SupportedCultures = supportedCultures;
+            localizationOptions.SupportedUICultures = supportedCultures;
+        });
         
         services.AddNotyf(options =>
         {
@@ -58,7 +82,9 @@ public static class ConfigureServices
             options.Position = NotyfPosition.TopRight;
         });
 
-        services.AddControllersWithViews();
+        services.AddControllersWithViews()
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.SubFolder)
+            .AddDataAnnotationsLocalization();
         
         return services;
     }

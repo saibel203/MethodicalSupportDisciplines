@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="EmailAlreadyTaken" xml:space="preserve">
+        <value>Email '{0}' вже зайнятий</value>
+    </data>
+    <data name="UsernameAlreadyTaken" xml:space="preserve">
+        <value>Username '{0}' вже зайнятий</value>
+    </data>
+    <data name="InvalidEmail" xml:space="preserve">
+        <value>Email '{0}' недійсний</value>
+    </data>
+    <data name="RoleAlreadyTaken" xml:space="preserve">
+        <value>Role name '{0}' вже зайнято</value>
+    </data>
+    <data name="InvalidRoleName" xml:space="preserve">
+        <value>Role name '{0}' недійний</value>
+    </data>
+    <data name="InvalidToken" xml:space="preserve">
+        <value>Неприпустимий токен</value>
+    </data>
+    <data name="InvalidUserName" xml:space="preserve">
+        <value>Username "{0}" недійсне, може містити лише літери або цифри</value>
+    </data>
+    <data name="ConcurrencyFailure" xml:space="preserve">
+        <value>Сталася невідома помилка</value>
+    </data>
+    <data name="DefaultError" xml:space="preserve">
+        <value>Email '{0}' вже зайнятий</value>
+    </data>
+    <data name="LoginAlreadyAssociated" xml:space="preserve">
+        <value>Користувач із таким логіном вже існує</value>
+    </data>
+    <data name="PasswordMismatch" xml:space="preserve">
+        <value>Невірний пароль</value>
+    </data>
+    <data name="PasswordRequiresDigit" xml:space="preserve">
+        <value>Паролі повинні містити принаймні одну цифру ('0'-'9')</value>
+    </data>
+    <data name="PasswordRequiresLower" xml:space="preserve">
+        <value>Паролі повинні містити принаймні одну нижню літеру ('a'-'z')</value>
+    </data>
+    <data name="PasswordRequiresNonAlphanumeric" xml:space="preserve">
+        <value>Паролі повинні містити принаймні один не буквено-цифровий символ</value>
+    </data>
+    <data name="PasswordRequiresUniqueChars" xml:space="preserve">
+        <value>Паролі мають містити принаймні {0} різних символів</value>
+    </data>
+    <data name="PasswordRequiresUpper" xml:space="preserve">
+        <value>Паролі повинні містити принаймні одну велику літеру ('A'-'Z')</value>
+    </data>
+    <data name="PasswordTooShort" xml:space="preserve">
+        <value>Паролі мають містити принаймні {0} символів</value>
+    </data>
+    <data name="RecoveryCodeRedemptionFailed" xml:space="preserve">
+        <value>Користувач уже має пароль</value>
+    </data>
+    <data name="UserAlreadyHasPassword" xml:space="preserve">
+        <value>Користувач уже має пароль</value>
+    </data>
+    <data name="UserAlreadyInRole" xml:space="preserve">
+        <value>Користувач уже виконує роль '{0}'</value>
+    </data>
+    <data name="UserLockoutNotEnabled" xml:space="preserve">
+        <value>Блокування не ввімкнено для цього користувача</value>
+    </data>
+    <data name="UserNotInRole" xml:space="preserve">
+        <value>Користувач не в ролі '{0}'</value>
+    </data>
+</root>
