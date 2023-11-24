@@ -42,7 +42,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null.",
+                    Message = "The method received an incorrect value, possibly null",
                     IsSuccess = false
                 };
             }
@@ -283,7 +283,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null",
+                    Message = "",
                     IsSuccess = false
                 };
             }
@@ -294,7 +294,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The user with the specified Email was not found",
+                    Message = "",
                     IsSuccess = false
                 };
             }
@@ -303,7 +303,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "The passwords do not match, please try again",
+                    Message = "",
                     IsSuccess = false
                 };
             }
@@ -311,14 +311,13 @@ public class AuthService : IAuthService
             byte[] decodedToken = WebEncoders.Base64UrlDecode(resetPasswordDto.Token);
             string normalToken = Encoding.UTF8.GetString(decodedToken);
             
-            IdentityResult resetPasswordResult = await _userManager.ResetPasswordAsync(user, normalToken, 
-                resetPasswordDto.NewPassword);
+            IdentityResult resetPasswordResult = await _userManager.ResetPasswordAsync(user, normalToken, resetPasswordDto.NewPassword);
 
             if (!resetPasswordResult.Succeeded)
             {
                 return new()
                 {
-                    Message = "An error occurred while trying to change the password to a new one",
+                    Message = "",
                     IsSuccess = false,
                     Errors = resetPasswordResult.Errors
                 };
@@ -331,17 +330,17 @@ public class AuthService : IAuthService
 
             return new()
             {
-                Message = "Password changed successfully",
+                Message = "",
                 IsSuccess = true
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unknown error occurred while trying to change the password to a new one.");
+            _logger.LogError(ex, "");
 
             return new UserAuthResponse
             {
-                Message = "An unknown error occurred while trying to change the password to a new one",
+                Message = "",
                 IsSuccess = false
             };
         }

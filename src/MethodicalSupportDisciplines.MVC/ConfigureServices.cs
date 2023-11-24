@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using AspNetCoreHero.ToastNotification;
+using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Models.Identity;
@@ -30,6 +31,7 @@ public static class ConfigureServices
                 identityOptions.User.RequireUniqueEmail = true;
                 identityOptions.SignIn.RequireConfirmedEmail = true;
             })
+            .AddErrorDescriber<MultiLanguageIdentityErrorDescriber>()
             .AddEntityFrameworkStores<DataDbContext>()
             .AddDefaultTokenProviders();
 

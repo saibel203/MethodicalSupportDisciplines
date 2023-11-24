@@ -19,4 +19,37 @@
     <ProjectReference Include="..\MethodicalSupportDisciplines.Shared\MethodicalSupportDisciplines.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\IdentityErrors.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IdentityErrors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\IdentityErrors.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IdentityErrors.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\IdentityErrors.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IdentityErrors.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\IdentityErrors.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdentityErrors.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\IdentityErrors.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdentityErrors.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\IdentityErrors.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdentityErrors.uk.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

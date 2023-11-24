@@ -8,7 +8,8 @@
 }
 
 <header style="width: 100vh; height: 30px; background: red; position: absolute; top: 0; left: 0">
-    <form>
+    <form method="post" asp-controller="Auth" asp-action="SetCulture" asp-route-returnUrl="@returnUrl" 
+          asp-antiforgery="true">
         @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
         {
             <input name="culture" type="hidden" value="uk">

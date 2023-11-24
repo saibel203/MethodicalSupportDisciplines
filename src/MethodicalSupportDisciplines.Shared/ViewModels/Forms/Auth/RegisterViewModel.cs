@@ -4,24 +4,24 @@ namespace MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 
 public class RegisterViewModel
 {
-    [Required(ErrorMessage = "Username поле обов'язвове")] 
-    [StringLength(20, MinimumLength = 6, ErrorMessage = "Довжина Username має бути від 6 до 20 символів")]
+    [Required(ErrorMessage = "UsernameRequired")] 
+    [StringLength(20, MinimumLength = 6, ErrorMessage = "UsernameLength")]
     public string Username { get; set; } = string.Empty;
     
-    [Required(ErrorMessage = "Email поле обов'язвове")]
+    [Required(ErrorMessage = "EmailRequired")]
     [EmailAddress]
     public string Email { get; set; } = string.Empty;
     
-    [Required(ErrorMessage = "Password поле обов'язвове")]
-    [MinLength(6, ErrorMessage = "Мінімальна довжина пароля - 6 символів")]
+    [Required(ErrorMessage = "PasswordRequired")]
+    [MinLength(6, ErrorMessage = "PasswordMinLength")]
     [RegularExpression(@"^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$", 
-        ErrorMessage = "Пароль має містити принаймні одну цифру, одну велику літеру та одну маленьку літеру")]
+        ErrorMessage = "PasswordRegularExpression")]
     [DataType(DataType.Password)]
     public string Password { get; set; } = string.Empty;
     
-    [Required(ErrorMessage = "ConfirmPassword поле обов'язкове")]
+    [Required(ErrorMessage = "ConfirmPasswordRequired")]
     [DataType(DataType.Password)]
-    [Compare("Password", ErrorMessage = "Паролі не співпадають")]
+    [Compare("Password", ErrorMessage = "PasswordsNotMatch")]
     public string ConfirmPassword { get; set; } = string.Empty;
     
     /*[Required (ErrorMessage = "SelectedRole поле обов'язвове")] 
