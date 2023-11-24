@@ -1,12 +1,11 @@
 using MethodicalSupportDisciplines.Infrastructure;
-using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.MVC;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 ConfigurationManager applicationConfiguration = builder.Configuration;
 
 builder.Services.AddInfrastructureServices(applicationConfiguration);
-builder.Services.AddBasicsWebServices();
+builder.Services.AddBasicsWebServices(applicationConfiguration);
 
 WebApplication app = builder.Build();
 /*IWebHostEnvironment environment = app.Environment;

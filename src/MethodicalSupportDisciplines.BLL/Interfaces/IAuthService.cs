@@ -7,5 +7,6 @@ public interface IAuthService
 {
     Task<UserAuthResponse> RegisterAsync(UserRegisterDto? userRegisterDto);
     Task<UserAuthResponse> LoginAsync(UserLoginDto? userLoginDto);
+    Task<UserAuthResponse> ConfirmEmailAsync(string userId, string token);
     Task LogoutAsync();
 }

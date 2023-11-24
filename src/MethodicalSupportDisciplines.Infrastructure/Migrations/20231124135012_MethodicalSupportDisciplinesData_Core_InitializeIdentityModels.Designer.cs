@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20231124073110_MethodicalSupportDisciplinesData_Core_InitializeIdentityModels")]
+    [Migration("20231124135012_MethodicalSupportDisciplinesData_Core_InitializeIdentityModels")]
     partial class MethodicalSupportDisciplinesData_Core_InitializeIdentityModels
     {
         /// <inheritdoc />

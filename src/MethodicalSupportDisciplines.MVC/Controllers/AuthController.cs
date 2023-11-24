@@ -4,6 +4,7 @@ using MethodicalSupportDisciplines.Shared.Dto;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MethodicalSupportDisciplines.MVC.Controllers;
@@ -41,7 +42,7 @@ public class AuthController : Controller
         {
             if (registerResult.Errors is not null)
             {
-                foreach (var error in registerResult.Errors)
+                foreach (IdentityError error in registerResult.Errors)
                     ModelState.AddModelError(error.Code, error.Description);
             }
             else
@@ -52,7 +53,7 @@ public class AuthController : Controller
             return View(registerViewModel);
         }
         
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction(nameof(ConfirmEmail));
     }
 
     [HttpGet]
@@ -73,8 +74,8 @@ public class AuthController : Controller
             return View(loginViewModel);
         }
 
-        var loginModelDto = _mapper.Map<UserLoginDto>(loginViewModel);
-        var loginResult = await _authService.LoginAsync(loginModelDto);
+        UserLoginDto loginModelDto = _mapper.Map<UserLoginDto>(loginViewModel);
+        UserAuthResponse loginResult = await _authService.LoginAsync(loginModelDto);
         
         if (!loginResult.IsSuccess)
         {
@@ -84,13 +85,47 @@ public class AuthController : Controller
         
         return RedirectToLocal(returnUrl);
     }
+
+    [HttpGet]
+    public IActionResult ConfirmEmail()
+    {
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ConfirmEmailResult(string userId, string token)
+    {
+        if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(token))
+        {
+            return RedirectToAction(nameof(Login));
+        }
+        
+        UserAuthResponse result = await _authService.ConfirmEmailAsync(userId, token);
+        
+        if (!result.IsSuccess)
+        {
+            if (result.Errors is not null)
+            {
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError(error.Code, error.Description);
+            }
+            else
+            {
+                ModelState.AddModelError("", result.Message);
+            }
+
+            return View();
+        }
+
+        return View();
+    }
     
     [Authorize]
     public async Task<IActionResult> Logout()
     {
         HttpContext.Session.Clear();
         await _authService.LogoutAsync();
-        return RedirectToAction("Login");
+        return RedirectToAction(nameof(Login));
     }
     
     private IActionResult RedirectToLocal(string? returnUrl)
@@ -98,6 +133,6 @@ public class AuthController : Controller
         if (Url.IsLocalUrl(returnUrl))
             return Redirect(returnUrl);
     
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction(nameof(Index), "Home");
     }
 }
