@@ -7,6 +7,7 @@ using MethodicalSupportDisciplines.BLL.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
+using MethodicalSupportDisciplines.Infrastructure.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -18,6 +19,10 @@ public static class ConfigureServices
     public static IServiceCollection AddBasicsWebServices(this IServiceCollection services, 
         IConfiguration configuration)
     {
+        PowerShellTerminal powerShell = new PowerShellTerminal();
+        powerShell.RunShellCommand("gulp watch-sass");
+        powerShell.RunShellCommand("gulp watch-typescript");
+        
         services.AddHttpContextAccessor();
 
         services.AddIdentity<ApplicationUser, ApplicationRole>(identityOptions =>
