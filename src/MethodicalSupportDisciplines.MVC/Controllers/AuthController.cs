@@ -6,6 +6,7 @@ using MethodicalSupportDisciplines.Shared.Responses.Services;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MethodicalSupportDisciplines.MVC.Controllers;
@@ -221,12 +222,25 @@ public class AuthController : Controller
     }
     
     [Authorize]
+    [HttpGet]
     public async Task<IActionResult> Logout()
     {
         HttpContext.Session.Clear();
         await _authService.LogoutAsync();
         _notificationService.CustomSuccessMessage("Ви успішно вийшли з акаунту");
         return RedirectToAction(nameof(Login));
+    }
+
+    [HttpPost]
+    public IActionResult SetCulture(string culture, string returnUrl)
+    {
+        Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions {Expires = DateTimeOffset.UtcNow.AddDays(30)}
+        );
+        
+        return LocalRedirect(returnUrl);
     }
     
     private IActionResult RedirectToLocal(string? returnUrl)

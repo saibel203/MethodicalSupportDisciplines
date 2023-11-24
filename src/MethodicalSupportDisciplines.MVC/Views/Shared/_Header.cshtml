@@ -1,0 +1,23 @@
+﻿@using System.Globalization
+@inject IViewLocalizer ViewLocalization
+
+@{
+    string returnUrl = string.IsNullOrEmpty(Context.Request.Path)
+        ? "~/"
+        : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+}
+
+<header style="width: 100vh; height: 30px; background: red; position: absolute; top: 0; left: 0">
+    <form>
+        @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
+        {
+            <input name="culture" type="hidden" value="uk">
+            <button type="submit">Змінити на українську</button>
+        }
+        else
+        {
+            <input name="culture" type="hidden" value="en">
+            <button type="submit">Switch to English</button>
+        }
+    </form>
+</header>
