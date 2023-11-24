@@ -1,15 +1,14 @@
 using MethodicalSupportDisciplines.Infrastructure;
-using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.MVC;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 ConfigurationManager applicationConfiguration = builder.Configuration;
 
 builder.Services.AddInfrastructureServices(applicationConfiguration);
-builder.Services.AddBasicsWebServices();
+builder.Services.AddBasicsWebServices(applicationConfiguration);
 
 WebApplication app = builder.Build();
-IWebHostEnvironment environment = app.Environment;
+/*IWebHostEnvironment environment = app.Environment;
 
 if (environment.IsDevelopment())
 {
@@ -18,13 +17,15 @@ if (environment.IsDevelopment())
     SeedDataDbContext initDataContextSeed = scope.ServiceProvider.GetRequiredService<SeedDataDbContext>();
     await initDataContextSeed.InitializeDatabaseAsync();
     await initDataContextSeed.SeedContextDataAsync();
-}
+}*/
 
 app.UseHttpsRedirection();
 app.UseHsts();
 
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
