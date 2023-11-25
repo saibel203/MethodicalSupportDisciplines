@@ -24,8 +24,5 @@ public class RegisterViewModel
     [Compare("Password", ErrorMessage = "PasswordsNotMatch")]
     public string ConfirmPassword { get; set; } = string.Empty;
     
-    /*[Required (ErrorMessage = "SelectedRole поле обов'язвове")] 
-    public string SelectedRole { get; set; } = string.Empty;*/
-
     public string ReturnUrl { get; set; } = string.Empty;
 }

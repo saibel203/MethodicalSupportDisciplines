@@ -3,10 +3,11 @@ using AspNetCoreHero.ToastNotification;
 using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
-using MethodicalSupportDisciplines.BLL.Models.Identity;
+using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
+using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.Infrastructure.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -57,6 +58,8 @@ public static class ConfigureServices
         services.AddDistributedMemoryCache();
         services.AddSession(options => { options.IdleTimeout = TimeSpan.FromDays(1); });
 
+        services.AddScoped<SeedDataDbContext>();
+        
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
