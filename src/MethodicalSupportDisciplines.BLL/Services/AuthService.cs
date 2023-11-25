@@ -1,13 +1,16 @@
 ﻿using System.Text;
 using AutoMapper;
 using MethodicalSupportDisciplines.BLL.Interfaces;
-using MethodicalSupportDisciplines.BLL.Models.Identity;
+using MethodicalSupportDisciplines.Core.Entities.Users;
+using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.Core.IOptions;
+using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Shared.Dto;
 using MethodicalSupportDisciplines.Shared.Dto.AuthDto;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -17,21 +20,25 @@ public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
+    private readonly DataDbContext _dbContext;
     private readonly IMailService _mailService;
     private readonly WebPathsOptions _webPathsOptions;
     private readonly ILogger<AuthService> _logger;
     private readonly IMapper _mapper;
 
-    public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
-        IOptions<WebPathsOptions> webPathsOptions, ILogger<AuthService> logger, IMapper mapper, 
-        IMailService mailService)
+    public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
+        RoleManager<ApplicationRole> roleManager, IOptions<WebPathsOptions> webPathsOptions, 
+        ILogger<AuthService> logger, IMapper mapper, IMailService mailService, DataDbContext dbContext)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
         _webPathsOptions = webPathsOptions.Value;
         _logger = logger;
         _mapper = mapper;
         _mailService = mailService;
+        _dbContext = dbContext;
     }
 
     public async Task<UserAuthResponse> RegisterAsync(UserRegisterDto? userRegisterDto)
@@ -68,8 +75,21 @@ public class AuthService : IAuthService
                     IsSuccess = false,
                 };
             }
+
+            const string guestUserRoleName = "guest";
+            ApplicationRole? guestUserRole = await _roleManager.Roles
+                .FirstOrDefaultAsync(roleData => roleData.Name == guestUserRoleName);
+
+            if (guestUserRole?.Name is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = "Failed to get 'guest' user role",
+                    IsSuccess = false
+                };
+            }
             
-            // await _userManager.AddToRoleAsync(user, userRegisterDto.SelectedRole); for future
+            await _userManager.AddToRoleAsync(user, guestUserRole.Name);
             
             string confirmEmailToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             byte[] encodedEmailToken = Encoding.UTF8.GetBytes(confirmEmailToken);
@@ -82,6 +102,14 @@ public class AuthService : IAuthService
                 "Підтвердження email на сайті MethodicalSupportDisciplines. Якщо ви не реєструвались, " +
                     "проігноруйте цей лист.", 
                 url, "Натисніть для підтвердження");
+
+            GuestUser guestUser = new GuestUser
+            {
+                ApplicationUser = user
+            };
+            
+            await _dbContext.GuestUsers.AddAsync(guestUser);
+            await _dbContext.SaveChangesAsync();
             
             return new UserAuthResponse
             {

@@ -4,6 +4,7 @@ using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231125103920_MethodicalSupportDisciplinesData_Infrastructure_RemoveGuestUnnecessaryProperties")]
+    partial class MethodicalSupportDisciplinesData_Infrastructure_RemoveGuestUnnecessaryProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,208 +24,6 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Faculty", b =>
-                {
-                    b.Property<int>("FacultyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FacultyId"));
-
-                    b.Property<string>("FacultyName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("FacultyShortName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("FacultyId");
-
-                    b.ToTable("Faculties");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.FormatLearning", b =>
-                {
-                    b.Property<int>("FormatLearningId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FormatLearningId"));
-
-                    b.Property<string>("FormatLearningName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("FormatLearningId");
-
-                    b.ToTable("FormatLearnings");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.LearningStatus", b =>
-                {
-                    b.Property<int>("LearningStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LearningStatusId"));
-
-                    b.Property<string>("LearningStatusName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("LearningStatusId");
-
-                    b.ToTable("LearningStatuses");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", b =>
-                {
-                    b.Property<int>("QualificationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QualificationId"));
-
-                    b.Property<string>("QualificationName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("QualificationId");
-
-                    b.ToTable("Qualifications");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
-                {
-                    b.Property<int>("SpecialtyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialtyId"));
-
-                    b.Property<string>("SpecialtyName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SpecialtyShortName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("SpecialtyId");
-
-                    b.ToTable("Specialties");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", b =>
-                {
-                    b.Property<int>("DisciplineId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineId"));
-
-                    b.Property<string>("DisciplineName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DisciplineId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Disciplines");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineGroup", b =>
-                {
-                    b.Property<int>("DisciplineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DisciplineId", "GroupId");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("DisciplineGroups");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
-                {
-                    b.Property<int>("GroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
-
-                    b.Property<string>("GroupName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("GroupId");
-
-                    b.ToTable("Groups");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.GroupTeacher", b =>
-                {
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TeacherId", "GroupId");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("GroupTeachers");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Mark", b =>
-                {
-                    b.Property<int>("MarkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MarkId"));
-
-                    b.Property<int>("DisciplineId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MarkValue")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MarkId");
-
-                    b.HasIndex("DisciplineId");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Marks");
-                });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.AdminUser", b =>
                 {
@@ -288,52 +89,22 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FormatLearningId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LearningStatusId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Patronymic")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("SpecialtyId")
-                        .HasColumnType("int");
 
                     b.HasKey("StudentUserId");
 
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
-
-                    b.HasIndex("FacultyId");
-
-                    b.HasIndex("FormatLearningId");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("LearningStatusId");
-
-                    b.HasIndex("SpecialtyId");
 
                     b.ToTable("StudentUsers");
                 });
@@ -362,20 +133,10 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("QualificationId")
-                        .HasColumnType("int");
-
                     b.HasKey("TeacherUserId");
 
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
-
-                    b.HasIndex("QualificationId");
 
                     b.ToTable("TeacherUsers");
                 });
@@ -581,82 +342,6 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", b =>
-                {
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", "Teacher")
-                        .WithMany("Disciplines")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Teacher");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineGroup", b =>
-                {
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", "Discipline")
-                        .WithMany("DisciplineGroups")
-                        .HasForeignKey("DisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Group", "Group")
-                        .WithMany("DisciplineGroups")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Discipline");
-
-                    b.Navigation("Group");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.GroupTeacher", b =>
-                {
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Group", "Group")
-                        .WithMany("GroupTeachers")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", "TeacherUser")
-                        .WithMany("GroupTeachers")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
-
-                    b.Navigation("TeacherUser");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Mark", b =>
-                {
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", "Discipline")
-                        .WithMany("Marks")
-                        .HasForeignKey("DisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.StudentUser", "Student")
-                        .WithMany("Marks")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", "Teacher")
-                        .WithMany("Marks")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Discipline");
-
-                    b.Navigation("Student");
-
-                    b.Navigation("Teacher");
-                });
-
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.AdminUser", b =>
                 {
                     b.HasOne("MethodicalSupportDisciplines.Core.Models.Identity.ApplicationUser", "ApplicationUser")
@@ -687,47 +372,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Faculty", "Faculty")
-                        .WithMany("Students")
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.FormatLearning", "FormatLearning")
-                        .WithMany("Students")
-                        .HasForeignKey("FormatLearningId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Group", "Group")
-                        .WithMany("StudentUsers")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.LearningStatus", "LearningStatus")
-                        .WithMany("Students")
-                        .HasForeignKey("LearningStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", "Specialty")
-                        .WithMany("Students")
-                        .HasForeignKey("SpecialtyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ApplicationUser");
-
-                    b.Navigation("Faculty");
-
-                    b.Navigation("FormatLearning");
-
-                    b.Navigation("Group");
-
-                    b.Navigation("LearningStatus");
-
-                    b.Navigation("Specialty");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", b =>
@@ -738,15 +383,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", "Qualification")
-                        .WithMany("Teachers")
-                        .HasForeignKey("QualificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ApplicationUser");
-
-                    b.Navigation("Qualification");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -798,61 +435,6 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Faculty", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.FormatLearning", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.LearningStatus", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", b =>
-                {
-                    b.Navigation("Teachers");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
-                {
-                    b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", b =>
-                {
-                    b.Navigation("DisciplineGroups");
-
-                    b.Navigation("Marks");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
-                {
-                    b.Navigation("DisciplineGroups");
-
-                    b.Navigation("GroupTeachers");
-
-                    b.Navigation("StudentUsers");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.StudentUser", b =>
-                {
-                    b.Navigation("Marks");
-                });
-
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", b =>
-                {
-                    b.Navigation("Disciplines");
-
-                    b.Navigation("GroupTeachers");
-
-                    b.Navigation("Marks");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Models.Identity.ApplicationUser", b =>

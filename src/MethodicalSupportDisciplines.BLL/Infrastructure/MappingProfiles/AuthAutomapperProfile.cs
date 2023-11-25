@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MethodicalSupportDisciplines.BLL.Models.Identity;
+using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.Shared.Dto.AuthDto;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 

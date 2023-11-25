@@ -1,5 +1,6 @@
 using AspNetCoreHero.ToastNotification.Extensions;
 using MethodicalSupportDisciplines.Infrastructure;
+using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.MVC;
 using Microsoft.Extensions.Options;
 
@@ -13,16 +14,16 @@ WebApplication app = builder.Build();
 RequestLocalizationOptions localizationOptions = app.Services
     .GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 
-/*IWebHostEnvironment environment = app.Environment;
+IWebHostEnvironment environment = app.Environment;
 
 if (environment.IsDevelopment())
 {
-    using var scope = app.Services.CreateScope();
+    using IServiceScope scope = app.Services.CreateScope();
 
     SeedDataDbContext initDataContextSeed = scope.ServiceProvider.GetRequiredService<SeedDataDbContext>();
     await initDataContextSeed.InitializeDatabaseAsync();
     await initDataContextSeed.SeedContextDataAsync();
-}*/
+}
 
 app.UseNotyf();
 app.UseHttpsRedirection();
