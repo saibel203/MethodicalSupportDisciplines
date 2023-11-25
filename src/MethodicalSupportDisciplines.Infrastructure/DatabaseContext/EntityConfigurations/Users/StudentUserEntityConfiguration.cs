@@ -9,5 +9,9 @@ public class StudentUserEntityConfiguration : IEntityTypeConfiguration<StudentUs
     public void Configure(EntityTypeBuilder<StudentUser> builder)
     {
         builder.HasKey(property => property.StudentUserId);
+
+        builder.Property(property => property.PhoneNumber)
+            .HasMaxLength(50)
+            .IsRequired();
     }
 }
