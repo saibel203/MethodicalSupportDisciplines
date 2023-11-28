@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodicalSupportDiscipline
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodicalSupportDisciplines.Infrastructure", "src\MethodicalSupportDisciplines.Infrastructure\MethodicalSupportDisciplines.Infrastructure.csproj", "{04969545-3197-4A8D-BFAB-F74D6CB1B68C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5B2D3CBA-8DAE-488F-AF0C-7AF46C1E1997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodicalSupportDisciplines.BLL.UnitTests", "tests\MethodicalSupportDisciplines.BLL.UnitTests\MethodicalSupportDisciplines.BLL.UnitTests.csproj", "{3060C28A-778E-41D8-860E-C20DA2A45712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodicalSupportDisciplines.UnitTests.Helpers", "tests\MethodicalSupportDisciplines.UnitTests.Helpers\MethodicalSupportDisciplines.UnitTests.Helpers.csproj", "{E501BD12-8079-4B09-829A-265B8EE95BDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +56,14 @@ Global
 		{04969545-3197-4A8D-BFAB-F74D6CB1B68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04969545-3197-4A8D-BFAB-F74D6CB1B68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04969545-3197-4A8D-BFAB-F74D6CB1B68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3060C28A-778E-41D8-860E-C20DA2A45712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3060C28A-778E-41D8-860E-C20DA2A45712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3060C28A-778E-41D8-860E-C20DA2A45712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3060C28A-778E-41D8-860E-C20DA2A45712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E501BD12-8079-4B09-829A-265B8EE95BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E501BD12-8079-4B09-829A-265B8EE95BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E501BD12-8079-4B09-829A-265B8EE95BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E501BD12-8079-4B09-829A-265B8EE95BDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41EB00B1-46CB-4991-9A6B-DFFF0E125F49} = {B7B68811-BF47-4E50-B812-627198AD8388}
@@ -58,5 +72,7 @@ Global
 		{21AF7265-4167-47DE-8D59-FADB52E5FBE4} = {B7B68811-BF47-4E50-B812-627198AD8388}
 		{1A8B91CC-9B1F-49BE-A42D-7207C1320857} = {B7B68811-BF47-4E50-B812-627198AD8388}
 		{04969545-3197-4A8D-BFAB-F74D6CB1B68C} = {B7B68811-BF47-4E50-B812-627198AD8388}
+		{3060C28A-778E-41D8-860E-C20DA2A45712} = {5B2D3CBA-8DAE-488F-AF0C-7AF46C1E1997}
+		{E501BD12-8079-4B09-829A-265B8EE95BDB} = {5B2D3CBA-8DAE-488F-AF0C-7AF46C1E1997}
 	EndGlobalSection
 EndGlobal

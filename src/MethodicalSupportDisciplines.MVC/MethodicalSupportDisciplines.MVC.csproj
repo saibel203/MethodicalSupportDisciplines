@@ -10,8 +10,7 @@
   <ItemGroup>
     <Folder Include="Resources\Views\Home\" />
     <Folder Include="Resources\Views\Shared\" />
-    <Folder Include="Views\Resources\Scripts\" />
-    <Folder Include="Views\Resources\Styles\" />
+    <Folder Include="Views\Resources\Styles\pages\auth\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\js\" />
@@ -52,6 +51,62 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AuthController.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\Register.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\Register.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Register.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\RemindPassword.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\RemindPassword.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPassword.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\RemindPasswordResult.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPasswordResult.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\RemindPasswordResult.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemindPasswordResult.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ResetPassword.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ResetPassword.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ConfirmEmail.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmail.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ConfirmEmail.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmail.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ConfirmEmailResult.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmailResult.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ConfirmEmailResult.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmailResult.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ResetPasswordResult.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordResult.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Auth\ResetPasswordResult.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordResult.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +129,76 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AuthController.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\Register.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\Register.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Register.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\RemindPassword.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPassword.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\RemindPassword.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPassword.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\RemindPasswordResult.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPasswordResult.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\RemindPasswordResult.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemindPasswordResult.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ResetPassword.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPassword.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ResetPassword.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPassword.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ConfirmEmail.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmail.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ConfirmEmail.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmail.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ConfirmEmailResult.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmailResult.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ConfirmEmailResult.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmailResult.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ResetPasswordResult.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPasswordResult.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Auth\ResetPasswordResult.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPasswordResult.en.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

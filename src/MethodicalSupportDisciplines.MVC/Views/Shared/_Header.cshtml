@@ -7,18 +7,95 @@
         : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
 }
 
-<header style="width: 100vh; height: 30px; background: red; position: absolute; top: 0; left: 0">
-    <form method="post" asp-controller="Auth" asp-action="SetCulture" asp-route-returnUrl="@returnUrl" 
-          asp-antiforgery="true">
-        @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
-        {
-            <input name="culture" type="hidden" value="uk">
-            <button type="submit">Змінити на українську</button>
-        }
-        else
-        {
-            <input name="culture" type="hidden" value="en">
-            <button type="submit">Switch to English</button>
-        }
-    </form>
+<header class="navigation-wrap bg-light header-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <h2>
+                            <span class="navbar-brand__name">M.S.D</span>
+                        </h2>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </div>
+                                </li>
+                                @*@if (User.IsInRole("admin"))
+                                {
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">Users</a>
+                                    </li>
+                                }*@
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#">Agency</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#">Journal</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#">Account</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <form method="post" asp-controller="Auth" asp-action="SetCulture"
+                                              asp-route-returnUrl="@returnUrl" asp-antiforgery="true">
+                                            @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
+                                            {
+                                                <input name="culture" type="hidden" value="uk">
+                                                <button type="submit" class="dropdown-item">Змінити на українську</button>
+                                            }
+                                            else
+                                            {
+                                                <input name="culture" type="hidden" value="en">
+                                                <button type="submit" class="dropdown-item">Switch to English</button>
+                                            }
+                                        </form>
+                                        <a asp-controller="Auth" asp-action="Logout" class="dropdown-item">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <form method="post" asp-controller="Auth" asp-action="SetCulture"
+                                          asp-route-returnUrl="@returnUrl" asp-antiforgery="true">
+                                        @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
+                                        {
+                                            <input name="culture" type="hidden" value="uk">
+                                            <button type="submit" class="nav-link">Змінити на українську</button>
+                                        }
+                                        else
+                                        {
+                                            <input name="culture" type="hidden" value="en">
+                                            <button type="submit" class="nav-link">Switch to English</button>
+                                        }
+                                    </form>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
 </header>

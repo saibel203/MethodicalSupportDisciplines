@@ -16,16 +16,19 @@ public class MarkEntityConfiguration : IEntityTypeConfiguration<Mark>
         builder.HasOne(property => property.Student)
             .WithMany(property => property.Marks)
             .HasForeignKey(property => property.StudentId)
+            .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
         
         builder.HasOne(property => property.Teacher)
             .WithMany(property => property.Marks)
             .HasForeignKey(property => property.TeacherId)
+            .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
         
         builder.HasOne(property => property.Discipline)
             .WithMany(property => property.Marks)
             .HasForeignKey(property => property.DisciplineId)
+            .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
     }
 }

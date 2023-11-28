@@ -635,19 +635,19 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", "Discipline")
                         .WithMany("Marks")
                         .HasForeignKey("DisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.StudentUser", "Student")
                         .WithMany("Marks")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", "Teacher")
                         .WithMany("Marks")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Discipline");

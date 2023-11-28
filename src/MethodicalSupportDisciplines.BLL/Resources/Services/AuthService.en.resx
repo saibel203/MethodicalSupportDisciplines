@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="UserWithEmailNotFound" xml:space="preserve">
+        <value>The user with the specified e-mail address was not found</value>
+    </data>
+    <data name="MethodGetIncorrectData" xml:space="preserve">
+        <value>The method received an incorrect value, possibly null</value>
+    </data>
+    <data name="ErrorTryCreateAccount" xml:space="preserve">
+        <value>An error occurred while trying to create a new user</value>
+    </data>
+    <data name="UserWithoutEmail" xml:space="preserve">
+        <value>The user does not have an Email</value>
+    </data>
+    <data name="ErrorGetRole" xml:space="preserve">
+        <value>Failed to get 'guest' user role</value>
+    </data>
+    <data name="RegisterSuccess" xml:space="preserve">
+        <value>User created successfully</value>
+    </data>
+    <data name="UnknownRegisterError" xml:space="preserve">
+        <value>An unknown error occurred while trying to register a new user</value>
+    </data>
+    <data name="ConfirmEmailError" xml:space="preserve">
+        <value>Before logging in, go to your email and confirm your identity</value>
+    </data>
+    <data name="PasswordForEmailIncorrect" xml:space="preserve">
+        <value>The password of the user with the specified Email is incorrect</value>
+    </data>
+    <data name="LoginSuccess" xml:space="preserve">
+        <value>The user has successfully logged in</value>
+    </data>
+    <data name="LoginUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to log the user in</value>
+    </data>
+    <data name="NoUserWithId" xml:space="preserve">
+        <value>No user with the given ID was found</value>
+    </data>
+    <data name="ConfirmEmailUnknownError" xml:space="preserve">
+        <value>An error occurred while trying to confirm your email</value>
+    </data>
+    <data name="ConfirmSuccess" xml:space="preserve">
+        <value>Email has been successfully verified</value>
+    </data>
+    <data name="ConfirmError" xml:space="preserve">
+        <value>An unknown error occurred while trying to confirm Email</value>
+    </data>
+    <data name="RemindSuccess" xml:space="preserve">
+        <value>The password change request was successfully sent to the specified e-mail address</value>
+    </data>
+    <data name="RemindUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to send an email to change the password</value>
+    </data>
+    <data name="PasswordsMatchError" xml:space="preserve">
+        <value>NewPassword, ConfirmNewPassword fields do not match</value>
+    </data>
+    <data name="ResetPasswordError" xml:space="preserve">
+        <value>An error occurred while trying to change the password</value>
+    </data>
+    <data name="ResetPasswordSuccess" xml:space="preserve">
+        <value>Password changed successfully</value>
+    </data>
+    <data name="ResetPasswordUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to change the password</value>
+    </data>
+</root>

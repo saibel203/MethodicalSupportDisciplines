@@ -1,30 +1,39 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
-    <!-- <title>ViewData["Title"]</title> -->
-    <title>Some title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/style.css">
+    </environment>
+    <environment names="Production">
+        <link rel="stylesheet" href="~/css/style.min.css">
+    </environment>
 </head>
 <body>
-<style>
-    .notyf__wrapper .notyf__icon i {
-        margin-top: 3px;
-        color: #fff !important;
-    }
-    .notyf__wrapper .notyf__message {
-        font-family: 'Open Sans', sans-serif !important;
-        font-size: 16px !important;
-    }
-</style>
 
 @await Html.PartialAsync("_Header")
 
-<div style="margin-top: 100px; background: silver;">
-    @RenderBody()
-</div>
+@RenderBody()
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/0172dea2c0.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<environment names="Development">
+    <script src="~/js/components/main/header.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/header.component.min.js"></script>
+</environment>
+
 @await Component.InvokeAsync("Notyf")
 </body>
 </html>

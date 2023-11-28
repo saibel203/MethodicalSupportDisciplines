@@ -1,0 +1,21 @@
+﻿@import '../utils/_colors';
+
+.validation-summary-errors {
+  ul {
+    list-style: none;
+    margin-bottom: 30px;
+    border: 1px solid #dedede;
+    background-color: $body-background-color;
+    color: $text-validation-color;
+    padding: 10px;
+  }
+}
+
+.field-validation-error {
+  color: $text-validation-color;
+  margin-top: 5px;
+}
+
+.after-long-description-validation {
+  margin-top: 20px;
+}

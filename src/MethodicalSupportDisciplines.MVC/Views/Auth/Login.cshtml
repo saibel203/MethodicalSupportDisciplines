@@ -1,31 +1,47 @@
 ﻿@model MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth.LoginViewModel
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>@ViewLocalization["Test"]</h1>
-<form method="post" asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]"
-      asp-antiforgery="true" autocomplete="off">
-    <div asp-validation-summary="All"></div>
-    <div>
-        <input asp-for="Email" placeholder="Email">
-    </div>
-    <div>
-        <input asp-for="Password" placeholder="Password">
-    </div>
-    <div>
-        <input asp-for="RememberMe"><label asp-for="RememberMe">Remember me?</label>
-    </div>
-    <button type="submit">Login</button>
-    <div>
-        <a asp-controller="Auth" asp-action="RemindPassword">Forget password</a>
-    </div>
-</form>
-</body>
-</html>
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+@await Html.PartialAsync("_MainFormsBackground")
+
+<div class="auth-form">
+    <form method="post" asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]"
+          asp-antiforgery="true" autocomplete="off">
+        <h1>@ViewLocalization["Title"]</h1>
+        <div class="form-errors">
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="form-group">
+            <input asp-for="Email" class="form-control item" placeholder="Email">
+        </div>
+        <div class="form-group password-group">
+            <input asp-for="Password" class="form-control item" id="login-password-field" placeholder="Password">
+            <span><i class="fa fa-eye" aria-hidden="true" id="login-password-eye"></i></span>
+        </div>
+        <div class="form-check under-btn">
+            <div>
+                <input asp-for="RememberMe" class="form-check-input">
+                <label asp-for="RememberMe" class="form-check-label">@ViewLocalization["RememberMe"]</label>
+            </div>
+            <a asp-controller="Auth" asp-action="RemindPassword">@ViewLocalization["ForgetPassword"]</a>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">@ViewLocalization["LoginButton"]</button>
+        </div>
+        <div class="form-group">
+            <p>
+                @ViewLocalization["StillRegister"]
+                <a asp-controller="Auth" asp-action="Register">@ViewLocalization["RegisterButton"]</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+<environment names="Development">
+    <script src="~/js/components/main/forms.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/forms.component.min.js"></script>
+</environment>

@@ -60,11 +60,56 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Auth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тестовий текст для перевірки локалізації.
+        ///   Looks up a localized string similar to Забули пароль?.
         /// </summary>
-        internal static string Test {
+        internal static string ForgetPassword {
             get {
-                return ResourceManager.GetString("Test", resourceCulture);
+                return ResourceManager.GetString("ForgetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Увійти.
+        /// </summary>
+        internal static string LoginButton {
+            get {
+                return ResourceManager.GetString("LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Реєстрація.
+        /// </summary>
+        internal static string RegisterButton {
+            get {
+                return ResourceManager.GetString("RegisterButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запам&apos;ятати.
+        /// </summary>
+        internal static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все ще не зареєстровані?.
+        /// </summary>
+        internal static string StillRegister {
+            get {
+                return ResourceManager.GetString("StillRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Авторизація.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

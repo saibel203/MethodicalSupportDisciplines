@@ -23,6 +23,4 @@ public class RegisterViewModel
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "PasswordsNotMatch")]
     public string ConfirmPassword { get; set; } = string.Empty;
-    
-    public string ReturnUrl { get; set; } = string.Empty;
 }

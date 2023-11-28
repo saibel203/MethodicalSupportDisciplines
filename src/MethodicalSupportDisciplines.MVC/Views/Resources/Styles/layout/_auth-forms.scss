@@ -1,0 +1,115 @@
+﻿input, button {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.auth-form {
+  position: relative;
+  z-index: 1;
+  margin-top: -38%;
+  margin-bottom: 100px;
+  
+  form {
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px 70px 20px 70px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.075);
+    
+    .password-group {
+      position: relative;
+      
+      span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      
+      &.without-forms {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .item {
+    border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+  }
+
+  .create-account {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    
+    &:hover {
+      background-color: #236ffd;
+    }
+  }
+}
+
+.under-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .auth-form {
+    margin-top: -50%;
+
+    form {
+      padding: 25px 20px;
+      max-width: 450px;
+    }
+    
+    h1 {
+      font-size: 35px;
+      margin-bottom: 15px;
+
+      &.without-forms {
+        font-size: 25px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      
+      input {
+        margin-bottom: 15px;
+        font-size: 15px;
+        
+        i {
+          font-size: 15px;
+        }
+        
+        &::placeholder {
+          font-size: 15px;
+        }
+      }
+      
+      label {
+        font-size: 15px;
+      }
+    }
+
+    a, p {
+      font-size: 15px;
+    }
+  }
+}

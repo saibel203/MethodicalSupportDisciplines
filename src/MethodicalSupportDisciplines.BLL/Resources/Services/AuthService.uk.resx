@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="UserWithEmailNotFound" xml:space="preserve">
+        <value>Користувача із вказаною електронною поштою не знайдено</value>
+    </data>
+    <data name="MethodGetIncorrectData" xml:space="preserve">
+        <value>Метод отримав неправильне значення, можливо, null</value>
+    </data>
+    <data name="ErrorTryCreateAccount" xml:space="preserve">
+        <value>Під час спроби створити нового користувача сталася помилка</value>
+    </data>
+    <data name="UserWithoutEmail" xml:space="preserve">
+        <value>Користувач не має електронної пошти</value>
+    </data>
+    <data name="ErrorGetRole" xml:space="preserve">
+        <value>Не вдалося отримати роль користувача "guest".</value>
+    </data>
+    <data name="RegisterSuccess" xml:space="preserve">
+        <value>Користувача створено успішно</value>
+    </data>
+    <data name="UnknownRegisterError" xml:space="preserve">
+        <value>Під час спроби зареєструвати нового користувача сталася невідома помилка</value>
+    </data>
+    <data name="ConfirmEmailError" xml:space="preserve">
+        <value>Перед входом перейдіть до своєї електронної пошти та підтвердьте свою особу</value>
+    </data>
+    <data name="PasswordForEmailIncorrect" xml:space="preserve">
+        <value>Пароль користувача з указаною електронною поштою неправильний</value>
+    </data>
+    <data name="LoginSuccess" xml:space="preserve">
+        <value>Користувач успішно авторизувався</value>
+    </data>
+    <data name="LoginUnknownError" xml:space="preserve">
+        <value>Під час спроби входу користувача сталася невідома помилка</value>
+    </data>
+    <data name="NoUserWithId" xml:space="preserve">
+        <value>Користувач із вказаним ідентифікатором не знайдений</value>
+    </data>
+    <data name="ConfirmEmailUnknownError" xml:space="preserve">
+        <value>Під час спроби підтвердити вашу електронну адресу сталася помилка</value>
+    </data>
+    <data name="ConfirmSuccess" xml:space="preserve">
+        <value>Електронну пошту успішно підтвердженно</value>
+    </data>
+    <data name="ConfirmError" xml:space="preserve">
+        <value>Під час спроби підтвердити електронну адресу сталася невідома помилка</value>
+    </data>
+    <data name="RemindSuccess" xml:space="preserve">
+        <value>Запит на зміну пароля успішно надіслано на вказану адресу електронної пошти</value>
+    </data>
+    <data name="RemindUnknownError" xml:space="preserve">
+        <value>Під час спроби надіслати електронний лист для зміни пароля сталася невідома помилка</value>
+    </data>
+    <data name="PasswordsMatchError" xml:space="preserve">
+        <value>Паролі NewPassword, ConfirmNewPassword не співпадають</value>
+    </data>
+    <data name="ResetPasswordError" xml:space="preserve">
+        <value>Під час спроби змінити пароль, виникла помилка</value>
+    </data>
+    <data name="ResetPasswordSuccess" xml:space="preserve">
+        <value>Пароль успішно змінено</value>
+    </data>
+    <data name="ResetPasswordUnknownError" xml:space="preserve">
+        <value>Під час спроби змінити пароль, виникла невідома помилка</value>
+    </data>
+</root>
