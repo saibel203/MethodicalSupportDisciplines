@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MethodicalSupportDisciplines.BLL.Interfaces;
+using MethodicalSupportDisciplines.MVC.Attributes;
 using MethodicalSupportDisciplines.Shared.Dto;
 using MethodicalSupportDisciplines.Shared.Dto.AuthDto;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
@@ -29,6 +30,7 @@ public class AuthController : Controller
     }
 
     [HttpGet]
+    [Unauthorized]
     public IActionResult Register()
     {
         return View();
@@ -36,6 +38,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Unauthorized]
     public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
     {
         if (!ModelState.IsValid)
@@ -68,6 +71,7 @@ public class AuthController : Controller
     }
 
     [HttpGet]
+    [Unauthorized]
     public IActionResult Login(string? returnUrl)
     {
         ViewData["ReturnUrl"] = returnUrl;
@@ -76,6 +80,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Unauthorized]
     public async Task<IActionResult> Login(LoginViewModel loginViewModel, string? returnUrl)
     {
         returnUrl ??= Url.Content("~/");
@@ -99,14 +104,16 @@ public class AuthController : Controller
         _notificationService.CustomSuccessMessage(_stringLocalization["LoginSuccess"]);
         return RedirectToLocal(returnUrl);
     }
-
+    
     [HttpGet]
+    [Unauthorized]
     public IActionResult ConfirmEmail()
     {
         return View();
     }
 
     [HttpGet]
+    [Unauthorized]
     public async Task<IActionResult> ConfirmEmailResult([FromQuery] TokenValueDto<string> tokenValueDto)
     {
         if (tokenValueDto.Value is null || 
@@ -138,12 +145,15 @@ public class AuthController : Controller
         return View();
     }
     
+    [HttpGet]
+    [Unauthorized]
     public IActionResult RemindPasswordResult()
     {
         return View();
     }
     
     [HttpGet]
+    [Unauthorized]
     public IActionResult RemindPassword()
     {
         return View();
@@ -151,6 +161,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Unauthorized]
     public async Task<IActionResult> RemindPassword(RemindPasswordViewModel forgetPasswordViewModel)
     {
         if (!ModelState.IsValid || string.IsNullOrWhiteSpace(forgetPasswordViewModel.Email))
@@ -174,12 +185,14 @@ public class AuthController : Controller
     }
     
     [HttpGet]
+    [Unauthorized]
     public IActionResult ResetPasswordResult()
     {
         return View();
     }
     
     [HttpGet]
+    [Unauthorized]
     public IActionResult ResetPassword([FromQuery] TokenValueDto<string> tokenValueDto)
     {
         if (tokenValueDto.Value is null 
@@ -194,6 +207,7 @@ public class AuthController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Unauthorized]
     public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
     {
         if (!ModelState.IsValid)

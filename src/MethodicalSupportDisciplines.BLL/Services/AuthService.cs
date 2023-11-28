@@ -11,6 +11,7 @@ using MethodicalSupportDisciplines.Shared.Responses.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -18,6 +19,7 @@ namespace MethodicalSupportDisciplines.BLL.Services;
 
 public class AuthService : IAuthService
 {
+    private readonly IStringLocalizer<AuthService> _stringLocalization;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<ApplicationRole> _roleManager;
@@ -29,7 +31,8 @@ public class AuthService : IAuthService
 
     public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
         RoleManager<ApplicationRole> roleManager, IOptions<WebPathsOptions> webPathsOptions, 
-        ILogger<AuthService> logger, IMapper mapper, IMailService mailService, DataDbContext dbContext)
+        ILogger<AuthService> logger, IMapper mapper, IMailService mailService, DataDbContext dbContext,
+        IStringLocalizer<AuthService> stringLocalization)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -39,6 +42,7 @@ public class AuthService : IAuthService
         _mapper = mapper;
         _mailService = mailService;
         _dbContext = dbContext;
+        _stringLocalization = stringLocalization;
     }
 
     public async Task<UserAuthResponse> RegisterAsync(UserRegisterDto? userRegisterDto)
@@ -49,7 +53,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null",
+                    Message = _stringLocalization["MethodGetIncorrectData"],
                     IsSuccess = false
                 };
             }
@@ -61,7 +65,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "An error occurred while trying to create a new user",
+                    Message = _stringLocalization["ErrorTryCreateAccount"],
                     IsSuccess = false,
                     Errors = createUserResult.Errors
                 };
@@ -71,7 +75,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The user does not have an Email",
+                    Message = _stringLocalization["UserWithoutEmail"],
                     IsSuccess = false,
                 };
             }
@@ -84,7 +88,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "Failed to get 'guest' user role",
+                    Message = _stringLocalization["ErrorGetRole"],
                     IsSuccess = false
                 };
             }
@@ -113,7 +117,7 @@ public class AuthService : IAuthService
             
             return new UserAuthResponse
             {
-                Message = "User created successfully",
+                Message = _stringLocalization["RegisterSuccess"],
                 IsSuccess = true
             };
         }
@@ -123,7 +127,7 @@ public class AuthService : IAuthService
 
             return new UserAuthResponse
             {
-                Message = "An unknown error occurred while trying to register a new user",
+                Message = _stringLocalization["UnknownRegisterError"],
                 IsSuccess = false
             };
         }
@@ -137,7 +141,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null",
+                    Message = _stringLocalization["MethodGetIncorrectData"],
                     IsSuccess = false
                 };
             }
@@ -148,7 +152,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The user with the specified Email was not found",
+                    Message = _stringLocalization["UserWithEmailNotFound"],
                     IsSuccess = false
                 };
             }
@@ -162,21 +166,21 @@ public class AuthService : IAuthService
                 {
                     return new UserAuthResponse
                     {
-                        Message = "Before logging in, go to your email and confirm your identity",
+                        Message = _stringLocalization["ConfirmEmailError"],
                         IsSuccess = false
                     };
                 }
                 
                 return new()
                 {
-                    Message = "The password of the user with the specified Email is incorrect",
+                    Message = _stringLocalization["PasswordForEmailIncorrect"],
                     IsSuccess = false
                 };
             }
             
             return new()
             {
-                Message = "The user has successfully logged in",
+                Message = _stringLocalization["LoginSuccess"],
                 IsSuccess = true
             };
         }
@@ -186,7 +190,7 @@ public class AuthService : IAuthService
 
             return new UserAuthResponse
             {
-                Message = "An unknown error occurred while trying to log the user in",
+                Message = _stringLocalization["LoginUnknownError"],
                 IsSuccess = false
             };
         }
@@ -200,7 +204,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null",
+                    Message = _stringLocalization["MethodGetIncorrectData"],
                     IsSuccess = false
                 };
             }
@@ -211,7 +215,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "No user with the given ID was found",
+                    Message = _stringLocalization["NoUserWithId"],
                     IsSuccess = false
                 };
             }
@@ -225,7 +229,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "An error occurred while trying to confirm your email",
+                    Message = _stringLocalization["ConfirmEmailUnknownError"],
                     IsSuccess = false,
                     Errors = result.Errors
                 };
@@ -233,7 +237,7 @@ public class AuthService : IAuthService
 
             return new()
             {
-                Message = "Email has been successfully verified",
+                Message = _stringLocalization["ConfirmSuccess"],
                 IsSuccess = true
             };
         }
@@ -243,7 +247,7 @@ public class AuthService : IAuthService
             
             return new UserAuthResponse
             {
-                Message = "An unknown error occurred while trying to confirm Email",
+                Message = _stringLocalization["ConfirmError"],
                 IsSuccess = false
             };
         }
@@ -257,7 +261,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The method received an incorrect value, possibly null",
+                    Message = _stringLocalization["MethodGetIncorrectData"],
                     IsSuccess = false
                 };
             }
@@ -268,7 +272,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "The user with the specified Email was not found",
+                    Message = _stringLocalization["UserWithEmailNotFound"],
                     IsSuccess = false
                 };
             }
@@ -286,7 +290,7 @@ public class AuthService : IAuthService
         
             return new UserAuthResponse
             {
-                Message = "The password change request was successfully sent to the specified e-mail address",
+                Message = _stringLocalization["RemindSuccess"],
                 IsSuccess = true
             };
         }
@@ -297,7 +301,7 @@ public class AuthService : IAuthService
 
             return new UserAuthResponse
             {
-                Message = "An unknown error occurred while trying to send an email to change the password",
+                Message = _stringLocalization["RemindUnknownError"],
                 IsSuccess = false
             };
         }
@@ -311,7 +315,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "",
+                    Message = _stringLocalization["MethodGetIncorrectData"],
                     IsSuccess = false
                 };
             }
@@ -322,7 +326,7 @@ public class AuthService : IAuthService
             {
                 return new UserAuthResponse
                 {
-                    Message = "",
+                    Message = _stringLocalization["UserWithEmailNotFound"],
                     IsSuccess = false
                 };
             }
@@ -331,7 +335,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "",
+                    Message = _stringLocalization["PasswordsMatchError"],
                     IsSuccess = false
                 };
             }
@@ -345,7 +349,7 @@ public class AuthService : IAuthService
             {
                 return new()
                 {
-                    Message = "",
+                    Message = _stringLocalization["ResetPasswordError"],
                     IsSuccess = false,
                     Errors = resetPasswordResult.Errors
                 };
@@ -358,7 +362,7 @@ public class AuthService : IAuthService
 
             return new()
             {
-                Message = "",
+                Message = _stringLocalization["ResetPasswordSuccess"],
                 IsSuccess = true
             };
         }
@@ -368,7 +372,7 @@ public class AuthService : IAuthService
 
             return new UserAuthResponse
             {
-                Message = "",
+                Message = _stringLocalization["ResetPasswordUnknownError"],
                 IsSuccess = false
             };
         }

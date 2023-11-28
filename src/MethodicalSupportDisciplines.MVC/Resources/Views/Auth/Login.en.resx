@@ -18,7 +18,22 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="Test" xml:space="preserve">
-        <value>Test text for checking localization</value>
+    <data name="Title" xml:space="preserve">
+        <value>Authorization</value>
+    </data>
+    <data name="RememberMe" xml:space="preserve">
+        <value>Remember</value>
+    </data>
+    <data name="ForgetPassword" xml:space="preserve">
+        <value>Forget password?</value>
+    </data>
+    <data name="RegisterButton" xml:space="preserve">
+        <value>Register</value>
+    </data>
+    <data name="StillRegister" xml:space="preserve">
+        <value>Still not registered?</value>
+    </data>
+    <data name="LoginButton" xml:space="preserve">
+        <value>Sign in</value>
     </data>
 </root>

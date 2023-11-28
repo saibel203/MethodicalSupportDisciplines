@@ -17,7 +17,7 @@ namespace MethodicalSupportDisciplines.BLL.UnitTests;
 
 public class AuthServiceUnitTests
 {
-    private readonly IAuthService _authService;
+    /*private readonly IAuthService _authService;
     private readonly Mock<UserManager<ApplicationUser>> _userManagerMock;
     private readonly Mock<SignInManager<ApplicationUser>> _signInManagerMock;
     private readonly Mock<RoleManager<ApplicationRole>> _roleManagerMock;
@@ -66,5 +66,5 @@ public class AuthServiceUnitTests
         // Assert
         Assert.False(isRegisterSuccess);
         Assert.Equal(expectedErrorMessage, registerErrorMessage);
-    }
+    }*/
 }

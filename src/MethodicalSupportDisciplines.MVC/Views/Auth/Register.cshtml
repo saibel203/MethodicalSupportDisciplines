@@ -1,29 +1,47 @@
 ﻿@model MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth.RegisterViewModel
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<form method="post" asp-controller="Auth" asp-action="Register" asp-antiforgery="true" autocomplete="off">
-    <div asp-validation-summary="All"></div>
-    <div>
-        <input asp-for="Username" placeholder="Username">
-    </div>
-    <div>
-        <input asp-for="Email" placeholder="Email">
-    </div>
-    <div>
-        <input asp-for="Password" placeholder="Password">
-    </div>
-    <div>
-        <input asp-for="ConfirmPassword" placeholder="ConfirmPassword">
-    </div>
-    <button type="submit">Register</button>
-</form>
-</body>
-</html>
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+
+@await Html.PartialAsync("_MainFormsBackground")
+
+<div class="auth-form">
+    <form method="post" asp-controller="Auth" asp-action="Register" asp-antiforgery="true" autocomplete="off">
+        <h1>@ViewLocalization["Title"]</h1>
+        <div class="form-errors">
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="form-group">
+            <input asp-for="Username" class="form-control item" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input asp-for="Email" class="form-control item" placeholder="Email">
+        </div>
+        <div class="form-group password-group">
+            <input asp-for="Password" class="form-control item login-password-field" placeholder="Password">
+            <span><i class="fa fa-eye login-password-eye" aria-hidden="true"></i></span>
+        </div>
+        <div class="form-group password-group">
+            <input asp-for="ConfirmPassword" class="form-control item login-password-field" placeholder="Confirm Password">
+            <span><i class="fa fa-eye login-password-eye" aria-hidden="true"></i></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">@ViewLocalization["Title"]</button>
+        </div>
+        <div class="form-group">
+            <p>
+                @ViewLocalization["StillRegister"]
+                <a asp-controller="Auth" asp-action="Login">@ViewLocalization["LoginButton"]</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+<environment names="Development">
+    <script src="~/js/components/main/forms.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/forms.component.min.js"></script>
+</environment>
