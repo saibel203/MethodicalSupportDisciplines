@@ -9,9 +9,17 @@ public class GuestUserEntityConfiguration : IEntityTypeConfiguration<GuestUser>
     public void Configure(EntityTypeBuilder<GuestUser> builder)
     {
         builder.HasKey(property => property.GuestUserId);
-
-        builder.Ignore(property => property.FirstName);
-        builder.Ignore(property => property.LastName);
-        builder.Ignore(property => property.Patronymic);
+        
+        builder.Property(property => property.FirstName)
+            .HasMaxLength(50)
+            .IsRequired();
+        
+        builder.Property(property => property.LastName)
+            .HasMaxLength(50)
+            .IsRequired();
+        
+        builder.Property(property => property.Patronymic)
+            .HasMaxLength(50)
+            .IsRequired();
     }
 }

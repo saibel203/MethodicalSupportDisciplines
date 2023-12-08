@@ -11,11 +11,10 @@ public class SpecialtyEntityConfiguration : IEntityTypeConfiguration<Specialty>
         builder.HasKey(property => property.SpecialtyId);
 
         builder.Property(property => property.SpecialtyName)
-            .HasMaxLength(50)
+            .HasMaxLength(150)
             .IsRequired();
         
-        builder.Property(property => property.SpecialtyShortName)
-            .HasMaxLength(15)
+        builder.Property(property => property.SpecialityNumber)
             .IsRequired();
 
         builder.HasMany(property => property.Students)

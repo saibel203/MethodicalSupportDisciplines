@@ -27,4 +27,13 @@
     <data name="LoginButton" xml:space="preserve">
         <value>Авторизуватися</value>
     </data>
+    <data name="FirstName" xml:space="preserve">
+        <value>Ім'я</value>
+    </data>
+    <data name="LastName" xml:space="preserve">
+        <value>Призвіще</value>
+    </data>
+    <data name="Patronymic" xml:space="preserve">
+        <value>По батькові</value>
+    </data>
 </root>

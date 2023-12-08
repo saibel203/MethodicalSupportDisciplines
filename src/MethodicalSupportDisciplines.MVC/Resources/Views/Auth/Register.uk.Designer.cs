@@ -60,11 +60,38 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Auth {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ім&apos;я.
+        /// </summary>
+        internal static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Призвіще.
+        /// </summary>
+        internal static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Авторизуватися.
         /// </summary>
         internal static string LoginButton {
             get {
                 return ResourceManager.GetString("LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to По батькові.
+        /// </summary>
+        internal static string Patronymic {
+            get {
+                return ResourceManager.GetString("Patronymic", resourceCulture);
             }
         }
         

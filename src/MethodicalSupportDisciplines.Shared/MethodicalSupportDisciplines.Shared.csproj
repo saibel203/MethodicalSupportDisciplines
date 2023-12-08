@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
     <Folder Include="Enums\" />
+    <Folder Include="Resources\ValidationAttributes\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.14" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -91,6 +91,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ResetPasswordViewModel.en.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Core\MethodicalSupportDisciplines.Core.csproj" />
   </ItemGroup>
 
 </Project>

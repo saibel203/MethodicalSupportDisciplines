@@ -109,7 +109,10 @@ public class AuthService : IAuthService
 
             GuestUser guestUser = new GuestUser
             {
-                ApplicationUser = user
+                ApplicationUser = user,
+                FirstName = userRegisterDto.FirstName,
+                LastName = userRegisterDto.LastName,
+                Patronymic = userRegisterDto.Patronymic
             };
             
             await _dbContext.GuestUsers.AddAsync(guestUser);

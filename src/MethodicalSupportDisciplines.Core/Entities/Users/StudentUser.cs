@@ -6,7 +6,6 @@ namespace MethodicalSupportDisciplines.Core.Entities.Users;
 public class StudentUser : UserBase
 {
     public int StudentUserId { get; set; }
-    public string PhoneNumber { get; set; } = string.Empty;
 
     public int FormatLearningId { get; set; }
     public FormatLearning FormatLearning { get; set; } = null!;

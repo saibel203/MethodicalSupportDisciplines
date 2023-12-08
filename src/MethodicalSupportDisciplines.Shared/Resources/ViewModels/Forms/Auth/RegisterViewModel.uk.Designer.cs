@@ -79,6 +79,33 @@ namespace MethodicalSupportDisciplines.Shared.Resources.ViewModels.Forms.Auth {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email поле некоректно заповнене.
+        /// </summary>
+        internal static string EmailValidationError {
+            get {
+                return ResourceManager.GetString("EmailValidationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FirstName поле є обов&apos;язковим.
+        /// </summary>
+        internal static string FirstNameRequired {
+            get {
+                return ResourceManager.GetString("FirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LastName поле є обов&apos;язковим.
+        /// </summary>
+        internal static string LastNameRequired {
+            get {
+                return ResourceManager.GetString("LastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Мінімальна довжина паролю - 6 символів.
         /// </summary>
         internal static string PasswordMinLength {
@@ -111,6 +138,24 @@ namespace MethodicalSupportDisciplines.Shared.Resources.ViewModels.Forms.Auth {
         internal static string PasswordsNotMatch {
             get {
                 return ResourceManager.GetString("PasswordsNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patronymic поле є обов&apos;язковим.
+        /// </summary>
+        internal static string PatronymicRequired {
+            get {
+                return ResourceManager.GetString("PatronymicRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhoneNumber поле є обов&apos;язковим.
+        /// </summary>
+        internal static string PhoneNumberRequired {
+            get {
+                return ResourceManager.GetString("PhoneNumberRequired", resourceCulture);
             }
         }
         

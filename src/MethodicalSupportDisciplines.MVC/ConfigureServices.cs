@@ -6,6 +6,8 @@ using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.Core.IOptions;
+using MethodicalSupportDisciplines.Data.Interfaces;
+using MethodicalSupportDisciplines.Data.Repositories;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.Infrastructure.Utilities;
@@ -26,6 +28,7 @@ public static class ConfigureServices
         
         services.AddHttpContextAccessor();
 
+        /* ------------------IDENTITY AUTHENTICATION SETTINGS------------------ */
         services.AddIdentity<ApplicationUser, ApplicationRole>(identityOptions =>
             {
                 identityOptions.Password.RequiredLength = 6;
@@ -41,6 +44,7 @@ public static class ConfigureServices
             .AddEntityFrameworkStores<DataDbContext>()
             .AddDefaultTokenProviders();
 
+        /* ------------------COOKIE SETTINGS------------------ */
         services.ConfigureApplicationCookie(cookieOptions =>
             {
                 cookieOptions.LoginPath = new PathString("/auth/login");
@@ -50,8 +54,10 @@ public static class ConfigureServices
                 cookieOptions.AccessDeniedPath = "/Error/AccessDenied";
             });
 
+        /* ------------------AUTOMAPPER------------------ */
         services.AddAutoMapper(typeof(AuthAutomapperProfile));
 
+        /* ------------------OPTIONS SETTINGS------------------ */
         services.Configure<SendGridOptions>(configuration.GetSection("SendGridOptions"));
         services.Configure<WebPathsOptions>(configuration.GetSection("WebPathsOptions"));
         
@@ -60,10 +66,15 @@ public static class ConfigureServices
 
         services.AddScoped<SeedDataDbContext>();
         
+        /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
+        
+        /* ------------------REPOSITORIES------------------ */
+        services.AddScoped<IUsersRepository, UsersRepository>();
 
+        /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");
 
         services.Configure<RequestLocalizationOptions>(localizationOptions =>
