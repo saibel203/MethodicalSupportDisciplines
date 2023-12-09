@@ -2,7 +2,8 @@
 
 namespace MethodicalSupportDisciplines.Shared.Responses.Repositories;
 
-public class UsersResponse : BaseResponse
+public class UsersRepositoryResponse : BaseResponse
 {
     public IReadOnlyList<GuestUser>? GuestUsers { get; set; } = new List<GuestUser>();
+    public GuestUser? GuestUser { get; set; }
 }

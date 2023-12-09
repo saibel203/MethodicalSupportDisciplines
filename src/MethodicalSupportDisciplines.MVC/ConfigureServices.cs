@@ -66,13 +66,14 @@ public static class ConfigureServices
 
         services.AddScoped<SeedDataDbContext>();
         
+        /* ------------------REPOSITORIES------------------ */
+        services.AddTransient<IUsersRepository, UsersRepository>();
+        
         /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
-        
-        /* ------------------REPOSITORIES------------------ */
-        services.AddScoped<IUsersRepository, UsersRepository>();
+        services.AddTransient<IUsersService, UsersService>();
 
         /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");

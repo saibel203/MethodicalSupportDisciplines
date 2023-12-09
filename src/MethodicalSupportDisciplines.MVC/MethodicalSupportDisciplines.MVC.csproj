@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\Views\Home\" />
-    <Folder Include="Resources\Views\Shared\" />
     <Folder Include="Views\Resources\Styles\pages\auth\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\" />
@@ -108,6 +107,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPasswordResult.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Header.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Header.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Header.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Header.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\GuestUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\GuestUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_GuestUsersTableSearch.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_GuestUsersTableSearch.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -201,6 +224,40 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ResetPasswordResult.en.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Views\Shared\_Header.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_Header.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_Header.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_Header.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\GuestUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GuestUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\GuestUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GuestUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_GuestUsersTableSearch.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_GuestUsersTableSearch.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Tables\_GuestUsersTable.cshtml" />
   </ItemGroup>
 
   <Target Name="PrepublishScriptsAndStyles" BeforeTargets="BeforeBuild">

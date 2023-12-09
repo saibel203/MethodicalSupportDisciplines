@@ -4,5 +4,7 @@ namespace MethodicalSupportDisciplines.Data.Interfaces;
 
 public interface IUsersRepository : IRepositoryBase
 {
-    Task<UsersResponse> GetGuestUsersAsync();
+    Task<UsersRepositoryResponse> GetGuestUsersAsync();
+    Task<UsersRepositoryResponse> GetGuestUserByIdAsync(int userId);
+    Task<UsersRepositoryResponse> RemoveGuestUserAsync(int userId);
 }

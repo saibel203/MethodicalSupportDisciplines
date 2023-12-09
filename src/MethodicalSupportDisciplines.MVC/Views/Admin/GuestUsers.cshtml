@@ -1,5 +1,56 @@
-﻿@{
-    ViewData["Title"] = "Users";
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@using MethodicalSupportDisciplines.Shared.Dto.Users
+@model MethodicalSupportDisciplines.Shared.ViewModels.Users.AdminGuestUsersViewModel
+@inject IViewLocalizer ViewLocalization
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
 }
 
-<h1>GUEST USERS</h1>
+<div class="table-container">
+    <table class="guest-users-table">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (GetGuestUserDto user in Model.GuestUsers)
+        {
+            <tr>
+                <td>@user.GuestUserId</td>
+                <td>@user.UserName</td>
+                <td>@ViewHelper.GetUserFullName(user.FirstName, user.LastName, user.Patronymic)</td>
+                <td>@user.Email</td>
+                <td>@user.PhoneNumber</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="RemoveGuestUser" asp-route-userId="@user.GuestUserId"
+                       class="text-danger">
+                        @ViewLocalization["DeleteUserButton"]
+                    </a>
+                    <a asp-controller="Admin" asp-action="AssignRole" asp-route-userId="@user.GuestUserId"
+                       class="text-primary" data-bs-toggle="modal"
+                       data-bs-target="#roleModal-@user.GuestUserId">
+                        @ViewLocalization["AssignRoleButton"]
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="guest-users-table-pagination" colspan="2">
+                @await Html.PartialAsync("Paginations/_GuestUsersTablePagination")
+            </td>
+            <td class="guest-users-table-search" colspan="4">
+                @await Html.PartialAsync("Search/_GuestUsersTableSearch")
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

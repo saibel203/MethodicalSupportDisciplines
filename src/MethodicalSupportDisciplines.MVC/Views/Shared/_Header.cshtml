@@ -1,5 +1,6 @@
 ﻿@using System.Globalization
 @inject IViewLocalizer ViewLocalization
+@addTagHelper *, MethodicalSupportDisciplines.MVC
 
 @{
     string returnUrl = string.IsNullOrEmpty(Context.Request.Path)
@@ -26,7 +27,7 @@
                         @if (User.Identity?.IsAuthenticated == true)
                         {
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" is-active-header-route>
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#">Action</a>
@@ -38,7 +39,7 @@
                                 @if (User.IsInRole("admin"))
                                 {
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a asp-controller="Admin" asp-action="GuestUsers" class="nav-link">Users</a>
+                                        <a asp-controller="Admin" asp-action="GuestUsers" class="nav-link" is-active-header-route>@ViewLocalization["GuestUsers"]</a>
                                     </li>
                                 }
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
