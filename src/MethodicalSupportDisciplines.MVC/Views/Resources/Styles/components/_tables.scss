@@ -4,10 +4,11 @@
   margin-top: 50px;
 }
 
-.guest-users-table {
+.users-table {
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
+  font-size: 13px;
+  line-height: 16px;
   min-width: 400px;
   width: 1300px;
   border-radius: 5px 5px 0 0;
@@ -24,7 +25,7 @@
   }
   
   th, td {
-    padding: 12px 25px;
+    padding: 12px 18px;
   }
   
   tbody {

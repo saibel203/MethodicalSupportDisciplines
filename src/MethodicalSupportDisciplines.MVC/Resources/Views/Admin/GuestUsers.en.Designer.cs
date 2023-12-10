@@ -78,7 +78,7 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Admin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guest users.
+        ///   Looks up a localized string similar to Guests.
         /// </summary>
         internal static string Title {
             get {

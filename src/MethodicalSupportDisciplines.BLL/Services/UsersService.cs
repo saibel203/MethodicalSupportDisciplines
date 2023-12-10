@@ -64,11 +64,12 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
 
             return new UsersServiceResponse
             {
-                Message = "Guest users successfully received",
+                Message = guestUsersResponse.Message,
                 IsSuccess = true,
                 GuestUsers = guestUserDto
                     .Skip(skipAmount)
-                    .Take(PagesParameters.GuestUsersTablePageCount).ToList(),
+                    .Take(PagesParameters.GuestUsersTablePageCount)
+                    .ToList(),
                 PageCount = pageCount,
                 ItemsCount = guestUsersCount,
                 SearchString = queryParameters.SearchString,
@@ -77,7 +78,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unknown error occurred while trying to get guest users");
+            _logger.LogError(ex, "An unknown error occurred while trying to get guest users.");
 
             return new UsersServiceResponse
             {
@@ -128,6 +129,198 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
         try
         {
             UsersRepositoryResponse removeResult = await _usersRepository.RemoveGuestUserAsync(userId);
+
+            if (!removeResult.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = removeResult.Message,
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersServiceResponse
+            {
+                Message = removeResult.Message,
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete a user.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to delete a user",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UsersServiceResponse> GetTeacherUsersAsync(QueryParameters queryParameters)
+    {
+        try
+        {
+            UsersRepositoryResponse getUsersResult = await _usersRepository.GetTeacherUsersAsync();
+
+            if (!getUsersResult.IsSuccess || getUsersResult.TeacherUsers is null)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getUsersResult.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            int skipAmount = PagesParameters.GuestUsersTablePageCount * (queryParameters.PageNumber - 1);
+            
+            IReadOnlyList<TeacherUser> filteredTeacherUsers = getUsersResult.TeacherUsers;
+
+            if (!string.IsNullOrWhiteSpace(queryParameters.SearchString))
+            {
+                filteredTeacherUsers = filteredTeacherUsers
+                    .Where(guestUserData =>
+                        guestUserData.ApplicationUser != null &&
+                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!) ||
+                         guestUserData.FirstName.Contains(queryParameters.SearchString) ||
+                         guestUserData.LastName.Contains(queryParameters.SearchString) ||
+                         guestUserData.Patronymic.Contains(queryParameters.SearchString)))
+                    .ToList();
+            }
+            
+            int guestUsersCount = filteredTeacherUsers.Count;
+            int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestUsersTablePageCount);
+
+            IReadOnlyList<GetTeacherUserDto> teacherUsersDto = _mapper.Map<IReadOnlyList<GetTeacherUserDto>>(
+                filteredTeacherUsers);
+
+            return new UsersServiceResponse
+            {
+                Message = getUsersResult.Message,
+                IsSuccess = true,
+                TeacherUsers = teacherUsersDto
+                    .Skip(skipAmount)
+                    .Take(PagesParameters.GuestUsersTablePageCount)
+                    .ToList(),
+                PageCount = pageCount,
+                ItemsCount = guestUsersCount,
+                SearchString = queryParameters.SearchString,
+                Pages = PaginationHelper.PageNumbers(queryParameters.PageNumber, pageCount)
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to get teacher users.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to get teacher users",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> RemoveTeacherUserAsync(int userId)
+    {
+        try
+        {
+            UsersRepositoryResponse removeResult = await _usersRepository.RemoveTeacherUserAsync(userId);
+
+            if (!removeResult.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = removeResult.Message,
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersServiceResponse
+            {
+                Message = removeResult.Message,
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete a user.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to delete a user",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> GetStudentUsersAsync(QueryParameters queryParameters)
+    {
+        try
+        {
+            UsersRepositoryResponse getUsersResult = await _usersRepository.GetStudentUsersAsync();
+
+            if (!getUsersResult.IsSuccess || getUsersResult.StudentUsers is null)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getUsersResult.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            int skipAmount = PagesParameters.GuestStudentUsersTablePageCount * (queryParameters.PageNumber - 1);
+            
+            IReadOnlyList<StudentUser> filteredStudentUsers = getUsersResult.StudentUsers;
+
+            if (!string.IsNullOrWhiteSpace(queryParameters.SearchString))
+            {
+                filteredStudentUsers = filteredStudentUsers
+                    .Where(guestUserData =>
+                        guestUserData.ApplicationUser != null &&
+                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!) ||
+                         guestUserData.FirstName.Contains(queryParameters.SearchString) ||
+                         guestUserData.LastName.Contains(queryParameters.SearchString) ||
+                         guestUserData.Patronymic.Contains(queryParameters.SearchString)))
+                    .ToList();
+            }
+            
+            int guestUsersCount = filteredStudentUsers.Count;
+            int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestStudentUsersTablePageCount);
+
+            IReadOnlyList<GetStudentUserDto> studentUsersDto = _mapper.Map<IReadOnlyList<GetStudentUserDto>>(
+                filteredStudentUsers);
+
+            return new UsersServiceResponse
+            {
+                Message = getUsersResult.Message,
+                IsSuccess = true,
+                StudentUsers = studentUsersDto
+                    .Skip(skipAmount)
+                    .Take(PagesParameters.GuestStudentUsersTablePageCount)
+                    .ToList(),
+                PageCount = pageCount,
+                ItemsCount = guestUsersCount,
+                SearchString = queryParameters.SearchString,
+                Pages = PaginationHelper.PageNumbers(queryParameters.PageNumber, pageCount)
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to get student users.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to get student users",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> RemoveStudentUserAsync(int userId)
+    {
+        try
+        {
+            UsersRepositoryResponse removeResult = await _usersRepository.RemoveStudentUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {

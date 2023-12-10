@@ -19,6 +19,12 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="GuestUsers" xml:space="preserve">
-        <value>Guest users</value>
+        <value>Guests</value>
+    </data>
+    <data name="StudentUsers" xml:space="preserve">
+        <value>Students</value>
+    </data>
+    <data name="TeacherUsers" xml:space="preserve">
+        <value>Teachers</value>
     </data>
 </root>

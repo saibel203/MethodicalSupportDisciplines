@@ -67,5 +67,23 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
                 return ResourceManager.GetString("GuestUsers", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Студенти.
+        /// </summary>
+        internal static string StudentUsers {
+            get {
+                return ResourceManager.GetString("StudentUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вчителі.
+        /// </summary>
+        internal static string TeacherUsers {
+            get {
+                return ResourceManager.GetString("TeacherUsers", resourceCulture);
+            }
+        }
     }
 }

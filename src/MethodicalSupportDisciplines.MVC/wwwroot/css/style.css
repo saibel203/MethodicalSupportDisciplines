@@ -483,47 +483,48 @@ body {
   margin-top: 50px;
 }
 
-.guest-users-table {
+.users-table {
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
+  font-size: 13px;
+  line-height: 16px;
   min-width: 400px;
   width: 1300px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.guest-users-table thead tr {
+.users-table thead tr {
   background-color: #5791ff;
   color: #ffffff;
   text-align: left;
   font-weight: bold;
 }
-.guest-users-table th, .guest-users-table td {
-  padding: 12px 25px;
+.users-table th, .users-table td {
+  padding: 12px 18px;
 }
-.guest-users-table tbody tr {
+.users-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.guest-users-table tbody tr:nth-of-type(even) {
+.users-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
-.guest-users-table tbody a {
+.users-table tbody a {
   text-decoration: underline;
 }
-.guest-users-table tbody a:not(:last-child) {
+.users-table tbody a:not(:last-child) {
   margin-right: 8px;
 }
-.guest-users-table tfoot tr {
+.users-table tfoot tr {
   border-bottom: 2px solid #5791ff;
 }
-.guest-users-table tfoot tr .pagination {
+.users-table tfoot tr .pagination {
   margin-bottom: 0;
 }
-.guest-users-table tfoot tr form .mb-3 {
+.users-table tfoot tr form .mb-3 {
   margin-bottom: 0 !important;
 }
-.guest-users-table tfoot tr td {
+.users-table tfoot tr td {
   padding: 20px 25px;
 }
 

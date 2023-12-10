@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
+namespace MethodicalSupportDisciplines.MVC.Resources.Views.Admin {
     using System;
     
     
@@ -21,14 +21,14 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class _Header_en {
+    internal class StudentUsers_uk {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Header_en() {
+        internal StudentUsers_uk() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MethodicalSupportDisciplines.MVC.Resources.Views.Shared._Header.en", typeof(_Header_en).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MethodicalSupportDisciplines.MVC.Resources.Views.Admin.StudentUsers.uk", typeof(StudentUsers_uk).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,29 +60,29 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guests.
+        ///   Looks up a localized string similar to Запит на зміну даних.
         /// </summary>
-        internal static string GuestUsers {
+        internal static string DataChangeRequest {
             get {
-                return ResourceManager.GetString("GuestUsers", resourceCulture);
+                return ResourceManager.GetString("DataChangeRequest", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Students.
+        ///   Looks up a localized string similar to Видалити студента.
         /// </summary>
-        internal static string StudentUsers {
+        internal static string RemoveStudent {
             get {
-                return ResourceManager.GetString("StudentUsers", resourceCulture);
+                return ResourceManager.GetString("RemoveStudent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Teachers.
+        ///   Looks up a localized string similar to Студенти.
         /// </summary>
-        internal static string TeacherUsers {
+        internal static string Title {
             get {
-                return ResourceManager.GetString("TeacherUsers", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

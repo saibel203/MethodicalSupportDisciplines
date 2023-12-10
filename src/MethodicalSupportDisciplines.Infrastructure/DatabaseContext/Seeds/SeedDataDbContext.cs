@@ -234,7 +234,103 @@ public class SeedDataDbContext
             new() { UserName = "teacher4", Email = "teacher4@gmail.com", EmailConfirmed = true,
                 PhoneNumber = "0127453688" },
             new() { UserName = "teacher5", Email = "teacher5@gmail.com", EmailConfirmed = true,
-                PhoneNumber = "0124758222" }
+                PhoneNumber = "0124758222" },
+            new() { UserName = "guest11", Email = "guest11@gmail.com", EmailConfirmed = true, // 21
+                PhoneNumber = "0267710000" },
+            new() { UserName = "guest12", Email = "guest12@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0731500000" },
+            new() { UserName = "guest13", Email = "guest13@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0500000001" },
+            new() { UserName = "guest14", Email = "guest14@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0462011256" },
+            new() { UserName = "guest15", Email = "guest15@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0624700000" },
+            new() { UserName = "guest16", Email = "guest16@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0908070405" },
+            new() { UserName = "guest17", Email = "guest17@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0102030405" },
+            new() { UserName = "guest18", Email = "guest18@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "6985478966" },
+            new() { UserName = "guest19", Email = "guest19@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "7896541230" },
+            new() { UserName = "guest20", Email = "guest20@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "9632587410" },
+            new() { UserName = "guest21", Email = "guest21@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0908070605" },
+            new() { UserName = "guest22", Email = "guest22@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0102030904" },
+            new() { UserName = "guest23", Email = "guest23@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "5040102026" },
+            new() { UserName = "guest24", Email = "guest24@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "9080704050" },
+            new() { UserName = "guest25", Email = "guest25@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "7080604020" },
+            new() { UserName = "guest26", Email = "guest26@gmail.com", EmailConfirmed = true, // 36
+                PhoneNumber = "9060200104" },
+            new() { UserName = "teacher6", Email = "teacher6@gmail.com", EmailConfirmed = true, // 37
+                PhoneNumber = "0945038363" },
+            new() { UserName = "teacher7", Email = "teacher7@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0900800700" },
+            new() { UserName = "teacher8", Email = "teacher8@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0100000800" },
+            new() { UserName = "teacher9", Email = "teacher9@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0110022547" },
+            new() { UserName = "teacher10", Email = "teacher10@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0978470008" },
+            new() { UserName = "teacher11", Email = "teacher11@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0700000800" },
+            new() { UserName = "teacher12", Email = "teacher12@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "010000010" },
+            new() { UserName = "teacher13", Email = "teacher13@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0200000020" },
+            new() { UserName = "teacher14", Email = "teacher14@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0200000020" },
+            new() { UserName = "teacher15", Email = "teacher15@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0300000300" },
+            new() { UserName = "teacher16", Email = "teacher16@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0400000040" },
+            new() { UserName = "teacher17", Email = "teacher17@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0500000050" },
+            new() { UserName = "teacher18", Email = "teacher18@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0600000060" },
+            new() { UserName = "teacher19", Email = "teacher19@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0700000070" },
+            new() { UserName = "teacher20", Email = "teacher20@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0800000080" },
+            new() { UserName = "teacher21", Email = "teacher21@gmail.com", EmailConfirmed = true, // 52
+                PhoneNumber = "0900000090" },
+            new() { UserName = "student6", Email = "student6@gmail.com", EmailConfirmed = true, // 53
+                PhoneNumber = "0403020100" },
+            new() { UserName = "student7", Email = "student7@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0504030201" },
+            new() { UserName = "student8", Email = "student8@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0605040630" },
+            new() { UserName = "student9", Email = "student9@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0706050403" },
+            new() { UserName = "student10", Email = "student10@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0807060504" },
+            new() { UserName = "student11", Email = "student11@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0908070605" },
+            new() { UserName = "student12", Email = "student12@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "0090807060" },
+            new() { UserName = "student13", Email = "student13@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "1090807060" },
+            new() { UserName = "student14", Email = "student14@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "2010908070" },
+            new() { UserName = "student15", Email = "student15@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "3020109080" },
+            new() { UserName = "student16", Email = "student16@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "4030201090" },
+            new() { UserName = "student17", Email = "student17@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "5040302010" },
+            new() { UserName = "student18", Email = "student18@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "6050403020" },
+            new() { UserName = "student19", Email = "student19@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "7060504030" },
+            new() { UserName = "student20", Email = "student20@gmail.com", EmailConfirmed = true,
+                PhoneNumber = "8070605040" },
+            new() { UserName = "student21", Email = "student21@gmail.com", EmailConfirmed = true, // 68
+                PhoneNumber = "9080706059" }
         };
 
         AdminUser adminUser = new AdminUser
@@ -294,7 +390,87 @@ public class SeedDataDbContext
             {
                 ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest10"),
                 FirstName = "Щастислав", LastName = "Коцюба", Patronymic = "Русланович"
-            }
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest11"),
+                FirstName = "Устина", LastName = "Яськевич", Patronymic = "Найденівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest12"),
+                FirstName = "Йосипа", LastName = "Стефанівська", Patronymic = "Зорянівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest13"),
+                FirstName = "Мар'я", LastName = "Коцюба", Patronymic = "Русланович"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest14"),
+                FirstName = "Харитина", LastName = "Дзюба", Patronymic = "Левівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest15"),
+                FirstName = "Степанова", LastName = "Дорофея", Patronymic = "Юхимівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest16"),
+                FirstName = "Найдена", LastName = "Коровченко", Patronymic = "Артемівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest17"),
+                FirstName = "Йосипа", LastName = "Удовенко", Patronymic = "Ростиславівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest18"),
+                FirstName = "Люборада", LastName = "Ярич", Patronymic = "Глібівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest19"),
+                FirstName = "Євгенія", LastName = "Сільченко", Patronymic = "Панасівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest20"),
+                FirstName = "Єва", LastName = "Ярич", Patronymic = "Янівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest21"),
+                FirstName = "Чеслава", LastName = "Чумак", Patronymic = "Устимівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest22"),
+                FirstName = "Чеслава", LastName = "Савків", Patronymic = "Чеславівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest23"),
+                FirstName = "Жозефіна", LastName = "Савойка", Patronymic = "Валентинівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest24"),
+                FirstName = "Пульхера", LastName = "Іваничук", Patronymic = "Левівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest25"),
+                FirstName = "Берта", LastName = "Зінкевич", Patronymic = "Давидівна"
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(guestUserData => guestUserData.UserName == "guest26"),
+                FirstName = "Євдокія", LastName = "Комар", Patronymic = "Янівна"
+            },
         };
 
         StudentUser[] studentUsers =
@@ -325,13 +501,125 @@ public class SeedDataDbContext
                 ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student4"),
                 FirstName = "Жито", LastName = "Зарицький", Patronymic = "Сарматович",
                 FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
-                Faculty = faculties[2], Specialty = specialties[1], Group = groups[0]
+                Faculty = faculties[2], Specialty = specialties[0], Group = groups[0]
             },
             new()
             {
                 ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student5"),
                 FirstName = "Едуард", LastName = "Вітовський", Patronymic = "Вадимович",
                 FormatLearning = formatLearnings[2], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[0], Specialty = specialties[5], Group = groups[0]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student6"),
+                FirstName = "Клара", LastName = "Богданюк", Patronymic = "Адріанівна",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[4], Specialty = specialties[3], Group = groups[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student7"),
+                FirstName = "Єлизавета", LastName = "Караванська", Patronymic = "Полянівна",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[4], Specialty = specialties[3], Group = groups[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student8"),
+                FirstName = "Борислава", LastName = "Коман", Patronymic = "Тимурівна",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[1], 
+                Faculty = faculties[3], Specialty = specialties[3], Group = groups[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student9"),
+                FirstName = "Шушана", LastName = "Капуста", Patronymic = "Вікторівна",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[3], Specialty = specialties[3], Group = groups[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student10"),
+                FirstName = "Йовілла", LastName = "Йовілла", Patronymic = "Драганівна",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[3], Specialty = specialties[2], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student11"),
+                FirstName = "Карина", LastName = "Фурсенко", Patronymic = "Ярославівна",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[3], Specialty = specialties[2], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student12"),
+                FirstName = "Недан", LastName = "Таранюк", Patronymic = "Олександрович",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[2], Specialty = specialties[2], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student13"),
+                FirstName = "Живорід", LastName = "Багінський", Patronymic = "Артурович",
+                FormatLearning = formatLearnings[2], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[2], Specialty = specialties[2], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student14"),
+                FirstName = "Флор", LastName = "Белмачовський", Patronymic = "Радимович",
+                FormatLearning = formatLearnings[2], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[2], Specialty = specialties[1], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student15"),
+                FirstName = "Едуард", LastName = "Вітовський", Patronymic = "Вадимович",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[2], Specialty = specialties[1], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student16"),
+                FirstName = "Голубко", LastName = "Мосійчук", Patronymic = "Вадимович",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[1], Specialty = specialties[1], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student17"),
+                FirstName = "Рудан", LastName = "Шматько", Patronymic = "Денисович",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[1], Specialty = specialties[1], Group = groups[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student18"),
+                FirstName = "Уличан", LastName = "Машковський", Patronymic = "Захарович",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[1], Specialty = specialties[0], Group = groups[1]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student19"),
+                FirstName = "Буйтур", LastName = "Боберський", Patronymic = "Іванович",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[1], Specialty = specialties[0], Group = groups[1]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student20"),
+                FirstName = "Щастибог", LastName = "Ржепішевський", Patronymic = "Леонідович",
+                FormatLearning = formatLearnings[1], LearningStatus = learningStatuses[0], 
+                Faculty = faculties[0], Specialty = specialties[0], Group = groups[1]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(studentUserData => studentUserData.UserName == "student21"),
+                FirstName = "Іларіон", LastName = "Авдуєвський", Patronymic = "Юліанович",
+                FormatLearning = formatLearnings[0], LearningStatus = learningStatuses[0], 
                 Faculty = faculties[0], Specialty = specialties[0], Group = groups[1]
             }
         };
@@ -368,6 +656,102 @@ public class SeedDataDbContext
                 FirstName = "Юліан", LastName = "Карпека", Patronymic = "Найденович",
                 Qualification = qualifications[1]
             },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher6"),
+                FirstName = "Юлій", LastName = "Миколаєнко", Patronymic = "Яромирович",
+                Qualification = qualifications[0]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher7"),
+                FirstName = "Злат", LastName = "Врецьона", Patronymic = "Денисович",
+                Qualification = qualifications[6]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher8"),
+                FirstName = "Флор", LastName = "Громико", Patronymic = "Вітанович",
+                Qualification = qualifications[5]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher9"),
+                FirstName = "Житомир", LastName = "Єщенко", Patronymic = "Тихонович",
+                Qualification = qualifications[4]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher10"),
+                FirstName = "Віола", LastName = "Семеренко", Patronymic = "Полянівна",
+                Qualification = qualifications[4]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher11"),
+                FirstName = "Уляна", LastName = "Загороднюк", Patronymic = "Адамівна",
+                Qualification = qualifications[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher12"),
+                FirstName = "Осипа", LastName = "Борейко", Patronymic = "Федорівна",
+                Qualification = qualifications[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher13"),
+                FirstName = "Уляна", LastName = "Загороднюк", Patronymic = "Адамівна",
+                Qualification = qualifications[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher14"),
+                FirstName = "Осипа", LastName = "Борейко", Patronymic = "Федорівна",
+                Qualification = qualifications[2]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher15"),
+                FirstName = "Алла", LastName = "Колесник", Patronymic = "Златівна",
+                Qualification = qualifications[0]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher16"),
+                FirstName = "Шарлота", LastName = "Гісем", Patronymic = "Левівна",
+                Qualification = qualifications[6]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher17"),
+                FirstName = "Юхимина", LastName = "Засенко", Patronymic = "Соломонівна",
+                Qualification = qualifications[1]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher18"),
+                FirstName = "Цецілія", LastName = "Степула", Patronymic = "Адамівна",
+                Qualification = qualifications[5]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher19"),
+                FirstName = "Бажана", LastName = "Пероганич", Patronymic = "Тарасівна",
+                Qualification = qualifications[4]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher20"),
+                FirstName = "Любаня", LastName = "Юрчишин", Patronymic = "Леонідівна",
+                Qualification = qualifications[3]
+            },
+            new()
+            {
+                ApplicationUser = defaultUsers.FirstOrDefault(teacherUserData => teacherUserData.UserName == "teacher21"),
+                FirstName = "Хриса", LastName = "Бутенко", Patronymic = "Романівна",
+                Qualification = qualifications[2]
+            }
         };
 
         if (!await _dataDbContext.Users.AnyAsync())
@@ -389,18 +773,66 @@ public class SeedDataDbContext
             await _userManager.AddToRoleAsync(defaultUsers[8], defaultRoles[3].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[9], defaultRoles[3].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[10], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[21], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[22], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[23], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[24], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[25], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[26], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[27], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[28], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[29], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[30], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[31], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[32], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[33], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[34], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[35], defaultRoles[3].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[36], defaultRoles[3].Name!);
             
             await _userManager.AddToRoleAsync(defaultUsers[11], defaultRoles[2].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[12], defaultRoles[2].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[13], defaultRoles[2].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[14], defaultRoles[2].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[15], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[53], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[54], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[55], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[56], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[57], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[58], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[59], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[60], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[61], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[62], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[63], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[64], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[65], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[66], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[67], defaultRoles[2].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[68], defaultRoles[2].Name!);
             
             await _userManager.AddToRoleAsync(defaultUsers[16], defaultRoles[1].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[17], defaultRoles[1].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[18], defaultRoles[1].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[19], defaultRoles[1].Name!);
             await _userManager.AddToRoleAsync(defaultUsers[20], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[37], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[38], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[39], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[40], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[41], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[42], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[43], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[44], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[45], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[46], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[47], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[48], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[49], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[50], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[51], defaultRoles[1].Name!);
+            await _userManager.AddToRoleAsync(defaultUsers[52], defaultRoles[1].Name!);
 
             await _userManager.AddToRoleAsync(defaultUsers[0], defaultRoles[0].Name!);
 

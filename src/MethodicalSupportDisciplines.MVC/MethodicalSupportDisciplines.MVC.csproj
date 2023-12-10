@@ -131,6 +131,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>_GuestUsersTableSearch.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\StudentUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\StudentUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\TeacherUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\TeacherUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -253,6 +269,26 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>_GuestUsersTableSearch.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\StudentUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StudentUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\StudentUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StudentUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\TeacherUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\TeacherUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherUsers.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

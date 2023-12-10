@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace MethodicalSupportDisciplines.MVC.TabHelpers;
+namespace MethodicalSupportDisciplines.MVC.TagHelpers;
 
 [HtmlTargetElement(Attributes = "is-active-header-route")]
 public class IsActiveHeaderRoute : AnchorTagHelper

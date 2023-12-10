@@ -18,13 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="GuestUsers" xml:space="preserve">
-        <value>Гості</value>
-    </data>
-    <data name="StudentUsers" xml:space="preserve">
-        <value>Студенти</value>
-    </data>
-    <data name="TeacherUsers" xml:space="preserve">
+    <data name="Title" xml:space="preserve">
         <value>Вчителі</value>
+    </data>
+    <data name="ChangeDataRequest" xml:space="preserve">
+        <value>Запит на зміну даних</value>
+    </data>
+    <data name="RemoveTeacher" xml:space="preserve">
+        <value>Видалити вчителя</value>
     </data>
 </root>

@@ -28,10 +28,10 @@ public class AdminController : BaseController
 
         if (!resultUsers.IsSuccess || resultUsers.GuestUsers is null)
         {
-            return NotFound();
+            return View(resultUsers.Message);
         }
 
-        AdminGuestUsersViewModel viewModel = new()
+        AdminGuestUsersViewModel viewModel = new AdminGuestUsersViewModel
         {
             GuestUsers = resultUsers.GuestUsers,
             Username = username,
@@ -76,5 +76,95 @@ public class AdminController : BaseController
         }
 
         return View(getUserResult.GuestUser);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> TeacherUsers(QueryParameters queryParameters)
+    {
+        UsersServiceResponse getUsersResult = await _usersService.GetTeacherUsersAsync(queryParameters);
+
+        string username = GetUsername();
+
+        if (!getUsersResult.IsSuccess || getUsersResult.TeacherUsers is null)
+        {
+            return View(getUsersResult.Message);
+        }
+
+        AdminTeacherUsersViewModel viewModel = new AdminTeacherUsersViewModel
+        {
+            TeacherUsers = getUsersResult.TeacherUsers,
+            Username = username,
+            Pages = getUsersResult.Pages,
+            ItemsCount = getUsersResult.ItemsCount,
+            PageCount = getUsersResult.PageCount,
+            QueryParameters = queryParameters,
+            CurrentController = GetCurrentControllerName(),
+            CurrentAction = GetCurrentActionName()
+        };
+
+        IActionResult actionResult = CheckQueryParametersForPageBaseCondition(
+            ref queryParameters, viewModel, getUsersResult);
+
+        return actionResult;
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> RemoveTeacherUser(int userId)
+    {
+        UsersServiceResponse removeResult = await _usersService.RemoveTeacherUserAsync(userId);
+
+        if (!removeResult.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(removeResult.Message);
+            return RedirectToAction(nameof(TeacherUsers));
+        }
+
+        NotificationService.CustomSuccessMessage(removeResult.Message);
+        return RedirectToAction(nameof(TeacherUsers));
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> StudentUsers(QueryParameters queryParameters)
+    {
+        UsersServiceResponse getUsersResult = await _usersService.GetStudentUsersAsync(queryParameters);
+
+        string username = GetUsername();
+
+        if (!getUsersResult.IsSuccess || getUsersResult.StudentUsers is null)
+        {
+            return View(getUsersResult.Message);
+        }
+
+        AdminStudentUsersViewModel viewModel = new AdminStudentUsersViewModel
+        {
+            StudentUsers = getUsersResult.StudentUsers,
+            Username = username,
+            Pages = getUsersResult.Pages,
+            ItemsCount = getUsersResult.ItemsCount,
+            PageCount = getUsersResult.PageCount,
+            QueryParameters = queryParameters,
+            CurrentController = GetCurrentControllerName(),
+            CurrentAction = GetCurrentActionName()
+        };
+
+        IActionResult actionResult = CheckQueryParametersForPageBaseCondition(
+            ref queryParameters, viewModel, getUsersResult);
+
+        return actionResult;
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> RemoveStudentUser(int userId)
+    {
+        UsersServiceResponse removeResult = await _usersService.RemoveStudentUserAsync(userId);
+
+        if (!removeResult.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(removeResult.Message);
+            return RedirectToAction(nameof(StudentUsers));
+        }
+
+        NotificationService.CustomSuccessMessage(removeResult.Message);
+        return RedirectToAction(nameof(StudentUsers));
     }
 }
