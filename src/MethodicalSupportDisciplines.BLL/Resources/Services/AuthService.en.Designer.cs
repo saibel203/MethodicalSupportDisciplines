@@ -60,6 +60,42 @@ namespace MethodicalSupportDisciplines.BLL.Resources.Services {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The role of the teacher is successfully given to the user.
+        /// </summary>
+        internal static string AssignStudentSuccess {
+            get {
+                return ResourceManager.GetString("AssignStudentSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to assign a guest the role of student.
+        /// </summary>
+        internal static string AssignStudentUnknownError {
+            get {
+                return ResourceManager.GetString("AssignStudentUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The role of the teacher is successfully given to the user.
+        /// </summary>
+        internal static string AssignTeacherSuccess {
+            get {
+                return ResourceManager.GetString("AssignTeacherSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to assign a guest the role of teacher.
+        /// </summary>
+        internal static string AssignTeacherUnknownError {
+            get {
+                return ResourceManager.GetString("AssignTeacherUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Before logging in, go to your email and confirm your identity.
         /// </summary>
         internal static string ConfirmEmailError {
@@ -110,6 +146,15 @@ namespace MethodicalSupportDisciplines.BLL.Resources.Services {
         internal static string ErrorTryCreateAccount {
             get {
                 return ResourceManager.GetString("ErrorTryCreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error getting a user.
+        /// </summary>
+        internal static string GetUserError {
+            get {
+                return ResourceManager.GetString("GetUserError", resourceCulture);
             }
         }
         

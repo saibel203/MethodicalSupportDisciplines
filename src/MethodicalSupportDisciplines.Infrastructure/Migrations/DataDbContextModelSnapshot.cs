@@ -42,7 +42,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasKey("FacultyId");
 
-                    b.ToTable("Faculties");
+                    b.ToTable("Faculties", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.FormatLearning", b =>
@@ -60,7 +60,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasKey("FormatLearningId");
 
-                    b.ToTable("FormatLearnings");
+                    b.ToTable("FormatLearnings", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.LearningStatus", b =>
@@ -78,7 +78,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasKey("LearningStatusId");
 
-                    b.ToTable("LearningStatuses");
+                    b.ToTable("LearningStatuses", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", b =>
@@ -96,28 +96,28 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasKey("QualificationId");
 
-                    b.ToTable("Qualifications");
+                    b.ToTable("Qualifications", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
                 {
-                    b.Property<int>("SpecialtyId")
+                    b.Property<int>("SpecialityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialtyId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialityId"));
 
-                    b.Property<int>("SpecialityNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SpecialtyName")
+                    b.Property<string>("SpecialityName")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.HasKey("SpecialtyId");
+                    b.Property<int>("SpecialityNumber")
+                        .HasColumnType("int");
 
-                    b.ToTable("Specialties");
+                    b.HasKey("SpecialityId");
+
+                    b.ToTable("Specialties", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", b =>
@@ -140,7 +140,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Disciplines");
+                    b.ToTable("Disciplines", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineGroup", b =>
@@ -155,7 +155,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("DisciplineGroups");
+                    b.ToTable("DisciplineGroups", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
@@ -176,7 +176,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasKey("GroupId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.GroupTeacher", b =>
@@ -191,7 +191,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("GroupTeachers");
+                    b.ToTable("GroupTeachers", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Mark", b =>
@@ -222,7 +222,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Marks");
+                    b.ToTable("Marks", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.AdminUser", b =>
@@ -254,7 +254,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
 
-                    b.ToTable("AdminUsers");
+                    b.ToTable("AdminUsers", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.GuestUser", b =>
@@ -289,7 +289,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
 
-                    b.ToTable("GuestUsers");
+                    b.ToTable("GuestUsers", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.StudentUser", b =>
@@ -349,7 +349,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("SpecialtyId");
 
-                    b.ToTable("StudentUsers");
+                    b.ToTable("StudentUsers", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", b =>
@@ -389,7 +389,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.HasIndex("QualificationId");
 
-                    b.ToTable("TeacherUsers");
+                    b.ToTable("TeacherUsers", (string)null);
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Models.Identity.ApplicationRole", b =>

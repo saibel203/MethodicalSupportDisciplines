@@ -81,4 +81,19 @@
     <data name="ResetPasswordUnknownError" xml:space="preserve">
         <value>Під час спроби змінити пароль, виникла невідома помилка</value>
     </data>
+    <data name="AssignTeacherUnknownError" xml:space="preserve">
+        <value>Під час спроби назначити гостю роль вчителя, виникла невідома помилка</value>
+    </data>
+    <data name="AssignTeacherSuccess" xml:space="preserve">
+        <value>Роль вчителя успішно надана користувачу</value>
+    </data>
+    <data name="GetUserError" xml:space="preserve">
+        <value>Помилка отримання користувача</value>
+    </data>
+    <data name="AssignStudentSuccess" xml:space="preserve">
+        <value>Роль студента успішно надана користувачу</value>
+    </data>
+    <data name="AssignStudentUnknownError" xml:space="preserve">
+        <value>Під час спроби назначити гостю роль студента, виникла невідома помилка</value>
+    </data>
 </root>

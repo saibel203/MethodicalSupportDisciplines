@@ -69,6 +69,24 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Admin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Назначити роль вчителя.
+        /// </summary>
+        internal static string AssignTeacherRole {
+            get {
+                return ResourceManager.GetString("AssignTeacherRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назначити роль студента.
+        /// </summary>
+        internal static string AssignUserRole {
+            get {
+                return ResourceManager.GetString("AssignUserRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Видалити користувача.
         /// </summary>
         internal static string DeleteUserButton {

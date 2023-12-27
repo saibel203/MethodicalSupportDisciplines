@@ -28,7 +28,7 @@
                 <td>@ViewHelper.GetUserFullName(user.FirstName, user.LastName, user.Patronymic)</td>
                 <td>@user.QualificationName</td>
                 <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
+                <td>@ViewHelper.ConvertPhoneNumber(user.PhoneNumber)</td>
                 <td>
                     <a asp-controller="Admin" asp-action="RemoveTeacherUser" asp-route-userId="@user.TeacherUserId" 
                        class="text-danger">
@@ -53,3 +53,10 @@
         </tfoot>
     </table>
 </div>
+
+<environment names="Development">
+    <script src="~/js/components/main/filters.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/filters.component.min.js"></script>
+</environment>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MethodicalSupportDisciplines.Core.Entities.Users;
 using MethodicalSupportDisciplines.Shared.Dto.Users;
+using MethodicalSupportDisciplines.Shared.ViewModels.Forms.AssignRoles;
 
 namespace MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 
@@ -42,12 +43,15 @@ public class UsersAutomapperProfile : Profile
             .ForMember(dest => dest.FacultyShortName, opt =>
                 opt.MapFrom(src => src.Faculty.FacultyShortName))
             .ForMember(dest => dest.SpecialtyName, opt =>
-                opt.MapFrom(src => src.Specialty.SpecialtyName))
+                opt.MapFrom(src => src.Specialty.SpecialityName))
             .ForMember(dest => dest.SpecialityNumber, opt =>
                 opt.MapFrom(src => src.Specialty.SpecialityNumber))
             .ForMember(dest => dest.GroupName, opt =>
                 opt.MapFrom(src => src.Group.GroupName))
             .ForMember(dest => dest.GroupCourse, opt =>
                 opt.MapFrom(src => src.Group.GroupCourse));
+
+        CreateMap<CreateTeacherViewModel, CreateTeacherDto>();
+        CreateMap<CreateStudentViewModel, CreateStudentDto>();
     }
 }

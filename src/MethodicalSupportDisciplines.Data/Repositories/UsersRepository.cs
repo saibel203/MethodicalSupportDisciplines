@@ -133,6 +133,43 @@ public class UsersRepository : RepositoryBase, IUsersRepository
             };
         }
     }
+    
+    public async Task<UsersRepositoryResponse> RemoveGuestUserWithoutApplicationUserAsync(int userId)
+    {
+        try
+        {
+            GuestUser? guestUser = await Context.Set<GuestUser>()
+                .FirstOrDefaultAsync(guestUserData => guestUserData.GuestUserId == userId);
+
+            if (guestUser is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["UserNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            Context.GuestUsers.Remove(guestUser);
+            await Context.SaveChangesAsync();
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["RemoveUserSuccess"],
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete a user from the database.");
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
 
     public async Task<UsersRepositoryResponse> GetTeacherUsersAsync()
     {

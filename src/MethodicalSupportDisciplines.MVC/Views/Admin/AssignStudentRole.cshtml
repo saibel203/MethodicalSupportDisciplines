@@ -1,0 +1,74 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Additional
+@model MethodicalSupportDisciplines.Shared.ViewModels.Forms.AssignRoles.CreateStudentViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container assign-role-container">
+    <h2>@ViewLocalization["Title"]</h2>
+    <form class="assign-role-form" method="post" asp-controller="Admin" asp-action="AssignStudentRole"
+          asp-antiforgery="true" autocomplete="off">
+        <div class="form-errors">
+            <div asp-validation-summary="All"></div>
+        </div>
+        <input type="hidden" asp-for="GuestUserId">
+        <input type="hidden" asp-for="FirstName">
+        <input type="hidden" asp-for="LastName">
+        <input type="hidden" asp-for="Patronymic">
+        <input type="hidden" asp-for="ApplicationUserId">
+
+        <div class="form-group">
+            <label asp-for="SpecialtyId"></label>
+            <select class="form-control" asp-for="SpecialtyId">
+                @foreach (SpecialityDto speciality in Model.Specialities)
+                {
+                    <option value="@speciality.SpecialityId">@speciality.SpecialityName (@speciality.SpecialityNumber)</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FormatLearningId"></label>
+            <select class="form-control" asp-for="FormatLearningId">
+                @foreach (FormatLearningDto formatLearning in Model.FormatLearnings)
+                {
+                    <option value="@formatLearning.FormatLearningId">@formatLearning.FormatLearningName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupId"></label>
+            <select class="form-control" asp-for="GroupId">
+                @foreach (GroupDto group in Model.Groups)
+                {
+                    <option value="@group.GroupId">@group.GroupName (course #@group.GroupCourse)</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LearningStatusId"></label>
+            <select class="form-control" asp-for="LearningStatusId">
+                @foreach (LearningStatusDto learningStatus in Model.LearningStatuses)
+                {
+                    <option value="@learningStatus.LearningStatusId">@learningStatus.LearningStatusName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FacultyId"></label>
+            <select class="form-control" asp-for="FacultyId">
+                @foreach (FacultyDto faculty in Model.Faculties)
+                {
+                    <option value="@faculty.FacultyId">@faculty.FacultyName (@faculty.FacultyShortName)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">@ViewLocalization["Button"]</button>
+        </div>
+    </form>
+</div>

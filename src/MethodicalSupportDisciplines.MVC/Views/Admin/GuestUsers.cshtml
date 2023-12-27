@@ -26,15 +26,19 @@
                 <td>@user.UserName</td>
                 <td>@ViewHelper.GetUserFullName(user.FirstName, user.LastName, user.Patronymic)</td>
                 <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
+                <td>@ViewHelper.ConvertPhoneNumber(user.PhoneNumber)</td>
                 <td>
                     <a asp-controller="Admin" asp-action="RemoveGuestUser" asp-route-userId="@user.GuestUserId"
                        class="text-danger">
                         @ViewLocalization["DeleteUserButton"]
                     </a>
-                    <a asp-controller="Admin" asp-action="AssignRole" asp-route-userId="@user.GuestUserId"
+                    <a asp-controller="Admin" asp-action="AssignStudentRole" asp-route-userId="@user.GuestUserId"
                        class="text-primary">
-                        @ViewLocalization["AssignRoleButton"]
+                        @ViewLocalization["AssignUserRole"]
+                    </a>
+                    <a asp-controller="Admin" asp-action="AssignTeacherRole" asp-route-userId="@user.GuestUserId"
+                       class="text-primary">
+                        @ViewLocalization["AssignTeacherRole"]
                     </a>
                 </td>
             </tr>
@@ -42,10 +46,13 @@
         </tbody>
         <tfoot>
         <tr>
+            <td colspan="1">
+                <button class="btn btn-primary filters-button" type="button">Filters</button>
+            </td>
             <td class="guest-users-table-pagination" colspan="2">
                 @await Html.PartialAsync("Paginations/_GuestUsersTablePagination")
             </td>
-            <td class="guest-users-table-search" colspan="4">
+            <td class="guest-users-table-search" colspan="3">
                 @await Html.PartialAsync("Search/_GuestUsersTableSearch")
             </td>
         </tr>

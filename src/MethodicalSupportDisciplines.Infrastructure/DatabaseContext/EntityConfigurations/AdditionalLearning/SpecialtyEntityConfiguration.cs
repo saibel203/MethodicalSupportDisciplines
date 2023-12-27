@@ -8,9 +8,9 @@ public class SpecialtyEntityConfiguration : IEntityTypeConfiguration<Specialty>
 {
     public void Configure(EntityTypeBuilder<Specialty> builder)
     {
-        builder.HasKey(property => property.SpecialtyId);
+        builder.HasKey(property => property.SpecialityId);
 
-        builder.Property(property => property.SpecialtyName)
+        builder.Property(property => property.SpecialityName)
             .HasMaxLength(150)
             .IsRequired();
         

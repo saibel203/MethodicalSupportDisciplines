@@ -11,7 +11,7 @@
     <Folder Include="Resources\Views\Home\" />
     <Folder Include="Views\Resources\Styles\pages\auth\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\img\icons\favicon\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\libs\" />
   </ItemGroup>
@@ -146,6 +146,30 @@
     <EmbeddedResource Update="Resources\Views\Admin\TeacherUsers.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TeacherUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignStudentRole.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignStudentRole.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignStudentRole.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignStudentRole.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignTeacherRole.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignTeacherRole.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignTeacherRole.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignTeacherRole.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AdminController.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminController.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AdminController.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminController.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -289,6 +313,36 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TeacherUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignStudentRole.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignStudentRole.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignStudentRole.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignStudentRole.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignTeacherRole.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignTeacherRole.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignTeacherRole.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignTeacherRole.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AdminController.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AdminController.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AdminController.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AdminController.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

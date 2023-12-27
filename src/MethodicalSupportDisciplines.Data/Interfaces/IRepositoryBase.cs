@@ -21,6 +21,9 @@ public interface IRepositoryBase
     
     Task<IEnumerable<T>> GetAll<T>(Expression<Func<T, bool>> predicate)
         where T : class;
+
+    Task<IReadOnlyList<T>> GetAllReadOnlyList<T>()
+        where T: class;
     
     Task<IEnumerable<T>> GetAllAsTracking<T>()
         where T : class;

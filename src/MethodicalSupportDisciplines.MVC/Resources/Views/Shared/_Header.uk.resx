@@ -27,4 +27,13 @@
     <data name="TeacherUsers" xml:space="preserve">
         <value>Вчителі</value>
     </data>
+    <data name="Home" xml:space="preserve">
+        <value>Головна</value>
+    </data>
+    <data name="Logout" xml:space="preserve">
+        <value>Вихід</value>
+    </data>
+    <data name="Account" xml:space="preserve">
+        <value>Акаунт</value>
+    </data>
 </root>

@@ -1,0 +1,33 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Additional
+@model MethodicalSupportDisciplines.Shared.ViewModels.Forms.AssignRoles.CreateTeacherViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+<p></p>
+<div class="container assign-role-container">
+    <h2>@ViewLocalization["Title"]</h2>
+    <form class="assign-role-form" method="post" asp-controller="Admin" asp-action="AssignTeacherRole"
+          asp-antiforgery="true" autocomplete="off">
+        <div class="form-errors">
+            <div asp-validation-summary="All"></div>
+        </div>
+        <input type="hidden" asp-for="GuestUserId">
+        <input type="hidden" asp-for="FirstName">
+        <input type="hidden" asp-for="LastName">
+        <input type="hidden" asp-for="Patronymic">
+        <input type="hidden" asp-for="ApplicationUserId">
+        <div class="form-group">
+            <label asp-for="QualificationId"></label>
+            <select class="form-control" asp-for="QualificationId">
+                @foreach (QualificationDto qualification in Model.Qualifications)
+                {
+                    <option value="@qualification.QualificationId">@qualification.QualificationName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">@ViewLocalization["Button"]</button>
+        </div>
+    </form>
+</div>

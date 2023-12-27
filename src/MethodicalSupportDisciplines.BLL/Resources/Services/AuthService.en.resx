@@ -81,4 +81,19 @@
     <data name="ResetPasswordUnknownError" xml:space="preserve">
         <value>An unknown error occurred while trying to change the password</value>
     </data>
+    <data name="AssignTeacherUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to assign a guest the role of teacher</value>
+    </data>
+    <data name="AssignTeacherSuccess" xml:space="preserve">
+        <value>The role of the teacher is successfully given to the user</value>
+    </data>
+    <data name="GetUserError" xml:space="preserve">
+        <value>Error getting a user</value>
+    </data>
+    <data name="AssignStudentSuccess" xml:space="preserve">
+        <value>The role of the teacher is successfully given to the user</value>
+    </data>
+    <data name="AssignStudentUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to assign a guest the role of student</value>
+    </data>
 </root>

@@ -7,14 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MethodicalSupportDisciplines.MVC.Controllers;
 
-public class BaseController : Controller
+public class BaseController(INotificationService notificationService) : Controller
 {
-    private protected readonly INotificationService NotificationService;
-
-    public BaseController(INotificationService notificationService)
-    {
-        NotificationService = notificationService;
-    }
+    private protected readonly INotificationService NotificationService = notificationService;
 
     private protected string GetUserId() => User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
 

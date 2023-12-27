@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="FormatLearningFieldName" xml:space="preserve">
+        <value>Формат навчання</value>
+    </data>
+    <data name="LearningStatusFieldName" xml:space="preserve">
+        <value>Статус навчання</value>
+    </data>
+    <data name="FacultyFieldName" xml:space="preserve">
+        <value>Факультет</value>
+    </data>
+    <data name="SpecialityFieldName" xml:space="preserve">
+        <value>Спеціальність</value>
+    </data>
+    <data name="GroupFieldName" xml:space="preserve">
+        <value>Група</value>
+    </data>
+    <data name="FormatLearningRequired" xml:space="preserve">
+        <value>Поле 'Формат навчання' є обов'язовим для заповнення</value>
+    </data>
+    <data name="LearningStatusRequired" xml:space="preserve">
+        <value>Поле 'Статус навчання' є обов'язовим для заповнення</value>
+    </data>
+    <data name="FacultyRequired" xml:space="preserve">
+        <value>Поле 'Факультет' є обов'язовим для заповнення</value>
+    </data>
+    <data name="SpecialtyRequired" xml:space="preserve">
+        <value>Поле 'Спеціальність' є обов'язовим для заповнення</value>
+    </data>
+    <data name="GroupRequired" xml:space="preserve">
+        <value>Поле 'Група' є обов'язовим для заповнення</value>
+    </data>
+</root>

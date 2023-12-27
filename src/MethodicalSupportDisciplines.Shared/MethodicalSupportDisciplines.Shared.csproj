@@ -48,6 +48,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPasswordViewModel.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\AssignRoles\CreateStudentViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateStudentViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\AssignRoles\CreateStudentViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateStudentViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\AssignRoles\CreateTeacherViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateTeacherViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\AssignRoles\CreateTeacherViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateTeacherViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +106,26 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ResetPasswordViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\AssignRoles\CreateStudentViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateStudentViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\AssignRoles\CreateStudentViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateStudentViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\AssignRoles\CreateTeacherViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateTeacherViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\AssignRoles\CreateTeacherViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateTeacherViewModel.en.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

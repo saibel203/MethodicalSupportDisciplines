@@ -14,14 +14,12 @@ namespace MethodicalSupportDisciplines.BLL.Services;
 
 public class UsersService : BaseService<IUsersRepository>, IUsersService
 {
-    private readonly IMapper _mapper;
     private readonly ILogger<UsersService> _logger;
     private readonly IUsersRepository _usersRepository;
 
     public UsersService(IUsersRepository repository, IMapper mapper, ILogger<UsersService> logger,
-        IUsersRepository usersRepository) : base(repository)
+        IUsersRepository usersRepository) : base(repository, mapper)
     {
-        _mapper = mapper;
         _logger = logger;
         _usersRepository = usersRepository;
     }
@@ -129,6 +127,40 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
         try
         {
             UsersRepositoryResponse removeResult = await _usersRepository.RemoveGuestUserAsync(userId);
+
+            if (!removeResult.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = removeResult.Message,
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersServiceResponse
+            {
+                Message = removeResult.Message,
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete a user.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to delete a user",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> RemoveGuestUserWithoutApplicationUserAsync(int userId)
+    {
+        try
+        {
+            UsersRepositoryResponse removeResult = 
+                await _usersRepository.RemoveGuestUserWithoutApplicationUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {

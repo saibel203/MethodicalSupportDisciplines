@@ -6,6 +6,20 @@
     ViewData["Title"] = ViewLocalization["Title"];
 }
 
+<div class="filters-sidebar">
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <h3>Filters</h3>
+            <button type="button" class="close sidebar-close-button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="navbar-body">
+            
+        </div>
+    </div>
+</div>
+
 <div class="table-container">
     <table class="users-table">
         <thead>
@@ -38,9 +52,9 @@
                 <td>@user.GroupName</td>
                 <td>@user.GroupCourse</td>
                 <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
+                <td>@ViewHelper.ConvertPhoneNumber(user.PhoneNumber)</td>
                 <td>
-                    <a asp-controller="Admin" asp-action="RemoveStudentUser" asp-route-userId="@user.StudentUserId" 
+                    <a asp-controller="Admin" asp-action="RemoveStudentUser" asp-route-userId="@user.StudentUserId"
                        class="text-danger">
                         @ViewLocalization["RemoveStudent"]
                     </a>
@@ -63,3 +77,10 @@
         </tfoot>
     </table>
 </div>
+
+<environment names="Development">
+    <script src="~/js/components/main/filters.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/filters.component.min.js"></script>
+</environment>

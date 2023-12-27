@@ -67,4 +67,26 @@ public class RepositoryBase : IRepositoryBase
             .Where(predicate)
             .ToListAsync();
     }
+
+    public async Task<IReadOnlyList<T>> GetAllReadOnlyList<T>() where T : class
+    {
+        return await Context.Set<T>().AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<T>> GetAllReadOnlyList<T>(Expression<Func<T, bool>> predicate) where T : class
+    {
+        return await Context.Set<T>().AsNoTracking()
+            .Where(predicate)
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<T>> GetAllReadOnlyListSorting<T, TType>(Expression<Func<T, TType>> predicate)
+        where T : class
+        where TType : struct
+    {
+        return await Context.Set<T>().AsNoTracking()
+            .OrderBy(predicate)
+            .ToListAsync();
+    }
 }

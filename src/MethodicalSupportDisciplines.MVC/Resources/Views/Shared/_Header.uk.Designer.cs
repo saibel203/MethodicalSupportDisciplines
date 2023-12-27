@@ -60,11 +60,38 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Акаунт.
+        /// </summary>
+        internal static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Гості.
         /// </summary>
         internal static string GuestUsers {
             get {
                 return ResourceManager.GetString("GuestUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Головна.
+        /// </summary>
+        internal static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вихід.
+        /// </summary>
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
