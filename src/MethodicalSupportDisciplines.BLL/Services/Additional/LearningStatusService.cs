@@ -22,7 +22,7 @@ public class LearningStatusService : BaseService<ILearningStatusRepository>, ILe
     {
         try
         {
-            LearningStatusRepositoryResponse getResult = await _repository.GetAllLearningStatusesASync();
+            LearningStatusRepositoryResponse getResult = await _repository.GetAllLearningStatusesAsync();
 
             if (!getResult.IsSuccess)
             {

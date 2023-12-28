@@ -4,5 +4,5 @@ namespace MethodicalSupportDisciplines.Data.Interfaces.Additional;
 
 public interface ILearningStatusRepository : IRepositoryBase
 {
-    Task<LearningStatusRepositoryResponse> GetAllLearningStatusesASync();
+    Task<LearningStatusRepositoryResponse> GetAllLearningStatusesAsync();
 }

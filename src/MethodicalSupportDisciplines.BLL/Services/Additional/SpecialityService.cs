@@ -11,8 +11,9 @@ namespace MethodicalSupportDisciplines.BLL.Services.Additional;
 public class SpecialityService : BaseService<ISpecialityRepository>, ISpecialityService
 {
     private readonly ILogger<SpecialityService> _logger;
-    
-    public SpecialityService(ISpecialityRepository repository, IMapper mapper, ILogger<SpecialityService> logger) : base(repository, mapper)
+
+    public SpecialityService(ISpecialityRepository repository, IMapper mapper, ILogger<SpecialityService> logger) :
+        base(repository, mapper)
     {
         _logger = logger;
     }
@@ -43,11 +44,12 @@ public class SpecialityService : BaseService<ISpecialityRepository>, ISpeciality
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex,
+                "An unknown error occurred while trying to retrieve a list of specialities from the database.");
 
             return new SpecialityServiceResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to retrieve a list of specialities from the database",
                 IsSuccess = false
             };
         }

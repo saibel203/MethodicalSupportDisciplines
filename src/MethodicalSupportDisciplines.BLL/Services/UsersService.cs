@@ -15,20 +15,18 @@ namespace MethodicalSupportDisciplines.BLL.Services;
 public class UsersService : BaseService<IUsersRepository>, IUsersService
 {
     private readonly ILogger<UsersService> _logger;
-    private readonly IUsersRepository _usersRepository;
 
-    public UsersService(IUsersRepository repository, IMapper mapper, ILogger<UsersService> logger,
-        IUsersRepository usersRepository) : base(repository, mapper)
+    public UsersService(IUsersRepository repository, IMapper mapper, ILogger<UsersService> logger) : base(repository,
+        mapper)
     {
         _logger = logger;
-        _usersRepository = usersRepository;
     }
 
     public async Task<UsersServiceResponse> GetGuestUsersAsync(QueryParameters queryParameters)
     {
         try
         {
-            UsersRepositoryResponse guestUsersResponse = await _usersRepository.GetGuestUsersAsync();
+            UsersRepositoryResponse guestUsersResponse = await _repository.GetGuestUsersAsync();
 
             if (!guestUsersResponse.IsSuccess || guestUsersResponse.GuestUsers is null)
             {
@@ -54,7 +52,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                          guestUserData.Patronymic.Contains(queryParameters.SearchString)))
                     .ToList();
             }
-            
+
             int guestUsersCount = filteredGuestUsers.Count;
             int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestUsersTablePageCount);
 
@@ -90,7 +88,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
     {
         try
         {
-            UsersRepositoryResponse getUsersResult = await _usersRepository.GetGuestUserByIdAsync(userId);
+            UsersRepositoryResponse getUsersResult = await _repository.GetGuestUserByIdAsync(userId);
 
             if (!getUsersResult.IsSuccess || getUsersResult.GuestUser is null)
             {
@@ -126,7 +124,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
     {
         try
         {
-            UsersRepositoryResponse removeResult = await _usersRepository.RemoveGuestUserAsync(userId);
+            UsersRepositoryResponse removeResult = await _repository.RemoveGuestUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {
@@ -154,13 +152,13 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             };
         }
     }
-    
+
     public async Task<UsersServiceResponse> RemoveGuestUserWithoutApplicationUserAsync(int userId)
     {
         try
         {
-            UsersRepositoryResponse removeResult = 
-                await _usersRepository.RemoveGuestUserWithoutApplicationUserAsync(userId);
+            UsersRepositoryResponse removeResult =
+                await _repository.RemoveGuestUserWithoutApplicationUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {
@@ -193,7 +191,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
     {
         try
         {
-            UsersRepositoryResponse getUsersResult = await _usersRepository.GetTeacherUsersAsync();
+            UsersRepositoryResponse getUsersResult = await _repository.GetTeacherUsersAsync();
 
             if (!getUsersResult.IsSuccess || getUsersResult.TeacherUsers is null)
             {
@@ -203,9 +201,9 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                     IsSuccess = false
                 };
             }
-            
+
             int skipAmount = PagesParameters.GuestUsersTablePageCount * (queryParameters.PageNumber - 1);
-            
+
             IReadOnlyList<TeacherUser> filteredTeacherUsers = getUsersResult.TeacherUsers;
 
             if (!string.IsNullOrWhiteSpace(queryParameters.SearchString))
@@ -219,7 +217,7 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                          guestUserData.Patronymic.Contains(queryParameters.SearchString)))
                     .ToList();
             }
-            
+
             int guestUsersCount = filteredTeacherUsers.Count;
             int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestUsersTablePageCount);
 
@@ -251,12 +249,12 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             };
         }
     }
-    
+
     public async Task<UsersServiceResponse> RemoveTeacherUserAsync(int userId)
     {
         try
         {
-            UsersRepositoryResponse removeResult = await _usersRepository.RemoveTeacherUserAsync(userId);
+            UsersRepositoryResponse removeResult = await _repository.RemoveTeacherUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {
@@ -284,12 +282,12 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             };
         }
     }
-    
+
     public async Task<UsersServiceResponse> GetStudentUsersAsync(QueryParameters queryParameters)
     {
         try
         {
-            UsersRepositoryResponse getUsersResult = await _usersRepository.GetStudentUsersAsync();
+            UsersRepositoryResponse getUsersResult = await _repository.GetStudentUsersAsync();
 
             if (!getUsersResult.IsSuccess || getUsersResult.StudentUsers is null)
             {
@@ -299,9 +297,9 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                     IsSuccess = false
                 };
             }
-            
+
             int skipAmount = PagesParameters.GuestStudentUsersTablePageCount * (queryParameters.PageNumber - 1);
-            
+
             IReadOnlyList<StudentUser> filteredStudentUsers = getUsersResult.StudentUsers;
 
             if (!string.IsNullOrWhiteSpace(queryParameters.SearchString))
@@ -315,9 +313,10 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                          guestUserData.Patronymic.Contains(queryParameters.SearchString)))
                     .ToList();
             }
-            
+
             int guestUsersCount = filteredStudentUsers.Count;
-            int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestStudentUsersTablePageCount);
+            int pageCount =
+                (int)Math.Ceiling((double)guestUsersCount / PagesParameters.GuestStudentUsersTablePageCount);
 
             IReadOnlyList<GetStudentUserDto> studentUsersDto = _mapper.Map<IReadOnlyList<GetStudentUserDto>>(
                 filteredStudentUsers);
@@ -347,12 +346,12 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             };
         }
     }
-    
+
     public async Task<UsersServiceResponse> RemoveStudentUserAsync(int userId)
     {
         try
         {
-            UsersRepositoryResponse removeResult = await _usersRepository.RemoveStudentUserAsync(userId);
+            UsersRepositoryResponse removeResult = await _repository.RemoveStudentUserAsync(userId);
 
             if (!removeResult.IsSuccess)
             {

@@ -15,7 +15,7 @@ public class LearningStatusRepository : RepositoryBase, ILearningStatusRepositor
         _logger = logger;
     }
 
-    public async Task<LearningStatusRepositoryResponse> GetAllLearningStatusesASync()
+    public async Task<LearningStatusRepositoryResponse> GetAllLearningStatusesAsync()
     {
         try
         {
