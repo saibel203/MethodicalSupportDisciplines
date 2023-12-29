@@ -89,7 +89,7 @@ public class LearningStatusServiceUnitTests
         Assert.IsAssignableFrom<LearningStatusServiceResponse>(getAllLearningStatusesResult);
         Assert.IsAssignableFrom<IReadOnlyList<LearningStatusDto>>(getAllLearningStatusesResult.LearningStatuses);
     }
-    
+
     [Fact]
     public async Task GetAllLearningStatusesAsync_ExceptionThrown_ReturnsErrorResponse()
     {
@@ -101,7 +101,8 @@ public class LearningStatusServiceUnitTests
             "An unknown error occurred while trying to retrieve a list of learning statuses from the database";
 
         // Act
-        LearningStatusServiceResponse getAllLearningStatusesResult = await _learningStatusService.GetAllLearningStatusesAsync();
+        LearningStatusServiceResponse getAllLearningStatusesResult =
+            await _learningStatusService.GetAllLearningStatusesAsync();
 
         // Assert
         Assert.False(getAllLearningStatusesResult.IsSuccess);

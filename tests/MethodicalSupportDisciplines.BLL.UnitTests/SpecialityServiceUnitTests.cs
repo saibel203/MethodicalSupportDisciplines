@@ -89,7 +89,7 @@ public class SpecialityServiceUnitTests
         Assert.IsAssignableFrom<SpecialityServiceResponse>(getAllSpecialitiesResult);
         Assert.IsAssignableFrom<IReadOnlyList<SpecialityDto>>(getAllSpecialitiesResult.Specialties);
     }
-    
+
     [Fact]
     public async Task GetAllSpecialitiesAsync_ExceptionThrown_ReturnsErrorResponse()
     {

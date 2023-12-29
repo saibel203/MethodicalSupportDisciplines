@@ -89,7 +89,7 @@ public class GroupServiceUnitTests
         Assert.IsAssignableFrom<GroupServiceResponse>(getAllGroupsResult);
         Assert.IsAssignableFrom<IReadOnlyList<GroupDto>>(getAllGroupsResult.Groups);
     }
-    
+
     [Fact]
     public async Task GetAllGroupsAsync_ExceptionThrown_ReturnsErrorResponse()
     {

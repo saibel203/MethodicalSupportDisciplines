@@ -448,6 +448,35 @@ body {
   margin-top: 70px;
 }
 
+.content-container {
+  margin-top: 120px;
+  background-color: #fcfcfc;
+  border: 1px solid #c5c5c5;
+  padding: 20px;
+}
+.content-container h1 {
+  text-align: center;
+}
+.content-container h5 {
+  margin-bottom: 20px;
+}
+.content-container h5:last-child {
+  margin-top: 20px;
+}
+.content-container h1, .content-container h5 {
+  color: #212121;
+  opacity: 0.85;
+}
+.content-container p {
+  margin-bottom: 5px;
+}
+.content-container a {
+  color: #007bff;
+}
+.content-container a:hover {
+  opacity: 0.55;
+}
+
 .notyf__wrapper .notyf__icon i {
   margin-top: 3px;
   color: #fff !important;

@@ -87,7 +87,7 @@ public class FacultyServiceUnitTests
         Assert.IsAssignableFrom<FacultyServiceResponse>(getAllFacultiesResult);
         Assert.IsAssignableFrom<IReadOnlyList<FacultyDto>>(getAllFacultiesResult.Faculties);
     }
-    
+
     [Fact]
     public async Task GetAllFacultiesAsync_ExceptionThrown_ReturnsErrorResponse()
     {

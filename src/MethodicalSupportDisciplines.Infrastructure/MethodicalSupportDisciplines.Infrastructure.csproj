@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MethodicalSupportDisciplines.Core\MethodicalSupportDisciplines.Core.csproj" />
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Shared\MethodicalSupportDisciplines.Shared.csproj" />
   </ItemGroup>
 
 </Project>

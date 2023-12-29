@@ -4,6 +4,7 @@ using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231229124208_MethodicalSupportDisciplinesData_Core_AddDisciplineAndMaterialsEntities")]
+    partial class MethodicalSupportDisciplinesData_Core_AddDisciplineAndMaterialsEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,9 +169,6 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineMaterialId"));
 
-                    b.Property<int>("DisciplineId")
-                        .HasColumnType("int");
-
                     b.Property<string>("DisciplineMaterialDescription")
                         .IsRequired()
                         .HasMaxLength(5000)
@@ -179,12 +179,12 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("DisciplineMaterialType")
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
                     b.HasKey("DisciplineMaterialId");
 
-                    b.HasIndex("DisciplineId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("DisciplineMaterials");
                 });
@@ -693,13 +693,13 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", b =>
                 {
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", "Discipline")
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Group", "Group")
                         .WithMany("DisciplineMaterials")
-                        .HasForeignKey("DisciplineId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Discipline");
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.GroupTeacher", b =>
@@ -939,8 +939,6 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                 {
                     b.Navigation("DisciplineGroups");
 
-                    b.Navigation("DisciplineMaterials");
-
                     b.Navigation("Marks");
                 });
 
@@ -952,6 +950,8 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
                 {
                     b.Navigation("DisciplineGroups");
+
+                    b.Navigation("DisciplineMaterials");
 
                     b.Navigation("GroupTeachers");
 

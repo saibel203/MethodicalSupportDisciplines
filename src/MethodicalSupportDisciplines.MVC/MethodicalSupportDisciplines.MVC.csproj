@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Views\Home\" />
-    <Folder Include="Views\Resources\Styles\pages\auth\" />
+    <Folder Include="Views\Resources\Styles\pages\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\icons\favicon\" />
     <Folder Include="wwwroot\js\" />
@@ -170,6 +169,14 @@
     <EmbeddedResource Update="Resources\Controllers\AdminController.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminController.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -343,6 +350,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AdminController.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Index.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

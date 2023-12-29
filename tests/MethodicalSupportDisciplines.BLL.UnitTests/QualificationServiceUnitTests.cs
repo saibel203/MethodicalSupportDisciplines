@@ -89,7 +89,7 @@ public class QualificationServiceUnitTests
         Assert.IsAssignableFrom<QualificationServiceResponse>(getAllQualificationsResult);
         Assert.IsAssignableFrom<IReadOnlyList<QualificationDto>>(getAllQualificationsResult.Qualifications);
     }
-    
+
     [Fact]
     public async Task GetQualificationsAsync_ExceptionThrown_ReturnsErrorResponse()
     {

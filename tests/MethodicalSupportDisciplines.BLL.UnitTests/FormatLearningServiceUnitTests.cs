@@ -89,7 +89,7 @@ public class FormatLearningServiceUnitTests
         Assert.IsAssignableFrom<FormatLearningServiceResponse>(getAllFormatLearningsResult);
         Assert.IsAssignableFrom<IReadOnlyList<FormatLearningDto>>(getAllFormatLearningsResult.FormatLearnings);
     }
-    
+
     [Fact]
     public async Task GetFormatLearningsAsync_ExceptionThrown_ReturnsErrorResponse()
     {
@@ -101,7 +101,8 @@ public class FormatLearningServiceUnitTests
             "An unknown error occurred while trying to retrieve a list of format learnings from the database";
 
         // Act
-        FormatLearningServiceResponse getAllFormatLearningsResult = await _formatLearningService.GetFormatLearningsAsync();
+        FormatLearningServiceResponse getAllFormatLearningsResult =
+            await _formatLearningService.GetFormatLearningsAsync();
 
         // Assert
         Assert.False(getAllFormatLearningsResult.IsSuccess);

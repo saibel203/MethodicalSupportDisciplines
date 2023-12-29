@@ -12,4 +12,5 @@ public class Discipline
     
     public ICollection<DisciplineGroup> DisciplineGroups { get; set; } = new List<DisciplineGroup>();
     public ICollection<Mark> Marks { get; set; } = new List<Mark>();
+    public ICollection<DisciplineMaterial> DisciplineMaterials { get; set; } = new List<DisciplineMaterial>();
 }
