@@ -1,34 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>4455568e-d28d-47c7-9309-593e4f4c2968</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Views\Home\" />
-    <Folder Include="Resources\Views\Shared\" />
-    <Folder Include="Views\Resources\Styles\pages\auth\" />
+    <Folder Include="Views\Resources\Styles\pages\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\img\icons\favicon\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\libs\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MethodicalSupportDisciplines.BLL\MethodicalSupportDisciplines.BLL.csproj" />
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Data\MethodicalSupportDisciplines.Data.csproj" />
     <ProjectReference Include="..\MethodicalSupportDisciplines.Infrastructure\MethodicalSupportDisciplines.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -106,6 +105,78 @@
     <EmbeddedResource Update="Resources\Views\Auth\ResetPasswordResult.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResetPasswordResult.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Header.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Header.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\_Header.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Header.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\GuestUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\GuestUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GuestUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_GuestUsersTableSearch.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_GuestUsersTableSearch.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\StudentUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\StudentUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\TeacherUsers.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherUsers.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\TeacherUsers.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherUsers.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignStudentRole.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignStudentRole.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignStudentRole.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignStudentRole.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignTeacherRole.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignTeacherRole.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\AssignTeacherRole.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssignTeacherRole.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AdminController.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminController.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\AdminController.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminController.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -200,6 +271,100 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ResetPasswordResult.en.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Views\Shared\_Header.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_Header.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\_Header.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_Header.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\GuestUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GuestUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\GuestUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GuestUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_GuestUsersTableSearch.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_GuestUsersTableSearch.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_GuestUsersTableSearch.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\StudentUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StudentUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\StudentUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StudentUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\TeacherUsers.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherUsers.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\TeacherUsers.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherUsers.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignStudentRole.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignStudentRole.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignStudentRole.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignStudentRole.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignTeacherRole.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignTeacherRole.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\AssignTeacherRole.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AssignTeacherRole.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AdminController.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AdminController.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\AdminController.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AdminController.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Index.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Index.uk.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Tables\_GuestUsersTable.cshtml" />
   </ItemGroup>
 
   <Target Name="PrepublishScriptsAndStyles" BeforeTargets="BeforeBuild">

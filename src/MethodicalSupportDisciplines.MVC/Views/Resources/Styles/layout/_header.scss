@@ -26,7 +26,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 9;
   transition: $header-main-transition;
 
   .navbar {
@@ -108,7 +108,7 @@ button.nav-link {
     color: $header-item-hover-color !important;
   }
   
-  &.active .nav-link {
+  .nav-link.active {
     color: $header-item-active-color !important;
   }
   
@@ -127,10 +127,6 @@ button.nav-link {
   &:hover::after {
     bottom: 0;
     opacity: 1;
-  }
-  
-  &.active:hover::after {
-    opacity: 0;
   }
   
   .dropdown-menu {

@@ -10,7 +10,15 @@ public class TeacherUserEntityConfiguration : IEntityTypeConfiguration<TeacherUs
     {
         builder.HasKey(property => property.TeacherUserId);
         
-        builder.Property(property => property.PhoneNumber)
+        builder.Property(property => property.FirstName)
+            .HasMaxLength(50)
+            .IsRequired();
+        
+        builder.Property(property => property.LastName)
+            .HasMaxLength(50)
+            .IsRequired();
+        
+        builder.Property(property => property.Patronymic)
             .HasMaxLength(50)
             .IsRequired();
     }

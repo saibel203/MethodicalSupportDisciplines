@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@inject IViewLocalizer ViewLocalization
+@addTagHelper *, MethodicalSupportDisciplines.MVC
 
 @{
     string returnUrl = string.IsNullOrEmpty(Context.Request.Path)
@@ -26,35 +26,25 @@
                         @if (User.Identity?.IsAuthenticated == true)
                         {
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </div>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a asp-controller="Home" asp-action="Index" class="nav-link" is-active-header-route>@ViewLocalization["Home"]</a>
                                 </li>
-                                @*@if (User.IsInRole("admin"))
+                                @if (User.IsInRole("admin"))
                                 {
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">Users</a>
+                                        <a asp-controller="Admin" asp-action="GuestUsers" class="nav-link" is-active-header-route>@ViewLocalization["GuestUsers"]</a>
                                     </li>
-                                }*@
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a asp-controller="Admin" asp-action="TeacherUsers" class="nav-link" is-active-header-route>@ViewLocalization["TeacherUsers"]</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a asp-controller="Admin" asp-action="StudentUsers" class="nav-link" is-active-header-route>@ViewLocalization["StudentUsers"]</a>
+                                    </li>
+                                }
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#">Agency</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#">Journal</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#">Account</a>
+                                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@ViewLocalization["Account"]</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a asp-controller="Home" asp-action="Index" class="dropdown-item" is-active-header-route>@ViewLocalization["Account"]</a>
                                         <form method="post" asp-controller="Auth" asp-action="SetCulture"
                                               asp-route-returnUrl="@returnUrl" asp-antiforgery="true">
                                             @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))
@@ -68,7 +58,7 @@
                                                 <button type="submit" class="dropdown-item">Switch to English</button>
                                             }
                                         </form>
-                                        <a asp-controller="Auth" asp-action="Logout" class="dropdown-item">Logout</a>
+                                        <a asp-controller="Auth" asp-action="Logout" class="dropdown-item">@ViewLocalization["Logout"]</a>
                                     </div>
                                 </li>
                             </ul>

@@ -1,9 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Infrastructure\MethodicalSupportDisciplines.Infrastructure.csproj" />
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Shared\MethodicalSupportDisciplines.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Repositories\UsersRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\UsersRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Repositories\UsersRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\UsersRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersRepository.uk.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0" />
+  </ItemGroup>
 
 </Project>

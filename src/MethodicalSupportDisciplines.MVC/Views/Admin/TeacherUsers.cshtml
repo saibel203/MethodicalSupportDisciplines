@@ -1,0 +1,62 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Users
+@using MethodicalSupportDisciplines.MVC.Helpers
+@model MethodicalSupportDisciplines.Shared.ViewModels.Users.AdminTeacherUsersViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="table-container">
+    <table class="users-table">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Full name</th>
+            <th>Qualification</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (GetTeacherUserDto user in Model.TeacherUsers)
+        {
+            <tr>
+                <td>@user.TeacherUserId</td>
+                <td>@user.UserName</td>
+                <td>@ViewHelper.GetUserFullName(user.FirstName, user.LastName, user.Patronymic)</td>
+                <td>@user.QualificationName</td>
+                <td>@user.Email</td>
+                <td>@ViewHelper.ConvertPhoneNumber(user.PhoneNumber)</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="RemoveTeacherUser" asp-route-userId="@user.TeacherUserId" 
+                       class="text-danger">
+                        @ViewLocalization["RemoveTeacher"]
+                    </a>
+                    <a class="text-primary" data-bs-toggle="modal">
+                        @ViewLocalization["ChangeDataRequest"]
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="guest-users-table-pagination" colspan="2">
+                @await Html.PartialAsync("Paginations/_GuestUsersTablePagination")
+            </td>
+            <td class="guest-users-table-search" colspan="5">
+                @await Html.PartialAsync("Search/_GuestUsersTableSearch")
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<environment names="Development">
+    <script src="~/js/components/main/filters.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/filters.component.min.js"></script>
+</environment>

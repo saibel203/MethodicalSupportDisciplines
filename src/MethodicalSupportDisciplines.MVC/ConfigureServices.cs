@@ -3,9 +3,15 @@ using AspNetCoreHero.ToastNotification;
 using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
+using MethodicalSupportDisciplines.BLL.Interfaces.Additional;
 using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
+using MethodicalSupportDisciplines.BLL.Services.Additional;
 using MethodicalSupportDisciplines.Core.IOptions;
+using MethodicalSupportDisciplines.Data.Interfaces;
+using MethodicalSupportDisciplines.Data.Interfaces.Additional;
+using MethodicalSupportDisciplines.Data.Repositories;
+using MethodicalSupportDisciplines.Data.Repositories.Additional;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.Infrastructure.Utilities;
@@ -26,6 +32,7 @@ public static class ConfigureServices
         
         services.AddHttpContextAccessor();
 
+        /* ------------------IDENTITY AUTHENTICATION SETTINGS------------------ */
         services.AddIdentity<ApplicationUser, ApplicationRole>(identityOptions =>
             {
                 identityOptions.Password.RequiredLength = 6;
@@ -41,6 +48,7 @@ public static class ConfigureServices
             .AddEntityFrameworkStores<DataDbContext>()
             .AddDefaultTokenProviders();
 
+        /* ------------------COOKIE SETTINGS------------------ */
         services.ConfigureApplicationCookie(cookieOptions =>
             {
                 cookieOptions.LoginPath = new PathString("/auth/login");
@@ -50,8 +58,10 @@ public static class ConfigureServices
                 cookieOptions.AccessDeniedPath = "/Error/AccessDenied";
             });
 
+        /* ------------------AUTOMAPPER------------------ */
         services.AddAutoMapper(typeof(AuthAutomapperProfile));
 
+        /* ------------------OPTIONS SETTINGS------------------ */
         services.Configure<SendGridOptions>(configuration.GetSection("SendGridOptions"));
         services.Configure<WebPathsOptions>(configuration.GetSection("WebPathsOptions"));
         
@@ -60,10 +70,28 @@ public static class ConfigureServices
 
         services.AddScoped<SeedDataDbContext>();
         
+        /* ------------------REPOSITORIES------------------ */
+        services.AddTransient<IUsersRepository, UsersRepository>();
+        services.AddTransient<IFacultyRepository, FacultyRepository>();
+        services.AddTransient<IFormatLearningRepository, FormatLearningRepository>();
+        services.AddTransient<IGroupRepository, GroupRepository>();
+        services.AddTransient<ILearningStatusRepository, LearningStatusRepository>();
+        services.AddTransient<IQualificationRepository, QualificationRepository>();
+        services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+        
+        /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
         services.AddTransient<IAuthService, AuthService>();
-
+        services.AddTransient<IUsersService, UsersService>();
+        services.AddTransient<IFacultyService, FacultyService>();
+        services.AddTransient<IFormatLearningService, FormatLearningService>();
+        services.AddTransient<IGroupService, GroupService>();
+        services.AddTransient<ILearningStatusService, LearningStatusService>();
+        services.AddTransient<IQualificationService, QualificationService>();
+        services.AddTransient<ISpecialityService, SpecialityService>();
+        
+        /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");
 
         services.Configure<RequestLocalizationOptions>(localizationOptions =>

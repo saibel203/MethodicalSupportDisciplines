@@ -22,6 +22,13 @@ public static class MapperMock
         return new MapperConfiguration(mapperConfig =>
         {
             mapperConfig.AddProfile(new AuthAutomapperProfile());
+            mapperConfig.AddProfile(new FacultyMappingProfile());
+            mapperConfig.AddProfile(new FormatLearningMappingProfile());
+            mapperConfig.AddProfile(new GroupMappingProfile());
+            mapperConfig.AddProfile(new LearningStatusMappingProfile());
+            mapperConfig.AddProfile(new QualificationsMappingProfile());
+            mapperConfig.AddProfile(new SpecialtyMappingProfile());
+            mapperConfig.AddProfile(new UsersAutomapperProfile());
         }).CreateMapper();
     }
 }

@@ -5,8 +5,10 @@ using MethodicalSupportDisciplines.Core.Entities.Users;
 using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
+using MethodicalSupportDisciplines.Shared.Constants;
 using MethodicalSupportDisciplines.Shared.Dto;
 using MethodicalSupportDisciplines.Shared.Dto.AuthDto;
+using MethodicalSupportDisciplines.Shared.Dto.Users;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -80,7 +82,7 @@ public class AuthService : IAuthService
                 };
             }
 
-            const string guestUserRoleName = "guest";
+            const string guestUserRoleName = ApplicationRoles.GuestRole;
             ApplicationRole? guestUserRole = await _roleManager.Roles
                 .FirstOrDefaultAsync(roleData => roleData.Name == guestUserRoleName);
 
@@ -109,7 +111,10 @@ public class AuthService : IAuthService
 
             GuestUser guestUser = new GuestUser
             {
-                ApplicationUser = user
+                ApplicationUser = user,
+                FirstName = userRegisterDto.FirstName,
+                LastName = userRegisterDto.LastName,
+                Patronymic = userRegisterDto.Patronymic
             };
             
             await _dbContext.GuestUsers.AddAsync(guestUser);
@@ -373,6 +378,148 @@ public class AuthService : IAuthService
             return new UserAuthResponse
             {
                 Message = _stringLocalization["ResetPasswordUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UserAuthResponse> AssignTeacherRoleAsync(CreateTeacherDto? createTeacherDto)
+    {
+        try
+        {
+            if (createTeacherDto is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["MethodGetIncorrectData"],
+                    IsSuccess = false
+                };
+            }
+
+            ApplicationUser? user = await _userManager.FindByIdAsync(createTeacherDto.ApplicationUserId);
+
+            if (user is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["GetUserError"],
+                    IsSuccess = false
+                };
+            }
+            
+            const string teacherUserRoleName = ApplicationRoles.TeacherRole;
+            ApplicationRole? teacherUserRole = await _roleManager.Roles
+                .FirstOrDefaultAsync(roleData => roleData.Name == teacherUserRoleName);
+
+            if (teacherUserRole?.Name is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["ErrorGetRole"],
+                    IsSuccess = false
+                };
+            }
+            
+            await _userManager.AddToRoleAsync(user, teacherUserRole.Name);
+
+            TeacherUser teacherUser = new TeacherUser
+            {
+                ApplicationUser = user,
+                QualificationId = createTeacherDto.QualificationId,
+                FirstName = createTeacherDto.FirstName,
+                LastName = createTeacherDto.LastName,
+                Patronymic = createTeacherDto.Patronymic
+            };
+
+            await _dbContext.TeacherUsers.AddAsync(teacherUser);
+            await _dbContext.SaveChangesAsync();
+
+            return new UserAuthResponse
+            {
+                Message = _stringLocalization["AssignTeacherSuccess"],
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to assign a guest the role of teacher.");
+
+            return new UserAuthResponse
+            {
+                Message = _stringLocalization["AssignTeacherUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UserAuthResponse> AssignStudentRoleAsync(CreateStudentDto? createStudentDto)
+    {
+        try
+        {
+            if (createStudentDto is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["MethodGetIncorrectData"],
+                    IsSuccess = false
+                };
+            }
+
+            ApplicationUser? user = await _userManager.FindByIdAsync(createStudentDto.ApplicationUserId);
+
+            if (user is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["GetUserError"],
+                    IsSuccess = false
+                };
+            }
+            
+            const string studentUserRoleName = ApplicationRoles.StudentRole;
+            ApplicationRole? studentUserRole = await _roleManager.Roles
+                .FirstOrDefaultAsync(roleData => roleData.Name == studentUserRoleName);
+
+            if (studentUserRole?.Name is null)
+            {
+                return new UserAuthResponse
+                {
+                    Message = _stringLocalization["ErrorGetRole"],
+                    IsSuccess = false
+                };
+            }
+            
+            await _userManager.AddToRoleAsync(user, studentUserRole.Name);
+
+            StudentUser studentUser = new StudentUser
+            {
+                ApplicationUser = user,
+                FirstName = createStudentDto.FirstName,
+                LastName = createStudentDto.LastName,
+                Patronymic = createStudentDto.Patronymic,
+                FacultyId = createStudentDto.FacultyId,
+                GroupId = createStudentDto.GroupId,
+                LearningStatusId = createStudentDto.LearningStatusId,
+                FormatLearningId = createStudentDto.FormatLearningId,
+                SpecialtyId = createStudentDto.SpecialtyId
+            };
+
+            await _dbContext.StudentUsers.AddAsync(studentUser);
+            await _dbContext.SaveChangesAsync();
+
+            return new UserAuthResponse
+            {
+                Message = _stringLocalization["AssignStudentSuccess"],
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to assign a guest the role of student.");
+
+            return new UserAuthResponse
+            {
+                Message = _stringLocalization["AssignStudentUnknownError"],
                 IsSuccess = false
             };
         }

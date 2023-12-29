@@ -2,12 +2,12 @@
 
 .validation-summary-errors {
   ul {
-    list-style: none;
+    list-style-type: circle !important;
     margin-bottom: 30px;
     border: 1px solid #dedede;
     background-color: $body-background-color;
     color: $text-validation-color;
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
   }
 }
 

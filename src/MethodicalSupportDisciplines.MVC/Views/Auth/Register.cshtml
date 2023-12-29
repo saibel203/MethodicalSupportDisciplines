@@ -28,6 +28,20 @@
             <span><i class="fa fa-eye login-password-eye" aria-hidden="true"></i></span>
         </div>
         <div class="form-group">
+            <input asp-for="PhoneNumber" class="form-control item" placeholder="Phone Number">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <input asp-for="FirstName" class="form-control item" placeholder="@ViewLocalization["FirstName"]">
+            </div>
+            <div class="form-group col-md-4">
+                <input asp-for="LastName" class="form-control item" placeholder="@ViewLocalization["LastName"]">
+            </div>
+            <div class="form-group col-md-4">
+                <input asp-for="Patronymic" class="form-control item" placeholder="@ViewLocalization["Patronymic"]">
+            </div>
+        </div>
+        <div class="form-group">
             <button type="submit" class="btn btn-block create-account">@ViewLocalization["Title"]</button>
         </div>
         <div class="form-group">

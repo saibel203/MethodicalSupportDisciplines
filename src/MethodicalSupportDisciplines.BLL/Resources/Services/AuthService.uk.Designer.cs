@@ -60,6 +60,42 @@ namespace MethodicalSupportDisciplines.BLL.Resources.Services {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Роль студента успішно надана користувачу.
+        /// </summary>
+        internal static string AssignStudentSuccess {
+            get {
+                return ResourceManager.GetString("AssignStudentSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби назначити гостю роль студента, виникла невідома помилка.
+        /// </summary>
+        internal static string AssignStudentUnknownError {
+            get {
+                return ResourceManager.GetString("AssignStudentUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль вчителя успішно надана користувачу.
+        /// </summary>
+        internal static string AssignTeacherSuccess {
+            get {
+                return ResourceManager.GetString("AssignTeacherSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби назначити гостю роль вчителя, виникла невідома помилка.
+        /// </summary>
+        internal static string AssignTeacherUnknownError {
+            get {
+                return ResourceManager.GetString("AssignTeacherUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Перед входом перейдіть до своєї електронної пошти та підтвердьте свою особу.
         /// </summary>
         internal static string ConfirmEmailError {
@@ -110,6 +146,15 @@ namespace MethodicalSupportDisciplines.BLL.Resources.Services {
         internal static string ErrorTryCreateAccount {
             get {
                 return ResourceManager.GetString("ErrorTryCreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Помилка отримання користувача.
+        /// </summary>
+        internal static string GetUserError {
+            get {
+                return ResourceManager.GetString("GetUserError", resourceCulture);
             }
         }
         

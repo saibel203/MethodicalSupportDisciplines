@@ -10,22 +10,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 
-public class DataDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+public class DataDbContext(DbContextOptions<DataDbContext> options)
+    : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
 {
-    public DataDbContext(DbContextOptions<DataDbContext> options)
-        : base(options)
-    {
-    }
-
+    // Users DbSets
     public DbSet<GuestUser> GuestUsers => Set<GuestUser>();
     public DbSet<AdminUser> AdminUsers => Set<AdminUser>();
     public DbSet<StudentUser> StudentUsers => Set<StudentUser>();
     public DbSet<TeacherUser> TeacherUsers => Set<TeacherUser>();
+
+    // Learning DbSets
     public DbSet<Group> Groups => Set<Group>();
     public DbSet<GroupTeacher> GroupTeachers => Set<GroupTeacher>();
     public DbSet<Discipline> Disciplines => Set<Discipline>();
     public DbSet<DisciplineGroup> DisciplineGroups => Set<DisciplineGroup>();
+    public DbSet<DisciplineMaterial> DisciplineMaterials => Set<DisciplineMaterial>();
+    public DbSet<Material> Materials => Set<Material>();
+    public DbSet<MaterialDisciplineMaterial> MaterialDisciplineMaterials => Set<MaterialDisciplineMaterial>();
     public DbSet<Mark> Marks => Set<Mark>();
+
+    // Additional DbSets
     public DbSet<FormatLearning> FormatLearnings => Set<FormatLearning>();
     public DbSet<LearningStatus> LearningStatuses => Set<LearningStatus>();
     public DbSet<Faculty> Faculties => Set<Faculty>();
@@ -42,13 +46,16 @@ public class DataDbContext : IdentityDbContext<ApplicationUser, ApplicationRole,
         builder.ApplyConfigurationsFromAssembly(typeof(StudentUserEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(TeacherUserEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(AdminUserEntityConfiguration).Assembly);
-        
+
         // Learning configurations
         builder.ApplyConfigurationsFromAssembly(typeof(GroupEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(GroupTeacherEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(DisciplineEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(DisciplineGroupEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(MarkEntityConfiguration).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(DisciplineMaterialEntityConfiguration).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(MaterialEntityConfiguration).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(MaterialDisciplineMaterial).Assembly);
 
         // Additional Learning Data configurations
         builder.ApplyConfigurationsFromAssembly(typeof(FormatLearningEntityConfiguration).Assembly);

@@ -1,0 +1,86 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Users
+@using MethodicalSupportDisciplines.MVC.Helpers
+@model MethodicalSupportDisciplines.Shared.ViewModels.Users.AdminStudentUsersViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="filters-sidebar">
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <h3>Filters</h3>
+            <button type="button" class="close sidebar-close-button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="navbar-body">
+            
+        </div>
+    </div>
+</div>
+
+<div class="table-container">
+    <table class="users-table">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Full name</th>
+            <th>Format learning</th>
+            <th>Learning status</th>
+            <th>Faculty</th>
+            <th>Specialty</th>
+            <th>Group</th>
+            <th>Course</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (GetStudentUserDto user in Model.StudentUsers)
+        {
+            <tr>
+                <td>@user.StudentUserId</td>
+                <td>@user.UserName</td>
+                <td>@ViewHelper.GetUserFullName(user.FirstName, user.LastName, user.Patronymic)</td>
+                <td>@user.FormatLearningName</td>
+                <td>@user.LearningStatusName</td>
+                <td>@user.FacultyName (@user.FacultyShortName)</td>
+                <td>@user.SpecialtyName (@user.SpecialityNumber)</td>
+                <td>@user.GroupName</td>
+                <td>@user.GroupCourse</td>
+                <td>@user.Email</td>
+                <td>@ViewHelper.ConvertPhoneNumber(user.PhoneNumber)</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="RemoveStudentUser" asp-route-userId="@user.StudentUserId"
+                       class="text-danger">
+                        @ViewLocalization["RemoveStudent"]
+                    </a>
+                    <a class="text-primary">
+                        @ViewLocalization["DataChangeRequest"]
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="guest-users-table-pagination" colspan="2">
+                @await Html.PartialAsync("Paginations/_GuestUsersTablePagination")
+            </td>
+            <td class="guest-users-table-search" colspan="10">
+                @await Html.PartialAsync("Search/_GuestUsersTableSearch")
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<environment names="Development">
+    <script src="~/js/components/main/filters.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/main/filters.component.min.js"></script>
+</environment>

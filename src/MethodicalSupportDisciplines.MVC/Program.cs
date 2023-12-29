@@ -4,6 +4,29 @@ using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.MVC;
 using Microsoft.Extensions.Options;
 
+/*                                                  TODOOOOOOOOOOOOOOO
+ *  Base controller localization
+ *  
+ *
+ *  
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * 
+ */
+
+
+
+
+
+
+
+
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 ConfigurationManager applicationConfiguration = builder.Configuration;
 

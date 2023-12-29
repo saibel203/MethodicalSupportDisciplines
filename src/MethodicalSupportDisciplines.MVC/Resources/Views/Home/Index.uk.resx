@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Title" xml:space="preserve">
+        <value>Головна сторінка</value>
+    </data>
+    <data name="ContentTitle" xml:space="preserve">
+        <value>Вітаємо Вас у системі «Методичне забезпечення дисциплін»</value>
+    </data>
+    <data name="MainSubtitle" xml:space="preserve">
+        <value>Шановні відвідувачі системи!</value>
+    </data>
+    <data name="EndSubtitle" xml:space="preserve">
+        <value>З повагою, Команда Розробників даного сайту</value>
+    </data>
+    <data name="GenericInformation" xml:space="preserve">
+        <value>Даний сайт призначения для автоматизація веденя вчителями методичних забезпечень (видання підручників, файлів, сайтів), контролювання їх проходження, взаємодії між вчителями та студентами та ведення результатів поточного контролю.</value>
+    </data>
+    <data name="HelpInformation" xml:space="preserve">
+        <value>Якщо виникли питання щодо навчання або роботи системи, пишіть на електронну пошту розробників: saibl.og203@gmail.com</value>
+    </data>
+    <data name="ExceptionRoleString" xml:space="preserve">
+        <value>Помилка ідентифікації ролі. Можливо ви увійшли у тестовий акаунт, або система дала збій.</value>
+    </data>
+    <data name="AdminMainString" xml:space="preserve">
+        <value>Дана роль призначена для загального управління всіми процесами системи. Ви маєте доступ до управління користувачами, їх видалення, можете надсилати їм запити на зміну їх даних, якщо виявили у таблиці несправності. Також, маєте доступ до управління групами курсів, їх формалізації та доступом до всіх навчальних матеріалів, які викладачі надають студентам. </value>
+    </data>
+    <data name="GuestMainString" xml:space="preserve">
+        <value>Ви маєте роль гостя, для подальшого використання системи, вам потрібно чекати, поки адмін надасть вам інакшу роль - студента або вчителя.</value>
+    </data>
+    <data name="StudentMainString" xml:space="preserve">
+        <value>Дана роль призначена для </value>
+    </data>
+    <data name="TeacherMainString" xml:space="preserve">
+        <value>Дана роль призначена для </value>
+    </data>
+</root>

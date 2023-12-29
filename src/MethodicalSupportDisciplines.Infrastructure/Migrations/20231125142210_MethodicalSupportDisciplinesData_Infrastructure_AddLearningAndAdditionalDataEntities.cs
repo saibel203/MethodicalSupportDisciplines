@@ -187,19 +187,19 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         column: x => x.DisciplineId,
                         principalTable: "Disciplines",
                         principalColumn: "DisciplineId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Marks_StudentUsers_StudentId",
                         column: x => x.StudentId,
                         principalTable: "StudentUsers",
                         principalColumn: "StudentUserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Marks_TeacherUsers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "TeacherUsers",
                         principalColumn: "TeacherUserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

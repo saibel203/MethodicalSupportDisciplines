@@ -1,5 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home";
+﻿@using MethodicalSupportDisciplines.Shared.Constants
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+    LocalizedHtmlString roleInformation = 
+        User.IsInRole(ApplicationRoles.AdminRole) ? ViewLocalization["AdminMainString"] : 
+            User.IsInRole(ApplicationRoles.GuestRole) ? ViewLocalization["GuestMainString"] : 
+            User.IsInRole(ApplicationRoles.StudentRole) ? ViewLocalization["StudentMainString"] :
+            User.IsInRole(ApplicationRoles.TeacherRole) ? ViewLocalization["TeacherMainString"] : 
+            ViewLocalization["ExceptionRoleString"];
 }
 
-<h1></h1>
+<div class="content-container container">
+    <h1>@ViewLocalization["ContentTitle"]</h1>
+    <h5>@ViewLocalization["MainSubtitle"]</h5>
+    <p>@ViewLocalization["GenericInformation"]</p>
+    <p>@ViewLocalization["HelpInformation"]</p>
+    <p>@roleInformation</p>
+    <h5>@ViewLocalization["EndSubtitle"]</h5>
+</div>

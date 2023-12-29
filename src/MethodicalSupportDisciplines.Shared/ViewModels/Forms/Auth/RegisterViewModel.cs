@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MethodicalSupportDisciplines.Shared.ValidationAttributes;
 
 namespace MethodicalSupportDisciplines.Shared.ViewModels.Forms.Auth;
 
@@ -9,7 +10,7 @@ public class RegisterViewModel
     public string Username { get; set; } = string.Empty;
     
     [Required(ErrorMessage = "EmailRequired")]
-    [EmailAddress]
+    [EmailAddress(ErrorMessage = "EmailValidationError")]
     public string Email { get; set; } = string.Empty;
     
     [Required(ErrorMessage = "PasswordRequired")]
@@ -23,4 +24,22 @@ public class RegisterViewModel
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "PasswordsNotMatch")]
     public string ConfirmPassword { get; set; } = string.Empty;
+    
+    [Required(ErrorMessage = "PhoneNumberRequired")]
+    [PhoneNumberValidation(ErrorMessage = "PhoneNumber не має починатися з символу '+' або починатися з " +
+                                          "послідовності '+380' | '380'")]
+    [DataType(DataType.PhoneNumber)]
+    public string PhoneNumber { get; set; } = string.Empty;
+    
+    [Required(ErrorMessage = "FirstNameRequired")]
+    [DataType(DataType.Text)]
+    public string FirstName { get; set; } = string.Empty;
+    
+    [Required(ErrorMessage = "LastNameRequired")]
+    [DataType(DataType.Text)]
+    public string LastName { get; set; } = string.Empty;
+    
+    [Required(ErrorMessage = "PatronymicRequired")]
+    [DataType(DataType.Text)]
+    public string Patronymic { get; set; } = string.Empty;
 }

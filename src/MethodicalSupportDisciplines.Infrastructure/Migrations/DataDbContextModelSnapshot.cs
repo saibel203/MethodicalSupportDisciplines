@@ -17,7 +17,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.14")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -101,23 +101,21 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
                 {
-                    b.Property<int>("SpecialtyId")
+                    b.Property<int>("SpecialityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialtyId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialityId"));
 
-                    b.Property<string>("SpecialtyName")
+                    b.Property<string>("SpecialityName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("SpecialtyShortName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<int>("SpecialityNumber")
+                        .HasColumnType("int");
 
-                    b.HasKey("SpecialtyId");
+                    b.HasKey("SpecialityId");
 
                     b.ToTable("Specialties");
                 });
@@ -160,6 +158,37 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.ToTable("DisciplineGroups");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", b =>
+                {
+                    b.Property<int>("DisciplineMaterialId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineMaterialId"));
+
+                    b.Property<int>("DisciplineId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DisciplineMaterialDescription")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisciplineMaterialName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("DisciplineMaterialType")
+                        .HasColumnType("int");
+
+                    b.HasKey("DisciplineMaterialId");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.ToTable("DisciplineMaterials");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
                 {
                     b.Property<int>("GroupId")
@@ -167,6 +196,9 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
+
+                    b.Property<int>("GroupCourse")
+                        .HasColumnType("int");
 
                     b.Property<string>("GroupName")
                         .IsRequired()
@@ -224,6 +256,43 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.ToTable("Marks");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Material", b =>
+                {
+                    b.Property<int>("MaterialId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialId"));
+
+                    b.Property<string>("MaterialBook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaterialPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MaterialUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MaterialId");
+
+                    b.ToTable("Materials");
+                });
+
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.MaterialDisciplineMaterial", b =>
+                {
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DisciplineMaterialId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MaterialId", "DisciplineMaterialId");
+
+                    b.HasIndex("DisciplineMaterialId");
+
+                    b.ToTable("MaterialDisciplineMaterials");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.AdminUser", b =>
                 {
                     b.Property<int>("AdminUserId")
@@ -268,6 +337,21 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Patronymic")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("GuestUserId");
 
                     b.HasIndex("ApplicationUserId")
@@ -293,7 +377,8 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("FormatLearningId")
                         .HasColumnType("int");
@@ -303,16 +388,13 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("LearningStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Patronymic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -352,17 +434,15 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Patronymic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -611,6 +691,17 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", b =>
+                {
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Discipline", "Discipline")
+                        .WithMany("DisciplineMaterials")
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discipline");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.GroupTeacher", b =>
                 {
                     b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Group", "Group")
@@ -655,6 +746,25 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Navigation("Student");
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.MaterialDisciplineMaterial", b =>
+                {
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", "DisciplineMaterial")
+                        .WithMany("Materials")
+                        .HasForeignKey("DisciplineMaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.Material", "Material")
+                        .WithMany("Materials")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DisciplineMaterial");
+
+                    b.Navigation("Material");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.AdminUser", b =>
@@ -829,7 +939,14 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                 {
                     b.Navigation("DisciplineGroups");
 
+                    b.Navigation("DisciplineMaterials");
+
                     b.Navigation("Marks");
+                });
+
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", b =>
+                {
+                    b.Navigation("Materials");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Group", b =>
@@ -839,6 +956,11 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Navigation("GroupTeachers");
 
                     b.Navigation("StudentUsers");
+                });
+
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Material", b =>
+                {
+                    b.Navigation("Materials");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.StudentUser", b =>

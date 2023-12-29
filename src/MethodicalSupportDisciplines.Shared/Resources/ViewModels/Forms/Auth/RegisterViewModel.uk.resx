@@ -42,4 +42,19 @@
     <data name="PasswordMinLength" xml:space="preserve">
         <value>Мінімальна довжина паролю - 6 символів</value>
     </data>
+    <data name="FirstNameRequired" xml:space="preserve">
+        <value>FirstName поле є обов'язковим</value>
+    </data>
+    <data name="LastNameRequired" xml:space="preserve">
+        <value>LastName поле є обов'язковим</value>
+    </data>
+    <data name="PatronymicRequired" xml:space="preserve">
+        <value>Patronymic поле є обов'язковим</value>
+    </data>
+    <data name="PhoneNumberRequired" xml:space="preserve">
+        <value>PhoneNumber поле є обов'язковим</value>
+    </data>
+    <data name="EmailValidationError" xml:space="preserve">
+        <value>Email поле некоректно заповнене</value>
+    </data>
 </root>

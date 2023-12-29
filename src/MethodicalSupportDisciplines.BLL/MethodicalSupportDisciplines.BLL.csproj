@@ -1,20 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="SendGrid" Version="9.28.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MethodicalSupportDisciplines.Core\MethodicalSupportDisciplines.Core.csproj" />
+    <ProjectReference Include="..\MethodicalSupportDisciplines.Data\MethodicalSupportDisciplines.Data.csproj" />
     <ProjectReference Include="..\MethodicalSupportDisciplines.Infrastructure\MethodicalSupportDisciplines.Infrastructure.csproj" />
     <ProjectReference Include="..\MethodicalSupportDisciplines.Shared\MethodicalSupportDisciplines.Shared.csproj" />
   </ItemGroup>
@@ -39,6 +41,14 @@
     <EmbeddedResource Update="Resources\Services\AuthService.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AuthService.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\UsersService.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersService.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\UsersService.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersService.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -67,6 +77,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AuthService.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\UsersService.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersService.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\UsersService.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersService.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
