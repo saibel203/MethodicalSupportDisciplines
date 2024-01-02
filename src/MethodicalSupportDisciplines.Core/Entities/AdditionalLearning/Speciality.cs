@@ -2,7 +2,7 @@
 
 namespace MethodicalSupportDisciplines.Core.Entities.AdditionalLearning;
 
-public class Specialty
+public class Speciality
 {
     public int SpecialityId { get; set; }
     public string SpecialityName { get; set; } = string.Empty;

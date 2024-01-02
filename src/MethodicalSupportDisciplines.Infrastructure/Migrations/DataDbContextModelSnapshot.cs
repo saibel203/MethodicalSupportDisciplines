@@ -128,6 +128,16 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineId"));
 
+                    b.Property<DateTime>("DisciplineCreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 12, 31, 12, 41, 43, 343, DateTimeKind.Local).AddTicks(7439));
+
+                    b.Property<string>("DisciplineDescription")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DisciplineName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -165,6 +175,11 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineMaterialId"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 12, 31, 12, 41, 43, 343, DateTimeKind.Local).AddTicks(9443));
 
                     b.Property<int>("DisciplineId")
                         .HasColumnType("int");

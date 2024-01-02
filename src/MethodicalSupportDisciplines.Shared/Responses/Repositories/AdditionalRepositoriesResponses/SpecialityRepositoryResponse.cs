@@ -4,5 +4,5 @@ namespace MethodicalSupportDisciplines.Shared.Responses.Repositories.AdditionalR
 
 public class SpecialityRepositoryResponse : BaseResponse
 {
-    public IReadOnlyList<Specialty>? Specialties { get; set; } = new List<Specialty>();
+    public IReadOnlyList<Speciality>? Specialties { get; set; } = new List<Speciality>();
 }

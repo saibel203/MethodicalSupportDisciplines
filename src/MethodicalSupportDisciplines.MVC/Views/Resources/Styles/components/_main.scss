@@ -66,3 +66,19 @@ body {
     }
   }
 }
+
+.cards-container {
+  .card {
+    margin-bottom: 20px;
+    
+    .card-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+.search-container {
+  margin: 100px auto 20px auto;
+}

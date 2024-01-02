@@ -4,14 +4,18 @@ using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Interfaces.Additional;
+using MethodicalSupportDisciplines.BLL.Interfaces.Learning;
 using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.BLL.Services.Additional;
+using MethodicalSupportDisciplines.BLL.Services.Learning;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Data.Interfaces;
 using MethodicalSupportDisciplines.Data.Interfaces.Additional;
+using MethodicalSupportDisciplines.Data.Interfaces.Learning;
 using MethodicalSupportDisciplines.Data.Repositories;
 using MethodicalSupportDisciplines.Data.Repositories.Additional;
+using MethodicalSupportDisciplines.Data.Repositories.Learning;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.Infrastructure.Utilities;
@@ -78,6 +82,7 @@ public static class ConfigureServices
         services.AddTransient<ILearningStatusRepository, LearningStatusRepository>();
         services.AddTransient<IQualificationRepository, QualificationRepository>();
         services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+        services.AddTransient<IDisciplineRepository, DisciplineRepository>();
         
         /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
@@ -90,6 +95,7 @@ public static class ConfigureServices
         services.AddTransient<ILearningStatusService, LearningStatusService>();
         services.AddTransient<IQualificationService, QualificationService>();
         services.AddTransient<ISpecialityService, SpecialityService>();
+        services.AddTransient<IDisciplineService, DisciplineService>();
         
         /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");
@@ -100,10 +106,10 @@ public static class ConfigureServices
             const string englishCultureName = "en";
 
             CultureInfo[] supportedCultures =
-            {
-                new(defaultCulture),
-                new(englishCultureName)
-            };
+            [
+                new CultureInfo(defaultCulture),
+                new CultureInfo(englishCultureName)
+            ];
 
             localizationOptions.DefaultRequestCulture = new RequestCulture(defaultCulture);
             localizationOptions.SetDefaultCulture(defaultCulture);

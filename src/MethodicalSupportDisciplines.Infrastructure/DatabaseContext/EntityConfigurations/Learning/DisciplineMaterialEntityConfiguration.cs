@@ -20,6 +20,10 @@ public class DisciplineMaterialEntityConfiguration : IEntityTypeConfiguration<Di
         
         builder.Property(property => property.DisciplineMaterialType)
             .IsRequired();
+        
+        builder.Property(property => property.CreatedDate)
+            .HasDefaultValue(DateTime.Now)
+            .IsRequired();
 
         builder.HasOne(property => property.Discipline)
             .WithMany(property => property.DisciplineMaterials)

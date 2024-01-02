@@ -6,6 +6,7 @@ public class DisciplineMaterial
     public string DisciplineMaterialName { get; set; } = string.Empty;
     public string DisciplineMaterialDescription { get; set; } = string.Empty;
     public int DisciplineMaterialType { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     public int DisciplineId { get; set; }
     public Discipline Discipline { get; set; } = null!;

@@ -29,6 +29,7 @@ public static class MapperMock
             mapperConfig.AddProfile(new QualificationsMappingProfile());
             mapperConfig.AddProfile(new SpecialtyMappingProfile());
             mapperConfig.AddProfile(new UsersAutomapperProfile());
+            mapperConfig.AddProfile(new DisciplineMappingProfile());
         }).CreateMapper();
     }
 }

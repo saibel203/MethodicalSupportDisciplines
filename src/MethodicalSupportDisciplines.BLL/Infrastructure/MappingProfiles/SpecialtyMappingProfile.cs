@@ -8,6 +8,6 @@ public class SpecialtyMappingProfile : Profile
 {
     public SpecialtyMappingProfile()
     {
-        CreateMap<Specialty, SpecialityDto>();
+        CreateMap<Speciality, SpecialityDto>();
     }
 }

@@ -15,19 +15,25 @@ public interface IRepositoryBase
 
     Task<T?> GetAsNoTracking<T>(Expression<Func<T, bool>> predicate)
         where T : class;
-    
+
     Task<IEnumerable<T>> GetAll<T>()
         where T : class;
-    
+
     Task<IEnumerable<T>> GetAll<T>(Expression<Func<T, bool>> predicate)
         where T : class;
 
     Task<IReadOnlyList<T>> GetAllReadOnlyList<T>()
-        where T: class;
-    
+        where T : class;
+
     Task<IEnumerable<T>> GetAllAsTracking<T>()
         where T : class;
-    
+
     Task<IEnumerable<T>> GetAllAsTracking<T>(Expression<Func<T, bool>> predicate)
+        where T : class;
+
+    Task<int> GetCount<T>()
+        where T : class;
+
+    Task<int> GetCount<T>(Expression<Func<T, bool>> predicate)
         where T : class;
 }

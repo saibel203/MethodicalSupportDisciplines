@@ -19,8 +19,8 @@ public class SpecialityRepository : RepositoryBase, ISpecialityRepository
     {
         try
         {
-            IReadOnlyList<Specialty> specialties = 
-                await GetAllReadOnlyListSorting<Specialty, int>(specialty => specialty.SpecialityNumber);
+            IReadOnlyList<Speciality> specialties = 
+                await GetAllReadOnlyListSorting<Speciality, int>(specialty => specialty.SpecialityNumber);
 
             return new SpecialityRepositoryResponse
             {

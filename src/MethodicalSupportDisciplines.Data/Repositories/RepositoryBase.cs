@@ -89,4 +89,16 @@ public class RepositoryBase : IRepositoryBase
             .OrderBy(predicate)
             .ToListAsync();
     }
+
+    public Task<int> GetCount<T>()
+        where T : class
+    {
+        return Context.Set<T>().CountAsync();
+    }
+    
+    public Task<int> GetCount<T>(Expression<Func<T, bool>> predicate)
+        where T : class
+    {
+        return Context.Set<T>().Where(predicate).CountAsync();
+    }
 }

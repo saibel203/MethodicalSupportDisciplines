@@ -17,7 +17,7 @@ public class StudentUser : UserBase
     public Faculty Faculty { get; set; } = null!;
     
     public int SpecialtyId { get; set; }
-    public Specialty Specialty { get; set; } = null!;
+    public Speciality Speciality { get; set; } = null!;
 
     public int GroupId { get; set; }
     public Group Group { get; set; } = null!;

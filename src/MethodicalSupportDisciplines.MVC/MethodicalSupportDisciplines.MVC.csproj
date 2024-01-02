@@ -8,11 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Resources\Styles\pages\" />
+    <Folder Include="Views\Resources\Scripts\models\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\icons\favicon\" />
     <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\libs\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -177,6 +176,30 @@
     <EmbeddedResource Update="Resources\Views\Home\Index.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\Disciplines.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\Disciplines.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_CardsSearch.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_CardsSearch.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Search\_CardsSearch.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>_CardsSearch.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Error\PageNotFound.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PageNotFound.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Error\PageNotFound.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PageNotFound.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -360,6 +383,36 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Index.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\Disciplines.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\Disciplines.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_CardsSearch.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_CardsSearch.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Shared\Search\_CardsSearch.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_CardsSearch.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Error\PageNotFound.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PageNotFound.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Error\PageNotFound.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PageNotFound.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

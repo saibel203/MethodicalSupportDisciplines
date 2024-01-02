@@ -43,9 +43,9 @@ public class UsersAutomapperProfile : Profile
             .ForMember(dest => dest.FacultyShortName, opt =>
                 opt.MapFrom(src => src.Faculty.FacultyShortName))
             .ForMember(dest => dest.SpecialtyName, opt =>
-                opt.MapFrom(src => src.Specialty.SpecialityName))
+                opt.MapFrom(src => src.Speciality.SpecialityName))
             .ForMember(dest => dest.SpecialityNumber, opt =>
-                opt.MapFrom(src => src.Specialty.SpecialityNumber))
+                opt.MapFrom(src => src.Speciality.SpecialityNumber))
             .ForMember(dest => dest.GroupName, opt =>
                 opt.MapFrom(src => src.Group.GroupName))
             .ForMember(dest => dest.GroupCourse, opt =>

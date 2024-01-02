@@ -33,7 +33,7 @@ public class DataDbContext(DbContextOptions<DataDbContext> options)
     public DbSet<FormatLearning> FormatLearnings => Set<FormatLearning>();
     public DbSet<LearningStatus> LearningStatuses => Set<LearningStatus>();
     public DbSet<Faculty> Faculties => Set<Faculty>();
-    public DbSet<Specialty> Specialties => Set<Specialty>();
+    public DbSet<Speciality> Specialties => Set<Speciality>();
     public DbSet<Qualification> Qualifications => Set<Qualification>();
 
     protected override void OnModelCreating(ModelBuilder builder)

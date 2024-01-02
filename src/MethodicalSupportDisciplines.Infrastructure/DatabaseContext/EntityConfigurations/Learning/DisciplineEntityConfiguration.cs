@@ -13,6 +13,14 @@ public class DisciplineEntityConfiguration : IEntityTypeConfiguration<Discipline
         builder.Property(property => property.DisciplineName)
             .HasMaxLength(100)
             .IsRequired();
+        
+        builder.Property(property => property.DisciplineDescription)
+            .HasMaxLength(5000)
+            .IsRequired();
+
+        builder.Property(property => property.DisciplineCreatedDate)
+            .HasDefaultValue(DateTime.Now)
+            .IsRequired();
 
         builder.HasOne(property => property.Teacher)
             .WithMany(property => property.Disciplines)

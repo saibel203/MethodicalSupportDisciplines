@@ -46,10 +46,14 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                 filteredGuestUsers = filteredGuestUsers
                     .Where(guestUserData =>
                         guestUserData.ApplicationUser != null &&
-                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!) ||
-                         guestUserData.FirstName.Contains(queryParameters.SearchString) ||
-                         guestUserData.LastName.Contains(queryParameters.SearchString) ||
-                         guestUserData.Patronymic.Contains(queryParameters.SearchString)))
+                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.FirstName.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.LastName.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.Patronymic.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase)))
                     .ToList();
             }
 
@@ -245,6 +249,31 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             return new UsersServiceResponse
             {
                 Message = "An unknown error occurred while trying to get teacher users",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UsersServiceResponse> GetTeacherUserByApplicationUserIdAsync(string userId)
+    {
+        try
+        {
+            var test = await _repository.GetTeacherUserByApplicationUserIdAsync(userId);
+
+            return new UsersServiceResponse
+            {
+                Message = "",
+                IsSuccess = true,
+                TeacherUserId = test
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "");
+
+            return new UsersServiceResponse
+            {
+                Message = "",
                 IsSuccess = false
             };
         }
