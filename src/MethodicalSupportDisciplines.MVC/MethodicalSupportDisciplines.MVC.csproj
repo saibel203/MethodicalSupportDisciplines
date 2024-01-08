@@ -201,6 +201,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PageNotFound.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\Disciplines.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Admin\Disciplines.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\TeacherController.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherController.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers\TeacherController.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TeacherController.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\DisciplineData.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineData.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\DisciplineData.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineData.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -413,6 +437,36 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>PageNotFound.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\Disciplines.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Admin\Disciplines.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\TeacherController.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherController.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Controllers\TeacherController.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TeacherController.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\DisciplineData.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineData.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\DisciplineData.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineData.en.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

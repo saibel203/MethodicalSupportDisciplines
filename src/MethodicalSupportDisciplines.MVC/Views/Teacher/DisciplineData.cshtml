@@ -1,14 +1,106 @@
-﻿@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.DisciplinesViewModel
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@using MethodicalSupportDisciplines.Shared.Dto.Additional
+@using MethodicalSupportDisciplines.Shared.Dto.Learning
+@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.DisciplinesViewModel
 
-<div>
-    <h1>@Model.Discipline.DisciplineName</h1>
-    <h5>@Model.Discipline.DisciplineId</h5>
-    <p>TEACHER ID @Model.Discipline.Teacher.TeacherUserId</p>
-    <p>TEACHER NAME @Model.Discipline.Teacher.FirstName</p>
-    @foreach (var x in Model.Discipline.DisciplineMaterials)
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container discipline-data-container">
+    <h2 class="text-center">@Model.Discipline.DisciplineName</h2>
+    <p>@Model.Discipline.DisciplineDescription</p>
+    <div class="d-flex justify-content-between">
+        <p>
+            @ViewLocalization["Teacher"]: @ViewHelper.GetUserFullName(Model.Discipline.Teacher.FirstName, Model.Discipline.Teacher.LastName, Model.Discipline.Teacher.Patronymic)
+        </p>
+        <p>
+            @ViewLocalization["CreatedDate"]: @Model.Discipline.DisciplineCreatedDate
+        </p>
+    </div>
+</div>
+
+<div class="container cards-container">
+    @foreach (DisciplineMaterialActionDto disciplineMaterial in Model.Discipline.DisciplineMaterials)
     {
-        <h3>@x.DisciplineMaterialId</h3>
-        <h3>@x.DisciplineMaterialName</h3>
-        <h3>@x.DisciplineMaterialDescription</h3>
+        <div class="card">
+            <div class="card-header">
+                <div>@ViewHelper.GetDisciplineMaterialType(disciplineMaterial.DisciplineMaterialType)</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@disciplineMaterial.DisciplineMaterialName</h5>
+                <p class="card-text">
+                    @disciplineMaterial.DisciplineMaterialDescription
+                </p>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#material-modal-@disciplineMaterial.DisciplineMaterialId">
+                    Add material
+                </button>
+            </div>
+
+            <div class="modal fade" id="material-modal-@disciplineMaterial.DisciplineMaterialId"
+                 tabindex="-1" role="dialog"
+                 aria-labelledby="material-modal-label-@disciplineMaterial.DisciplineMaterialId"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="material-modal-label-@disciplineMaterial.DisciplineMaterialId">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-controller="Teacher" asp-action="CreateDisciplineMaterial"
+                                  asp-antiforgery="true" enctype="multipart/form-data">
+                                <div class="form-errors">
+                                    <div asp-validation-summary="All"></div>
+                                </div>
+                                <input type="hidden" value="@disciplineMaterial.Discipline.DisciplineId"
+                                       asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineId">
+                                <input type="hidden" value="@disciplineMaterial.DisciplineMaterialId"
+                                       asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialId">
+                                <div class="form-group">
+                                    <label asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialTypeId"></label>
+                                    <select class="form-control material-type-id" asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialTypeId">
+                                        @foreach (MaterialTypeDto materialType in Model.MaterialTypes)
+                                        {
+                                            <option value="@materialType.MaterialTypeId">@materialType.MaterialTypeName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialPath">@ViewLocalization["MaterialPath"]</label>
+                                    <input type="text" 
+                                           class="form-control material-path-field file-path-text" 
+                                           asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialPath">
+                                    <input type="file" 
+                                           class="form-control file-path-file" 
+                                           asp-for="@Model.CreateDisciplineMaterialViewModel.FormFile">
+                                </div>
+                                <button class="btn btn-primary" type="submit">@ViewLocalization["CreateMaterial"]</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="card-footer">
+                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate</p>
+                <a class="btn btn-danger btn-sm" 
+                   asp-controller="Teacher" asp-action="RemoveDiscipline" 
+                   asp-route-disciplineId="@discipline.DisciplineId">@ViewLocalization["DeleteDiscipline"]</a>
+            </div>*@
+        </div>
     }
 </div>
+
+<environment names="Development">
+    <script src="~/js/components/discipline/disciplines.component.js"></script>
+</environment>
+<environment names="Production">
+    <script src="~/js/components/discipline/disciplines.component.min.js"></script>
+</environment>

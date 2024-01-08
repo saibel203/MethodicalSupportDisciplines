@@ -1,4 +1,6 @@
-﻿namespace MethodicalSupportDisciplines.MVC.Helpers;
+﻿using MethodicalSupportDisciplines.Shared.Enums;
+
+namespace MethodicalSupportDisciplines.MVC.Helpers;
 
 public static class ViewHelper
 {
@@ -20,5 +22,10 @@ public static class ViewHelper
         }
 
         return phoneNumber;
+    }
+
+    public static string GetDisciplineMaterialType(int disciplineMaterialType)
+    {
+        return disciplineMaterialType == (int)DisciplineMaterialType.PracticeType ? "Практика" : "Лекція";
     }
 }

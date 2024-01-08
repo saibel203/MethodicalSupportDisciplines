@@ -28,6 +28,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DisciplineRepository.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Additional\MaterialTypeRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialTypeRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Additional\MaterialTypeRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialTypeRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\MaterialRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\MaterialRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +66,26 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DisciplineRepository.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Additional\MaterialTypeRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialTypeRepository.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Additional\MaterialTypeRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialTypeRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\MaterialRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\MaterialRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialRepository.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -27,4 +27,22 @@
     <data name="MaterialsCount" xml:space="preserve">
         <value>Кількість матеріалів</value>
     </data>
+    <data name="DisciplineName" xml:space="preserve">
+        <value>Назва дисципліни</value>
+    </data>
+    <data name="DisciplineDescription" xml:space="preserve">
+        <value>Опис дисципліни</value>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Закрити</value>
+    </data>
+    <data name="SaveChanges" xml:space="preserve">
+        <value>Створити</value>
+    </data>
+    <data name="DeleteDiscipline" xml:space="preserve">
+        <value>Видалити дисципліну</value>
+    </data>
+    <data name="CreatedDate" xml:space="preserve">
+        <value>Дата створення</value>
+    </data>
 </root>

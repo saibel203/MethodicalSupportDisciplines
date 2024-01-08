@@ -36,4 +36,22 @@
     <data name="CreateSuccess" xml:space="preserve">
         <value>Дисципліну успішно створено</value>
     </data>
+    <data name="DisciplinesForAdminUnknownError" xml:space="preserve">
+        <value>При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="DisciplinesForAdminSuccess" xml:space="preserve">
+        <value>Список дисциплін успішно отримано</value>
+    </data>
+    <data name="DisciplinesUnknownError" xml:space="preserve">
+        <value>При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="DisciplinesSuccess" xml:space="preserve">
+        <value>Список дисциплін успішно отримано</value>
+    </data>
+    <data name="RemoveDisciplineUnknownError" xml:space="preserve">
+        <value>Під час спроби отримати та видалити дисципліну з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="RemoveDisciplineSuccess" xml:space="preserve">
+        <value>Дисципліну успішно видалено</value>
+    </data>
 </root>

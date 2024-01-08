@@ -60,6 +60,33 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created date.
+        /// </summary>
+        internal static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove discipline.
+        /// </summary>
+        internal static string DeleteDiscipline {
+            get {
+                return ResourceManager.GetString("DeleteDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discipline details.
         /// </summary>
         internal static string Details {
@@ -69,11 +96,38 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discipline description.
+        /// </summary>
+        internal static string DisciplineDescription {
+            get {
+                return ResourceManager.GetString("DisciplineDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline name.
+        /// </summary>
+        internal static string DisciplineName {
+            get {
+                return ResourceManager.GetString("DisciplineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quantity of materials.
         /// </summary>
         internal static string MaterialsCount {
             get {
                 return ResourceManager.GetString("MaterialsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        internal static string SaveChanges {
+            get {
+                return ResourceManager.GetString("SaveChanges", resourceCulture);
             }
         }
         

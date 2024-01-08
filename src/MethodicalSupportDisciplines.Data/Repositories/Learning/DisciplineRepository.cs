@@ -29,11 +29,12 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
                 .ThenInclude(teacherData => teacherData.ApplicationUser)
                 .Include(disciplineData => disciplineData.DisciplineMaterials)
                 .Where(disciplineData => disciplineData.Teacher.ApplicationUser!.Id == applicationUserId)
+                .OrderByDescending(disciplineData => disciplineData.DisciplineId)
                 .ToListAsync();
 
             return new DisciplineRepositoryResponse
             {
-                Message = "List of disciplines successfully received",
+                Message = _stringLocalization["DisciplinesSuccess"],
                 IsSuccess = true,
                 Disciplines = disciplines
             };
@@ -45,8 +46,39 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
 
             return new DisciplineRepositoryResponse
             {
+                Message = _stringLocalization["DisciplinesUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<DisciplineRepositoryResponse> GetAllDisciplinesForAdminAsync()
+    {
+        try
+        {
+            IReadOnlyList<Discipline> disciplines = await Context.Set<Discipline>()
+                .Include(disciplineData => disciplineData.Teacher)
+                .ThenInclude(teacherData => teacherData.ApplicationUser)
+                .Include(disciplineData => disciplineData.DisciplineMaterials)
+                .OrderByDescending(disciplineData => disciplineData.DisciplineId)
+                .ToListAsync();
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["DisciplinesForAdminSuccess"],
+                IsSuccess = true,
+                Disciplines = disciplines
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                "An unknown error occurred while trying to retrieve information about disciplines from the database.");
+
+            return new DisciplineRepositoryResponse
+            {
                 Message =
-                    "An unknown error occurred while trying to retrieve information about available disciplines from the database",
+                    _stringLocalization["DisciplinesForAdminUnknownError"],
                 IsSuccess = false
             };
         }
@@ -99,6 +131,44 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
         }
     }
 
+    public async Task<DisciplineRepositoryResponse> GetDisciplineForAdminByIdAsync(int disciplineId)
+    {
+        try
+        {
+            Discipline? discipline = await Context.Set<Discipline>()
+                .Include(disciplineData => disciplineData.Teacher)
+                .Include(disciplineData => disciplineData.DisciplineMaterials)
+                .FirstOrDefaultAsync(disciplineData => disciplineData.DisciplineId == disciplineId);
+
+            if (discipline is null)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = _stringLocalization["DisciplineNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["DisciplineGetSuccess"],
+                IsSuccess = true,
+                Discipline = discipline
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                "An unknown error occurred while trying to retrieve a discipline with the specified ID.");
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["DisciplineGetUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
     public async Task<DisciplineRepositoryResponse> CreateDisciplineAsync(Discipline discipline)
     {
         try
@@ -119,6 +189,44 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
             return new DisciplineRepositoryResponse
             {
                 Message = _stringLocalization["CreateUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<DisciplineRepositoryResponse> RemoveDisciplineAsync(int disciplineId)
+    {
+        try
+        {
+            Discipline? discipline = await Context.Set<Discipline>()
+                .FirstOrDefaultAsync(disciplineData => disciplineData.DisciplineId == disciplineId);
+
+            if (discipline is null)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = _stringLocalization["DisciplineNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            Context.Disciplines.Remove(discipline);
+            await Context.SaveChangesAsync();
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["RemoveDisciplineSuccess"],
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                "An unknown error occurred while trying to retrieve and delete a discipline from the database.");
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["RemoveDisciplineUnknownError"],
                 IsSuccess = false
             };
         }

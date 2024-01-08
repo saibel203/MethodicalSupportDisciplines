@@ -8,6 +8,7 @@ using MethodicalSupportDisciplines.Shared.Dto.Learning;
 using MethodicalSupportDisciplines.Shared.Responses.Repositories.LearningRepositoriesResponses;
 using MethodicalSupportDisciplines.Shared.Responses.Services.LearningServicesResponses;
 using MethodicalSupportDisciplines.UnitTests.Helpers;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
@@ -23,13 +24,16 @@ public class DisciplineServiceUnitTests
     {
         Mock<ILogger<DisciplineService>> loggerMock = 
             new Mock<ILogger<DisciplineService>>();
+        Mock<IStringLocalizer<DisciplineService>> stringLocalizationMock =
+            new Mock<IStringLocalizer<DisciplineService>>();
         IMapper mapperMock = MapperMock.GetMapper();
 
         _disciplineRepositoryMock = new Mock<IDisciplineRepository>();
 
         _disciplineService = new DisciplineService(
             _disciplineRepositoryMock.Object, mapperMock,
-            loggerMock.Object);
+            loggerMock.Object,
+            stringLocalizationMock.Object);
     }
 
     [Fact]
@@ -119,6 +123,93 @@ public class DisciplineServiceUnitTests
         Assert.IsAssignableFrom<IReadOnlyList<DisciplineActionDto>>(result.Disciplines);
     }
 
+    [Fact]
+    public async Task GetAllDisciplinesForAdminAsync_NotEmptyDisciplinesList_ReturnSuccessResponse()
+    {
+        // Arrange
+        IReadOnlyList<Discipline> responseList = new List<Discipline>
+        {
+            It.IsAny<Discipline>(),
+            It.IsAny<Discipline>()
+        };
+        
+        QueryParameters queryParameters = new QueryParameters();
+        DisciplineRepositoryResponse methodResponse = new DisciplineRepositoryResponse
+        {
+            Message = string.Empty,
+            IsSuccess = true,
+            Disciplines = responseList
+        };
+
+        _disciplineRepositoryMock.Setup(repository => repository.GetAllDisciplinesForAdminAsync())
+            .ReturnsAsync(methodResponse);
+        
+        // Act
+        DisciplineServiceResponse result = 
+            await _disciplineService.GetAllDisciplinesForAdminAsync(queryParameters);
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Disciplines);
+        Assert.NotEmpty(result.Disciplines);
+        Assert.Null(result.Discipline);
+        Assert.IsAssignableFrom<DisciplineServiceResponse>(result);
+        Assert.IsAssignableFrom<IReadOnlyList<DisciplineActionDto>>(result.Disciplines);
+    }
+    
+    [Fact]
+    public async Task GetAllDisciplinesForAdminAsync_ErrorFromRepository_ReturnErrorResponse()
+    {
+        // Arrange
+        QueryParameters queryParameters = new QueryParameters();
+        DisciplineRepositoryResponse methodResponse = new DisciplineRepositoryResponse
+        {
+            Message = string.Empty,
+            IsSuccess = false
+        };
+
+        _disciplineRepositoryMock.Setup(repository => repository.GetAllDisciplinesForAdminAsync())
+            .ReturnsAsync(methodResponse);
+        
+        // Act
+        DisciplineServiceResponse result =
+            await _disciplineService.GetAllDisciplinesForAdminAsync(queryParameters);
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.NotNull(result.Disciplines);
+        Assert.Empty(result.Disciplines);
+        Assert.Null(result.Discipline);
+        Assert.IsAssignableFrom<DisciplineServiceResponse>(result);
+        Assert.IsAssignableFrom<IReadOnlyList<DisciplineActionDto>>(result.Disciplines);
+    }
+    
+    [Fact]
+    public async Task GetAllDisciplinesForAdminAsync_UnknownServiceError_ReturnErrorResponse()
+    {
+        // Arrange
+        QueryParameters queryParameters = new QueryParameters();
+        
+        const string expectedErrorMessage = 
+            "An unknown error occurred while trying to retrieve the list of disciplines";
+        
+        _disciplineRepositoryMock.Setup(repository => repository.GetAllDisciplinesForAdminAsync())
+            .ThrowsAsync(new Exception("Simulated exception"));
+        
+        // Act
+        DisciplineServiceResponse result =
+            await _disciplineService.GetAllDisciplinesForAdminAsync(queryParameters);
+
+        // Assert
+        Assert.Equal(expectedErrorMessage, result.Message);
+        Assert.False(result.IsSuccess);
+        Assert.NotNull(result.Disciplines);
+        Assert.Empty(result.Disciplines);
+        Assert.Null(result.Discipline);
+        Assert.IsAssignableFrom<DisciplineServiceResponse>(result);
+        Assert.IsAssignableFrom<IReadOnlyList<DisciplineActionDto>>(result.Disciplines);
+    }
+    
     [Fact]
     public async Task GetDisciplineByIdAsync_ExistsDiscipline_ReturnSuccessResponse()
     {

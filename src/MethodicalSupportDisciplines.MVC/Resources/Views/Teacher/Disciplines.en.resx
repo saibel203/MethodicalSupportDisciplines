@@ -27,4 +27,22 @@
     <data name="MaterialsCount" xml:space="preserve">
         <value>Quantity of materials</value>
     </data>
+    <data name="DisciplineName" xml:space="preserve">
+        <value>Discipline name</value>
+    </data>
+    <data name="DisciplineDescription" xml:space="preserve">
+        <value>Discipline description</value>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+    <data name="SaveChanges" xml:space="preserve">
+        <value>Create</value>
+    </data>
+    <data name="DeleteDiscipline" xml:space="preserve">
+        <value>Remove discipline</value>
+    </data>
+    <data name="CreatedDate" xml:space="preserve">
+        <value>Created date</value>
+    </data>
 </root>

@@ -6,6 +6,9 @@ namespace MethodicalSupportDisciplines.Data.Interfaces.Learning;
 public interface IDisciplineRepository : IRepositoryBase
 {
     Task<DisciplineRepositoryResponse> GetAllDisciplinesAsync(string applicationUserId);
+    Task<DisciplineRepositoryResponse> GetAllDisciplinesForAdminAsync();
     Task<DisciplineRepositoryResponse> GetDisciplineByIdAsync(int disciplineId, string currentUserId);
+    Task<DisciplineRepositoryResponse> GetDisciplineForAdminByIdAsync(int disciplineId);
     Task<DisciplineRepositoryResponse> CreateDisciplineAsync(Discipline discipline);
+    Task<DisciplineRepositoryResponse> RemoveDisciplineAsync(int disciplineId);
 }

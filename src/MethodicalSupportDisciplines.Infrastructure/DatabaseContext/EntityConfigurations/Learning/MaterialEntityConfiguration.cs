@@ -11,12 +11,11 @@ public class MaterialEntityConfiguration : IEntityTypeConfiguration<Material>
         builder.HasKey(property => property.MaterialId);
 
         builder.Property(property => property.MaterialPath)
-            .IsRequired(false);
-        
-        builder.Property(property => property.MaterialBook)
-            .IsRequired(false);
-        
-        builder.Property(property => property.MaterialUrl)
-            .IsRequired(false);
+            .IsRequired();
+
+        builder.HasOne(property => property.MaterialType)
+            .WithMany(property => property.Materials)
+            .HasForeignKey(property => property.MaterialTypeId)
+            .IsRequired();
     }
 }

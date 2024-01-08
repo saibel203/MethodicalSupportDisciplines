@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Interfaces.Additional;
+using MethodicalSupportDisciplines.BLL.Interfaces.Learning;
 using MethodicalSupportDisciplines.MVC.Controllers.Base;
 using MethodicalSupportDisciplines.Shared.AdditionalModels;
 using MethodicalSupportDisciplines.Shared.Constants;
 using MethodicalSupportDisciplines.Shared.Dto.Users;
 using MethodicalSupportDisciplines.Shared.Responses.Services;
 using MethodicalSupportDisciplines.Shared.Responses.Services.AdditionalServicesResponses;
+using MethodicalSupportDisciplines.Shared.Responses.Services.LearningServicesResponses;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.AssignRoles;
+using MethodicalSupportDisciplines.Shared.ViewModels.Learning;
 using MethodicalSupportDisciplines.Shared.ViewModels.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +29,7 @@ public class AdminController : BaseController
     private readonly IGroupService _groupService;
     private readonly ISpecialityService _specialityService;
     private readonly ILearningStatusService _learningStatusService;
+    private readonly IDisciplineService _disciplineService;
     private readonly IMapper _mapper;
     private readonly IStringLocalizer<AdminController> _stringLocalization;
 
@@ -33,7 +37,7 @@ public class AdminController : BaseController
         IQualificationService qualificationService, IFacultyService facultyService,
         IFormatLearningService formatLearningService, IGroupService groupService, ISpecialityService specialityService,
         ILearningStatusService learningStatusService, IAuthService authService, IMapper mapper,
-        IStringLocalizer<AdminController> stringLocalization) : base(
+        IStringLocalizer<AdminController> stringLocalization, IDisciplineService disciplineService) : base(
         notificationService)
     {
         _usersService = usersService;
@@ -46,6 +50,7 @@ public class AdminController : BaseController
         _authService = authService;
         _mapper = mapper;
         _stringLocalization = stringLocalization;
+        _disciplineService = disciplineService;
     }
 
     [HttpGet]
@@ -226,7 +231,7 @@ public class AdminController : BaseController
             NotificationService.CustomErrorMessage(removeUserResponse.Message);
             return RedirectToAction(nameof(GuestUsers));
         }
-        
+
         UserAuthResponse assignTeacherRoleResponse =
             await _authService.AssignTeacherRoleAsync(createTeacherDto);
 
@@ -252,13 +257,13 @@ public class AdminController : BaseController
             NotificationService.CustomErrorMessage(getUserResponse.Message);
             return RedirectToAction(nameof(GuestUsers));
         }
-        
+
         viewModel.GuestUserId = getUserResponse.GuestUser.GuestUserId;
         viewModel.FirstName = getUserResponse.GuestUser.FirstName;
         viewModel.LastName = getUserResponse.GuestUser.LastName;
         viewModel.Patronymic = getUserResponse.GuestUser.Patronymic;
         viewModel.ApplicationUserId = getUserResponse.GuestUser.ApplicationUserId;
-        
+
         return View(viewModel);
     }
 
@@ -275,7 +280,7 @@ public class AdminController : BaseController
         }
 
         CreateStudentDto createStudentDto = _mapper.Map<CreateStudentDto>(viewModel);
-        
+
         UsersServiceResponse removeUserResponse =
             await _usersService.RemoveGuestUserWithoutApplicationUserAsync(viewModel.GuestUserId);
 
@@ -284,7 +289,7 @@ public class AdminController : BaseController
             NotificationService.CustomErrorMessage(removeUserResponse.Message);
             return RedirectToAction(nameof(GuestUsers));
         }
-        
+
         UserAuthResponse assignStudentRoleResponse =
             await _authService.AssignStudentRoleAsync(createStudentDto);
 
@@ -297,6 +302,70 @@ public class AdminController : BaseController
         NotificationService.CustomSuccessMessage(_stringLocalization["AssignStudentSuccess"]);
 
         return RedirectToAction(nameof(GuestUsers));
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Disciplines(QueryParameters queryParameters)
+    {
+        string username = GetUsername();
+        DisciplineServiceResponse getDisciplinesResult =
+            await _disciplineService.GetAllDisciplinesForAdminAsync(queryParameters);
+
+        if (!getDisciplinesResult.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(getDisciplinesResult.Message);
+            return RedirectToAction(nameof(Index), "Home");
+        }
+        
+        AdminDisciplinesViewModel viewModel = new AdminDisciplinesViewModel
+        {
+            Disciplines = getDisciplinesResult.Disciplines,
+            Username = username,
+            CurrentController = GetCurrentControllerName(),
+            CurrentAction = GetCurrentActionName(),
+            QueryParameters = queryParameters,
+            Pages = getDisciplinesResult.Pages,
+            ItemsCount = getDisciplinesResult.ItemsCount,
+            PageCount = getDisciplinesResult.PageCount
+        };
+        
+        IActionResult actionResult = CheckQueryParametersForPageBaseCondition(
+            ref queryParameters, viewModel, getDisciplinesResult);
+        
+        return actionResult;
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> DisciplineData(int disciplineId)
+    {
+        DisciplineServiceResponse getDisciplineResult =
+            await _disciplineService.GetDisciplineForAdminByIdAsync(disciplineId);
+
+        if (!getDisciplineResult.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(getDisciplineResult.Message);
+            return RedirectToAction(nameof(Disciplines));
+        }
+
+        DisciplinesViewModel viewModel = _mapper.Map<DisciplinesViewModel>(getDisciplineResult);
+        
+        return View(viewModel);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> RemoveDiscipline(int disciplineId)
+    {
+        DisciplineServiceResponse removeResult = 
+            await _disciplineService.RemoveDisciplineAsync(disciplineId);
+
+        if (!removeResult.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(removeResult.Message);
+            return RedirectToAction(nameof(Disciplines));
+        }
+        
+        NotificationService.CustomSuccessMessage(removeResult.Message);
+        return RedirectToAction(nameof(Disciplines));
     }
 
     private async Task<CreateTeacherViewModel> InitCreateTeacherViewModel(CreateTeacherViewModel? viewModel = null)

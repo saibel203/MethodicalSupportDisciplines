@@ -1340,7 +1340,21 @@ public class SeedDataDbContext
             await _dataDbContext.DisciplineGroups.AddRangeAsync(disciplineGroups);
             await _dataDbContext.SaveChangesAsync();
         }
+        
+        /* ====================== SEED DISCIPLINE MATERIAL TYLES RELATIONSHIP ====================== */
+        MaterialType[] materialTypes = 
+        [
+            new MaterialType { MaterialTypeName = "Посилання на джерело" },    
+            new MaterialType { MaterialTypeName = "Книга" },
+            new MaterialType { MaterialTypeName = "Файл" }
+        ];
 
+        if (!await _dataDbContext.MaterialTypes.AnyAsync())
+        {
+            await _dataDbContext.MaterialTypes.AddRangeAsync(materialTypes);
+            await _dataDbContext.SaveChangesAsync();
+        }
+        
         /* ====================== SEED DISCIPLINE MATERIALS RELATIONSHIP ====================== */
         DisciplineMaterial[] disciplineMaterials =
         [
@@ -1405,6 +1419,36 @@ public class SeedDataDbContext
         if (!await _dataDbContext.DisciplineMaterials.AnyAsync())
         {
             await _dataDbContext.DisciplineMaterials.AddRangeAsync(disciplineMaterials);
+            await _dataDbContext.SaveChangesAsync();
+        }
+        
+        /* ====================== SEED MATERIALS RELATIONSHIP ====================== */
+        Material[] materials = 
+        [
+            new Material { MaterialTypeId = 1, MaterialPath = "http://physics.zfftt.kpi.ua/mod/book/view.php?id=272&chapterid=692" },
+            new Material { MaterialTypeId = 1, MaterialPath = "http://physics.zfftt.kpi.ua/mod/book/view.php?id=272&chapterid=693" },
+            new Material { MaterialTypeId = 1, MaterialPath = "http://physics.zfftt.kpi.ua/mod/book/view.php?id=272&chapterid=743" },
+            new Material { MaterialTypeId = 1, MaterialPath = "http://physics.zfftt.kpi.ua/mod/book/view.php?id=272&chapterid=751" }
+        ];
+
+        if (!await _dataDbContext.Materials.AnyAsync())
+        {
+            await _dataDbContext.Materials.AddRangeAsync(materials);
+            await _dataDbContext.SaveChangesAsync();
+        }
+        
+        /* ====================== SEED MATERIAL DISCIPLINE-MATERIAL RELATIONSHIP ====================== */
+        MaterialDisciplineMaterial[] materialDisciplineMaterials = 
+        [
+            new MaterialDisciplineMaterial { DisciplineMaterialId = 1, MaterialId = 1 },
+            new MaterialDisciplineMaterial { DisciplineMaterialId = 2, MaterialId = 2 },
+            new MaterialDisciplineMaterial { DisciplineMaterialId = 3, MaterialId = 3 },
+            new MaterialDisciplineMaterial { DisciplineMaterialId = 4, MaterialId = 4 }
+        ];
+
+        if (!await _dataDbContext.MaterialDisciplineMaterials.AnyAsync())
+        {
+            await _dataDbContext.MaterialDisciplineMaterials.AddRangeAsync(materialDisciplineMaterials);
             await _dataDbContext.SaveChangesAsync();
         }
     }

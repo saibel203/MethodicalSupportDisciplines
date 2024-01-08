@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\ValidationAttributes\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.0" />
   </ItemGroup>
 
@@ -62,6 +58,22 @@
     <EmbeddedResource Update="Resources\ViewModels\Forms\AssignRoles\CreateTeacherViewModel.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateTeacherViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineMaterialViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineMaterialViewModel.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
@@ -126,10 +138,36 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CreateTeacherViewModel.en.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineMaterialViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineMaterialViewModel.uk.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MethodicalSupportDisciplines.Core\MethodicalSupportDisciplines.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -36,4 +36,22 @@
     <data name="CreateSuccess" xml:space="preserve">
         <value>Discipline successfully created</value>
     </data>
+    <data name="DisciplinesForAdminUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve information about disciplines from the database</value>
+    </data>
+    <data name="DisciplinesForAdminSuccess" xml:space="preserve">
+        <value>List of disciplines successfully received</value>
+    </data>
+    <data name="DisciplinesUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve information about available disciplines from the database</value>
+    </data>
+    <data name="DisciplinesSuccess" xml:space="preserve">
+        <value>List of disciplines successfully received</value>
+    </data>
+    <data name="RemoveDisciplineUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve and delete a discipline from the database</value>
+    </data>
+    <data name="RemoveDisciplineSuccess" xml:space="preserve">
+        <value>Discipline successfully removed</value>
+    </data>
 </root>

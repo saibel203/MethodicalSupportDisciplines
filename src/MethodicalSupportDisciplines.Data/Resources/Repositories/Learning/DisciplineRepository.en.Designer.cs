@@ -106,11 +106,65 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of disciplines successfully received.
+        /// </summary>
+        internal static string DisciplinesForAdminSuccess {
+            get {
+                return ResourceManager.GetString("DisciplinesForAdminSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve information about disciplines from the database.
+        /// </summary>
+        internal static string DisciplinesForAdminUnknownError {
+            get {
+                return ResourceManager.GetString("DisciplinesForAdminUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of disciplines successfully received.
+        /// </summary>
+        internal static string DisciplinesSuccess {
+            get {
+                return ResourceManager.GetString("DisciplinesSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve information about available disciplines from the database.
+        /// </summary>
+        internal static string DisciplinesUnknownError {
+            get {
+                return ResourceManager.GetString("DisciplinesUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It&apos;s impossible to switch. You do not belong to the discipline with the specified ID.
         /// </summary>
         internal static string NotDisciplineOwner {
             get {
                 return ResourceManager.GetString("NotDisciplineOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline successfully removed.
+        /// </summary>
+        internal static string RemoveDisciplineSuccess {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve and delete a discipline from the database.
+        /// </summary>
+        internal static string RemoveDisciplineUnknownError {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineUnknownError", resourceCulture);
             }
         }
     }

@@ -81,6 +81,24 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.ToTable("LearningStatuses");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.MaterialType", b =>
+                {
+                    b.Property<int>("MaterialTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialTypeId"));
+
+                    b.Property<string>("MaterialTypeName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("MaterialTypeId");
+
+                    b.ToTable("MaterialTypes");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", b =>
                 {
                     b.Property<int>("QualificationId")
@@ -99,7 +117,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.ToTable("Qualifications");
                 });
 
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Speciality", b =>
                 {
                     b.Property<int>("SpecialityId")
                         .ValueGeneratedOnAdd()
@@ -131,7 +149,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Property<DateTime>("DisciplineCreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 12, 31, 12, 41, 43, 343, DateTimeKind.Local).AddTicks(7439));
+                        .HasDefaultValue(new DateTime(2024, 1, 7, 20, 41, 37, 57, DateTimeKind.Local).AddTicks(8064));
 
                     b.Property<string>("DisciplineDescription")
                         .IsRequired()
@@ -179,7 +197,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 12, 31, 12, 41, 43, 343, DateTimeKind.Local).AddTicks(9443));
+                        .HasDefaultValue(new DateTime(2024, 1, 7, 20, 41, 37, 58, DateTimeKind.Local).AddTicks(3369));
 
                     b.Property<int>("DisciplineId")
                         .HasColumnType("int");
@@ -279,16 +297,16 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialId"));
 
-                    b.Property<string>("MaterialBook")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MaterialPath")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MaterialUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MaterialTypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("MaterialId");
+
+                    b.HasIndex("MaterialTypeId");
 
                     b.ToTable("Materials");
                 });
@@ -763,6 +781,17 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.Material", b =>
+                {
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.MaterialType", "MaterialType")
+                        .WithMany("Materials")
+                        .HasForeignKey("MaterialTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaterialType");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Learning.MaterialDisciplineMaterial", b =>
                 {
                     b.HasOne("MethodicalSupportDisciplines.Core.Entities.Learning.DisciplineMaterial", "DisciplineMaterial")
@@ -836,7 +865,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", "Specialty")
+                    b.HasOne("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Speciality", "Speciality")
                         .WithMany("Students")
                         .HasForeignKey("SpecialtyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -852,7 +881,7 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
 
                     b.Navigation("LearningStatus");
 
-                    b.Navigation("Specialty");
+                    b.Navigation("Speciality");
                 });
 
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser", b =>
@@ -940,12 +969,17 @@ namespace MethodicalSupportDisciplines.Infrastructure.Migrations
                     b.Navigation("Students");
                 });
 
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.MaterialType", b =>
+                {
+                    b.Navigation("Materials");
+                });
+
             modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Qualification", b =>
                 {
                     b.Navigation("Teachers");
                 });
 
-            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Specialty", b =>
+            modelBuilder.Entity("MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.Speciality", b =>
                 {
                     b.Navigation("Students");
                 });

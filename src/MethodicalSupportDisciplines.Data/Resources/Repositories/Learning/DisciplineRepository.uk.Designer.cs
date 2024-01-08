@@ -106,11 +106,65 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Список дисциплін успішно отримано.
+        /// </summary>
+        internal static string DisciplinesForAdminSuccess {
+            get {
+                return ResourceManager.GetString("DisciplinesForAdminSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка.
+        /// </summary>
+        internal static string DisciplinesForAdminUnknownError {
+            get {
+                return ResourceManager.GetString("DisciplinesForAdminUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Список дисциплін успішно отримано.
+        /// </summary>
+        internal static string DisciplinesSuccess {
+            get {
+                return ResourceManager.GetString("DisciplinesSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка.
+        /// </summary>
+        internal static string DisciplinesUnknownError {
+            get {
+                return ResourceManager.GetString("DisciplinesUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неможливо перейти. Ви не є властинок дисципліни з вказаним ID.
         /// </summary>
         internal static string NotDisciplineOwner {
             get {
                 return ResourceManager.GetString("NotDisciplineOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліну успішно видалено.
+        /// </summary>
+        internal static string RemoveDisciplineSuccess {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати та видалити дисципліну з бази даних, виникла невідома помилка.
+        /// </summary>
+        internal static string RemoveDisciplineUnknownError {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineUnknownError", resourceCulture);
             }
         }
     }

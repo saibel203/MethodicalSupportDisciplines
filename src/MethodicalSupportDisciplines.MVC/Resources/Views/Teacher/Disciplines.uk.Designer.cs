@@ -60,6 +60,33 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Закрити.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дата створення.
+        /// </summary>
+        internal static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалити дисципліну.
+        /// </summary>
+        internal static string DeleteDiscipline {
+            get {
+                return ResourceManager.GetString("DeleteDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Детальніше.
         /// </summary>
         internal static string Details {
@@ -69,11 +96,38 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Опис дисципліни.
+        /// </summary>
+        internal static string DisciplineDescription {
+            get {
+                return ResourceManager.GetString("DisciplineDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назва дисципліни.
+        /// </summary>
+        internal static string DisciplineName {
+            get {
+                return ResourceManager.GetString("DisciplineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Кількість матеріалів.
         /// </summary>
         internal static string MaterialsCount {
             get {
                 return ResourceManager.GetString("MaterialsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Створити.
+        /// </summary>
+        internal static string SaveChanges {
+            get {
+                return ResourceManager.GetString("SaveChanges", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using MethodicalSupportDisciplines.Shared.Dto.Learning;
+﻿using MethodicalSupportDisciplines.Shared.Dto.Additional;
+using MethodicalSupportDisciplines.Shared.Dto.Learning;
 using MethodicalSupportDisciplines.Shared.ViewModels.Additional;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Learning;
 
@@ -10,4 +11,6 @@ public class DisciplinesViewModel : SettingsViewModel
     public DisciplineActionDto Discipline { get; set; } = null!;
     public int DisciplineMaterialsCount { get; set; }
     public CreateDisciplineViewModel CreateDisciplineViewModel { get; set; } = null!;
+    public CreateDisciplineMaterialViewModel CreateDisciplineMaterialViewModel { get; set; } = null!;
+    public IReadOnlyList<MaterialTypeDto> MaterialTypes { get; set; } = new List<MaterialTypeDto>();
 }
