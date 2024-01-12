@@ -35,17 +35,17 @@ public class DisciplineGroupService : BaseService<IDisciplineGroupRepository>, I
             
             return new DisciplineGroupServiceResponse
             {
-                Message = "",
+                Message = removeResponse.Message,
                 IsSuccess = true
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to uninstall");
 
             return new DisciplineGroupServiceResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to uninstall",
                 IsSuccess = false
             };
         }
@@ -59,7 +59,7 @@ public class DisciplineGroupService : BaseService<IDisciplineGroupRepository>, I
             {
                 return new DisciplineGroupServiceResponse
                 {
-                    Message = "",
+                    Message = "An unknown error occurred while trying to uninstall",
                     IsSuccess = false
                 };
             }
@@ -73,24 +73,24 @@ public class DisciplineGroupService : BaseService<IDisciplineGroupRepository>, I
             {
                 return new DisciplineGroupServiceResponse
                 {
-                    Message = "",
+                    Message = createResponse.Message,
                     IsSuccess = false
                 };
             }
             
             return new DisciplineGroupServiceResponse
             {
-                Message = "",
+                Message = createResponse.Message,
                 IsSuccess = true
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to create.");
 
             return new DisciplineGroupServiceResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to create",
                 IsSuccess = false
             };
         }

@@ -35,13 +35,13 @@
             data-toggle="modal"
             type="button"
             data-target="#material-modal-create-discipline-group">
-        Додати групу до дисципліни
+        @ViewLocalization["AddGroup"]
     </button>
     <button class="btn btn-primary"
             data-toggle="modal"
             type="button"
             data-target="#material-modal-students-list">
-        Переглянути список студентів
+        @ViewLocalization["StudentsList"]
     </button>
 </div>
 
@@ -52,7 +52,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="material-modal-create-discipline-group-label">@ViewLocalization["NewDisciplineMaterial"]</h5>
+                <h5 class="modal-title" id="material-modal-create-discipline-group-label">@ViewLocalization["AddGroup"]</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -76,7 +76,7 @@
                             }
                         </select>
                     </div>
-                    <button class="btn btn-primary" type="submit">Create discipline-groups</button>
+                    <button class="btn btn-primary" type="submit">@ViewLocalization["AddGroup"]</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -93,7 +93,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="material-modal-label-students-list">@ViewLocalization["NewDisciplineMaterial"]</h5>
+                <h5 class="modal-title" id="material-modal-label-students-list">@ViewLocalization["StudentsList"]</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,15 +101,15 @@
             <div class="modal-body">
                 @foreach (DisciplineGroupActionDto disciplineGroup in Model.Discipline.DisciplineGroups)
                 {
-                    <h2>Group @disciplineGroup.Group.GroupName</h2>
+                    <h2>@ViewLocalization["Group"] @disciplineGroup.Group.GroupName</h2>
                     <a asp-controller="Teacher" asp-action="RemoveDisciplineGroup"
                        asp-route-disciplineId="@disciplineGroup.DisciplineId" asp-route-groupId="@disciplineGroup.GroupId">
-                        Remove group from discipline list
+                        @ViewLocalization["RemoveGroup"]
                     </a>
                     @foreach (StudentUser studentUserData in disciplineGroup.Group.StudentUsers)
                     {
                         <p>
-                            User #@studentUserData.StudentUserId:
+                            @ViewLocalization["User"] #@studentUserData.StudentUserId:
                             @ViewHelper.GetUserFullName(studentUserData.FirstName, studentUserData.LastName, studentUserData.Patronymic)
                         </p>
                     }

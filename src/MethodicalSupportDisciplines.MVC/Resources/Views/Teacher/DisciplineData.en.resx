@@ -66,4 +66,19 @@
     <data name="RemoveDisciplineMaterial" xml:space="preserve">
         <value>Remove discipline material</value>
     </data>
+    <data name="AddGroup" xml:space="preserve">
+        <value>Add a group to a discipline</value>
+    </data>
+    <data name="StudentsList" xml:space="preserve">
+        <value>View the list of students</value>
+    </data>
+    <data name="Group" xml:space="preserve">
+        <value>Group</value>
+    </data>
+    <data name="RemoveGroup" xml:space="preserve">
+        <value>Remove a group from a discipline</value>
+    </data>
+    <data name="User" xml:space="preserve">
+        <value>User</value>
+    </data>
 </root>

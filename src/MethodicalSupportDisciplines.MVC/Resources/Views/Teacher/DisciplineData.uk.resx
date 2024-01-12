@@ -66,4 +66,19 @@
     <data name="RemoveDisciplineMaterial" xml:space="preserve">
         <value>Видалити матеріал</value>
     </data>
+    <data name="AddGroup" xml:space="preserve">
+        <value>Додати групу до дисципліни</value>
+    </data>
+    <data name="StudentsList" xml:space="preserve">
+        <value>Переглянути список студентів</value>
+    </data>
+    <data name="Group" xml:space="preserve">
+        <value>Група</value>
+    </data>
+    <data name="RemoveGroup" xml:space="preserve">
+        <value>Видалити групу з дисципліни</value>
+    </data>
+    <data name="User" xml:space="preserve">
+        <value>Користувач</value>
+    </data>
 </root>

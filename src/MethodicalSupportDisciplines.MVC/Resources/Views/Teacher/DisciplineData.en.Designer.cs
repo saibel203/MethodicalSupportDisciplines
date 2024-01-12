@@ -60,6 +60,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a group to a discipline.
+        /// </summary>
+        internal static string AddGroup {
+            get {
+                return ResourceManager.GetString("AddGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string Close {
@@ -101,6 +110,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         internal static string FilesTitle {
             get {
                 return ResourceManager.GetString("FilesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        internal static string Group {
+            get {
+                return ResourceManager.GetString("Group", resourceCulture);
             }
         }
         
@@ -177,11 +195,29 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove a group from a discipline.
+        /// </summary>
+        internal static string RemoveGroup {
+            get {
+                return ResourceManager.GetString("RemoveGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove material.
         /// </summary>
         internal static string RemoveMaterial {
             get {
                 return ResourceManager.GetString("RemoveMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View the list of students.
+        /// </summary>
+        internal static string StudentsList {
+            get {
+                return ResourceManager.GetString("StudentsList", resourceCulture);
             }
         }
         
@@ -200,6 +236,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
     }
