@@ -91,6 +91,42 @@ public class FileService : IFileService
         }
     }
 
+    public FileResponse RemoveMaterialFileAsync(string filePath)
+    {
+        try
+        {
+            string rootPath = _webHostEnvironment.WebRootPath;
+            string fullPath = Path.Combine(rootPath, filePath);
+
+            if (!File.Exists(fullPath))
+            {
+                return new FileResponse
+                {
+                    Message = _stringLocalization["RemoveFileNotFound"],
+                    IsSuccess = false
+                };
+            }
+            
+            File.Delete(fullPath);
+            
+            return new FileResponse
+            {
+                Message = _stringLocalization["RemoveFileSuccess"],
+                IsSuccess = true
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete a material file.");
+
+            return new FileResponse
+            {
+                Message = _stringLocalization["RemoveFileUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
     private void IsDirectoryExists(string uploadDirectory)
     {
         if (!Directory.Exists(uploadDirectory))

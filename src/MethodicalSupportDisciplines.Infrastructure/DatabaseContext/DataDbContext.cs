@@ -36,6 +36,7 @@ public class DataDbContext(DbContextOptions<DataDbContext> options)
     public DbSet<Speciality> Specialties => Set<Speciality>();
     public DbSet<Qualification> Qualifications => Set<Qualification>();
     public DbSet<MaterialType> MaterialTypes => Set<MaterialType>();
+    public DbSet<DisciplineMaterialType> DisciplineMaterialTypes => Set<DisciplineMaterialType>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -65,5 +66,6 @@ public class DataDbContext(DbContextOptions<DataDbContext> options)
         builder.ApplyConfigurationsFromAssembly(typeof(SpecialtyEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(QualificationEntityConfiguration).Assembly);
         builder.ApplyConfigurationsFromAssembly(typeof(MaterialTypeEntityConfiguration).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(DisciplineMaterialTypeEntityConfiguration).Assembly);
     }
 }

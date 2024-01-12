@@ -74,6 +74,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FileService.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\Learning\MaterialDisciplineMaterialService.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialDisciplineMaterialService.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\Learning\MaterialDisciplineMaterialService.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialDisciplineMaterialService.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\Learning\DisciplineMaterialService.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialService.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Services\Learning\DisciplineMaterialService.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialService.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -141,6 +157,26 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>FileService.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\Learning\MaterialDisciplineMaterialService.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialDisciplineMaterialService.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\Learning\MaterialDisciplineMaterialService.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialDisciplineMaterialService.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\Learning\DisciplineMaterialService.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialService.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Services\Learning\DisciplineMaterialService.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialService.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

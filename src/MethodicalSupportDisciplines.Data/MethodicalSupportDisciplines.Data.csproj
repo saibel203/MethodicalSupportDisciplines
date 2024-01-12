@@ -44,6 +44,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MaterialRepository.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\MaterialDisciplineMaterialRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialDisciplineMaterialRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\MaterialDisciplineMaterialRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialDisciplineMaterialRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\DisciplineMaterialRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Learning\DisciplineMaterialRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Additional\DisciplineMaterialTypeRepository.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialTypeRepository.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Repositories\Additional\DisciplineMaterialTypeRepository.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineMaterialTypeRepository.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -86,6 +110,36 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>MaterialRepository.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\MaterialDisciplineMaterialRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialDisciplineMaterialRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\MaterialDisciplineMaterialRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialDisciplineMaterialRepository.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\DisciplineMaterialRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Learning\DisciplineMaterialRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialRepository.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Additional\DisciplineMaterialTypeRepository.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialTypeRepository.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Repositories\Additional\DisciplineMaterialTypeRepository.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineMaterialTypeRepository.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -1,6 +1,10 @@
 ﻿@using MethodicalSupportDisciplines.MVC.Helpers
 @using MethodicalSupportDisciplines.Shared.Dto.Additional
 @using MethodicalSupportDisciplines.Shared.Dto.Learning
+@using MethodicalSupportDisciplines.Core.Entities.Learning
+@using MethodicalSupportDisciplines.Core.Entities.Users
+@using MethodicalSupportDisciplines.Shared.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model MethodicalSupportDisciplines.Shared.ViewModels.Learning.DisciplinesViewModel
 
 @{
@@ -15,26 +19,236 @@
             @ViewLocalization["Teacher"]: @ViewHelper.GetUserFullName(Model.Discipline.Teacher.FirstName, Model.Discipline.Teacher.LastName, Model.Discipline.Teacher.Patronymic)
         </p>
         <p>
-            @ViewLocalization["CreatedDate"]: @Model.Discipline.DisciplineCreatedDate
+            @ViewLocalization["CreatedDate"]: @Model.Discipline.DisciplineCreatedDate.ToString("MM/dd/yyyy")
         </p>
     </div>
 </div>
 
-<div class="container cards-container">
+<div class="container mt-4">
+    <button class="btn btn-primary"
+            data-toggle="modal"
+            type="button"
+            data-target="#material-modal-create">
+        @ViewLocalization["NewDisciplineMaterial"]
+    </button>
+    <button class="btn btn-primary"
+            data-toggle="modal"
+            type="button"
+            data-target="#material-modal-create-discipline-group">
+        Додати групу до дисципліни
+    </button>
+    <button class="btn btn-primary"
+            data-toggle="modal"
+            type="button"
+            data-target="#material-modal-students-list">
+        Переглянути список студентів
+    </button>
+</div>
+
+<div class="modal fade" id="material-modal-create-discipline-group"
+     tabindex="-1" role="dialog"
+     aria-labelledby="material-modal-label-create"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="material-modal-create-discipline-group-label">@ViewLocalization["NewDisciplineMaterial"]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Teacher" asp-action="CreateDisciplineGroup" asp-antiforgery="true">
+                    <div class="form-errors">
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                    <input type="hidden" asp-for="@Model.CreateDisciplineGroupViewModel.DisciplineId"
+                           value="@Model.Discipline.DisciplineId">
+                    <div class="form-group">
+                        <label asp-for="@Model.CreateDisciplineGroupViewModel.GroupId"></label>
+                        <select class="form-control"
+                                asp-for="@Model.CreateDisciplineGroupViewModel.GroupId">
+                            @foreach (GroupDto groupData in Model.Groups)
+                            {
+                                <option value="@groupData.GroupId">
+                                    @groupData.GroupName (@groupData.GroupCourse курс)
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Create discipline-groups</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewLocalization["Close"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="material-modal-students-list"
+     tabindex="-1" role="dialog"
+     aria-labelledby="material-modal-label-create"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="material-modal-label-students-list">@ViewLocalization["NewDisciplineMaterial"]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach (DisciplineGroupActionDto disciplineGroup in Model.Discipline.DisciplineGroups)
+                {
+                    <h2>Group @disciplineGroup.Group.GroupName</h2>
+                    <a asp-controller="Teacher" asp-action="RemoveDisciplineGroup"
+                       asp-route-disciplineId="@disciplineGroup.DisciplineId" asp-route-groupId="@disciplineGroup.GroupId">
+                        Remove group from discipline list
+                    </a>
+                    @foreach (StudentUser studentUserData in disciplineGroup.Group.StudentUsers)
+                    {
+                        <p>
+                            User #@studentUserData.StudentUserId:
+                            @ViewHelper.GetUserFullName(studentUserData.FirstName, studentUserData.LastName, studentUserData.Patronymic)
+                        </p>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewLocalization["Close"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="material-modal-create"
+     tabindex="-1" role="dialog"
+     aria-labelledby="material-modal-label-create"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="material-modal-label-create">@ViewLocalization["NewDisciplineMaterial"]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Teacher" asp-action="CreateDisciplineMaterial"
+                      asp-antiforgery="true">
+                    <div class="form-errors">
+                        <div asp-validation-summary="All"></div>
+                    </div>
+
+                    <input type="hidden"
+                           asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineId"
+                           value="@Model.Discipline.DisciplineId">
+
+                    <div class="form-group">
+                        <label asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialTypeId"></label>
+                        <select class="form-control"
+                                asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialTypeId">
+                            @foreach (DisciplineMaterialTypeDto disciplineMaterialType in Model.DisciplineMaterialTypes)
+                            {
+                                <option value="@disciplineMaterialType.DisciplineMaterialTypeId">
+                                    @disciplineMaterialType.DisciplineMaterialTypeName
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialName"
+                               placeholder="@ViewLocalization["NewDisciplineMaterialPlaceholderName"]">
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text"
+                               class="form-control"
+                               asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialDescription"
+                               placeholder="@ViewLocalization["NewDisciplineMaterialPlaceholderDescription"]">
+                        </textarea>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">@ViewLocalization["CreateMaterial"]</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewLocalization["Close"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container cards-container materials-container">
     @foreach (DisciplineMaterialActionDto disciplineMaterial in Model.Discipline.DisciplineMaterials)
     {
         <div class="card">
             <div class="card-header">
-                <div>@ViewHelper.GetDisciplineMaterialType(disciplineMaterial.DisciplineMaterialType)</div>
+                <div>@ViewHelper.GetDisciplineMaterialType(disciplineMaterial.DisciplineMaterialTypeId)</div>
             </div>
             <div class="card-body">
                 <h5 class="card-title">@disciplineMaterial.DisciplineMaterialName</h5>
                 <p class="card-text">
                     @disciplineMaterial.DisciplineMaterialDescription
                 </p>
+                <div>
+                    @if (disciplineMaterial.Materials
+                         .Any(material => material.Material.MaterialTypeId == (int)MaterialTypes.Href))
+                    {
+                        <h6 class="card-subtitle mb-2 text-muted">@ViewLocalization["LinksTitle"]</h6>
+                        @foreach (MaterialDisciplineMaterial material
+                                  in disciplineMaterial.Materials
+                                      .Where(materialData => materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.Href))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="@material.Material.MaterialPath" target="_blank">
+                                        @ViewLocalization["OpenLink"] #@material.MaterialId
+                                    </a>
+                                    <a class="ml-4 text-danger"
+                                       asp-controller="Teacher" asp-action="RemoveDisciplineMaterialMaterial"
+                                       asp-route-materialId="@material.MaterialId"
+                                       asp-route-disciplineId="@disciplineMaterial.Discipline.DisciplineId">
+                                        @ViewLocalization["RemoveMaterial"]
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                    @if (disciplineMaterial.Materials
+                         .Any(material => material.Material.MaterialTypeId == (int)MaterialTypes.Book ||
+                                          material.Material.MaterialTypeId == (int)MaterialTypes.File))
+                    {
+                        <h6 class="card-subtitle mb-2 mt-2 text-muted">@ViewLocalization["FilesTitle"]</h6>
+                        @foreach (MaterialDisciplineMaterial material
+                                  in disciplineMaterial.Materials
+                                      .Where(materialData => materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.Book ||
+                                                             materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.File))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="~/@material.Material.MaterialPath" download>
+                                        @ViewLocalization["DownloadFile"] #@material.MaterialId
+                                    </a>
+                                    <a class="ml-4 text-danger"
+                                       asp-controller="Teacher" asp-action="RemoveDisciplineMaterialMaterial"
+                                       asp-route-materialId="@material.MaterialId"
+                                       asp-route-disciplineId="@disciplineMaterial.Discipline.DisciplineId">
+                                        @ViewLocalization["RemoveMaterial"]
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
                 <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#material-modal-@disciplineMaterial.DisciplineMaterialId">
-                    Add material
+                    @ViewLocalization["NewMaterialDisciplineMaterial"]
                 </button>
             </div>
 
@@ -45,24 +259,26 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="material-modal-label-@disciplineMaterial.DisciplineMaterialId">Modal title</h5>
+                            <h5 class="modal-title" id="material-modal-label-@disciplineMaterial.DisciplineMaterialId">
+                                @ViewLocalization["NewMaterialDisciplineMaterial"]
+                            </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form asp-controller="Teacher" asp-action="CreateDisciplineMaterial"
+                            <form asp-controller="Teacher" asp-action="CreateDisciplineMaterialMaterial"
                                   asp-antiforgery="true" enctype="multipart/form-data">
                                 <div class="form-errors">
                                     <div asp-validation-summary="All"></div>
                                 </div>
                                 <input type="hidden" value="@disciplineMaterial.Discipline.DisciplineId"
-                                       asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineId">
+                                       asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.DisciplineId">
                                 <input type="hidden" value="@disciplineMaterial.DisciplineMaterialId"
-                                       asp-for="@Model.CreateDisciplineMaterialViewModel.DisciplineMaterialId">
+                                       asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.DisciplineMaterialId">
                                 <div class="form-group">
-                                    <label asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialTypeId"></label>
-                                    <select class="form-control material-type-id" asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialTypeId">
+                                    <label asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.MaterialTypeId"></label>
+                                    <select class="form-control material-type-id" asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.MaterialTypeId">
                                         @foreach (MaterialTypeDto materialType in Model.MaterialTypes)
                                         {
                                             <option value="@materialType.MaterialTypeId">@materialType.MaterialTypeName</option>
@@ -70,30 +286,34 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialPath">@ViewLocalization["MaterialPath"]</label>
-                                    <input type="text" 
-                                           class="form-control material-path-field file-path-text" 
-                                           asp-for="@Model.CreateDisciplineMaterialViewModel.MaterialPath">
-                                    <input type="file" 
-                                           class="form-control file-path-file" 
-                                           asp-for="@Model.CreateDisciplineMaterialViewModel.FormFile">
+                                    <label asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.MaterialPath">
+                                        @ViewLocalization["MaterialPath"]
+                                    </label>
+                                    <input type="text"
+                                           class="form-control material-path-field file-path-text"
+                                           asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.MaterialPath">
+                                    <input type="file"
+                                           class="form-control file-path-file"
+                                           asp-for="@Model.CreateDisciplineMaterialSubMaterialViewModel.FormFile">
                                 </div>
                                 <button class="btn btn-primary" type="submit">@ViewLocalization["CreateMaterial"]</button>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewLocalization["Close"]</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            @*<div class="card-footer">
-                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate</p>
-                <a class="btn btn-danger btn-sm" 
-                   asp-controller="Teacher" asp-action="RemoveDiscipline" 
-                   asp-route-disciplineId="@discipline.DisciplineId">@ViewLocalization["DeleteDiscipline"]</a>
-            </div>*@
+            <div class="card-footer">
+                <a class="btn btn-danger"
+                   asp-controller="Teacher" asp-action="RemoveDisciplineMaterial"
+                   asp-route-disciplineId="@disciplineMaterial.Discipline.DisciplineId"
+                   asp-route-disciplineMaterialId="@disciplineMaterial.DisciplineMaterialId">
+                    @ViewLocalization["RemoveDisciplineMaterial"]
+                </a>
+            </div>
         </div>
     }
 </div>

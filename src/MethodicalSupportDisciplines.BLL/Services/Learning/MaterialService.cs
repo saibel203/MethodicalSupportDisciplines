@@ -67,4 +67,40 @@ public class MaterialService : BaseService<IMaterialRepository>, IMaterialServic
             };
         }
     }
+
+    public async Task<MaterialServiceResponse> RemoveMaterialAsync(int materialId)
+    {
+        try
+        {
+            MaterialRepositoryResponse removeResult = await _repository.RemoveMaterialAsync(materialId);
+
+            if (!removeResult.IsSuccess)
+            {
+                return new MaterialServiceResponse
+                {
+                    Message = removeResult.Message,
+                    IsSuccess = false
+                };
+            }
+
+            NewMaterialDto returnDto = _mapper.Map<NewMaterialDto>(removeResult.Material);
+
+            return new MaterialServiceResponse
+            {
+                Message = removeResult.Message,
+                IsSuccess = true,
+                Material = returnDto
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete material from the database");
+
+            return new MaterialServiceResponse
+            {
+                Message = "An unknown error occurred while trying to delete material from the database",
+                IsSuccess = false
+            };
+        }
+    }
 }

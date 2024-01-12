@@ -18,13 +18,22 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="RequiredMaterialPath" xml:space="preserve">
-        <value>The 'MaterialPath' field is required</value>
+    <data name="RequiredDisciplineMaterialName" xml:space="preserve">
+        <value>The 'DisciplineMaterialName' field is required</value>
     </data>
-    <data name="MaterialTypeIdFieldName" xml:space="preserve">
-        <value>Material type</value>
+    <data name="DisciplineMaterialNameMaxLength" xml:space="preserve">
+        <value>The maximum length of the 'DisciplineMaterialName' field is 100 characters</value>
     </data>
-    <data name="RequiredMaterialTypeId" xml:space="preserve">
-        <value>The 'MaterialTypeId' field is required</value>
+    <data name="RequiredDisciplineMaterialDescription" xml:space="preserve">
+        <value>The 'DisciplineMaterialDescription' field is required</value>
+    </data>
+    <data name="DisciplineMaterialDescriptionMaxLength" xml:space="preserve">
+        <value>The maximum length of the 'DisciplineMaterialDescription' field is 5000 characters</value>
+    </data>
+    <data name="RequiredDisciplineMaterialType" xml:space="preserve">
+        <value>The 'DisciplineMaterialType' field is required</value>
+    </data>
+    <data name="DisciplineMaterialFieldName" xml:space="preserve">
+        <value>Discipline material type</value>
     </data>
 </root>

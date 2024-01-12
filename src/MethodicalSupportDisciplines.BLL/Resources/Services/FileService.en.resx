@@ -27,4 +27,13 @@
     <data name="Success" xml:space="preserve">
         <value>Material file successfully uploaded</value>
     </data>
+    <data name="RemoveFileNotFound" xml:space="preserve">
+        <value>Content file not found</value>
+    </data>
+    <data name="RemoveFileSuccess" xml:space="preserve">
+        <value>Material file successfully deleted</value>
+    </data>
+    <data name="RemoveFileUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to delete a material file</value>
+    </data>
 </root>

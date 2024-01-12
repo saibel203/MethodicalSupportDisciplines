@@ -26,6 +26,6 @@ public static class ViewHelper
 
     public static string GetDisciplineMaterialType(int disciplineMaterialType)
     {
-        return disciplineMaterialType == (int)DisciplineMaterialType.PracticeType ? "Практика" : "Лекція";
+        return disciplineMaterialType == (int)DisciplineMaterialTypes.PracticeType ? "Практика" : "Лекція";
     }
 }

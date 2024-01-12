@@ -8,4 +8,5 @@ public class UsersRepositoryResponse : BaseResponse
     public IReadOnlyList<TeacherUser>? TeacherUsers { get; set; } = new List<TeacherUser>();
     public IReadOnlyList<StudentUser>? StudentUsers { get; set; } = new List<StudentUser>();
     public GuestUser? GuestUser { get; set; }
+    public int TeacherUserId { get; set; }
 }

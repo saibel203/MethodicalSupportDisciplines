@@ -43,10 +43,12 @@
                 </a>
             </div>
             <div class="card-footer">
-                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate</p>
-                <a class="btn btn-danger btn-sm" 
-                   asp-controller="Teacher" asp-action="RemoveDiscipline" 
-                   asp-route-disciplineId="@discipline.DisciplineId">@ViewLocalization["DeleteDiscipline"]</a>
+                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate.ToString("MM/dd/yyyy")</p>
+                <a class="btn btn-danger btn-sm"
+                   asp-controller="Teacher" asp-action="RemoveDiscipline"
+                   asp-route-disciplineId="@discipline.DisciplineId">
+                    @ViewLocalization["DeleteDiscipline"]
+                </a>
             </div>
         </div>
     }
@@ -72,13 +74,13 @@
                         <div asp-validation-summary="All"></div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" asp-for="CreateDisciplineViewModel.DisciplineName" 
+                        <input class="form-control" asp-for="CreateDisciplineViewModel.DisciplineName"
                                placeholder="@ViewLocalization["DisciplineName"]">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" 
-                               asp-for="CreateDisciplineViewModel.DisciplineDescription" 
-                               placeholder="@ViewLocalization["DisciplineDescription"]">
+                        <textarea class="form-control"
+                                                                 asp-for="CreateDisciplineViewModel.DisciplineDescription"
+                                                                 placeholder="@ViewLocalization["DisciplineDescription"]"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">@ViewLocalization["SaveChanges"]</button>
                 </form>

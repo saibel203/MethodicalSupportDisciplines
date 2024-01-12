@@ -60,6 +60,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created date.
         /// </summary>
         internal static string CreatedDate {
@@ -78,11 +87,101 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download file.
+        /// </summary>
+        internal static string DownloadFile {
+            get {
+                return ResourceManager.GetString("DownloadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Books &amp; Files.
+        /// </summary>
+        internal static string FilesTitle {
+            get {
+                return ResourceManager.GetString("FilesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Links.
+        /// </summary>
+        internal static string LinksTitle {
+            get {
+                return ResourceManager.GetString("LinksTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material path.
         /// </summary>
         internal static string MaterialPath {
             get {
                 return ResourceManager.GetString("MaterialPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New discipline material.
+        /// </summary>
+        internal static string NewDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline material description.
+        /// </summary>
+        internal static string NewDisciplineMaterialPlaceholderDescription {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterialPlaceholderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline material name.
+        /// </summary>
+        internal static string NewDisciplineMaterialPlaceholderName {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterialPlaceholderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New material.
+        /// </summary>
+        internal static string NewMaterialDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("NewMaterialDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open link.
+        /// </summary>
+        internal static string OpenLink {
+            get {
+                return ResourceManager.GetString("OpenLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove discipline material.
+        /// </summary>
+        internal static string RemoveDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove material.
+        /// </summary>
+        internal static string RemoveMaterial {
+            get {
+                return ResourceManager.GetString("RemoveMaterial", resourceCulture);
             }
         }
         

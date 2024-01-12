@@ -2,6 +2,7 @@
 using MethodicalSupportDisciplines.Data.Interfaces.Learning;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Shared.Responses.Repositories.LearningRepositoriesResponses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
@@ -41,6 +42,44 @@ public class MaterialRepository : RepositoryBase, IMaterialRepository
             return new MaterialRepositoryResponse
             {
                 Message = _stringLocalization["MaterialCreatedUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<MaterialRepositoryResponse> RemoveMaterialAsync(int materialId)
+    {
+        try
+        {
+            Material? material = await Context.Set<Material>()
+                .FirstOrDefaultAsync(materialData => materialData.MaterialId == materialId);
+
+            if (material is null)
+            {
+                return new MaterialRepositoryResponse
+                {
+                    Message = _stringLocalization["RemoveMaterialNotFoundMaterial"],
+                    IsSuccess = false
+                };
+            }
+
+            Context.Materials.Remove(material);
+            await Context.SaveChangesAsync();
+
+            return new MaterialRepositoryResponse
+            {
+                Message = _stringLocalization["RemoveMaterialSuccess"],
+                IsSuccess = true,
+                Material = material
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to delete material from the database.");
+
+            return new MaterialRepositoryResponse
+            {
+                Message = _stringLocalization["RemoveMaterialUnknownError"],
                 IsSuccess = false
             };
         }

@@ -21,4 +21,7 @@
     <data name="CreateDisciplineError" xml:space="preserve">
         <value>The mistake of creating a discipline</value>
     </data>
+    <data name="SuccessUploadMaterial" xml:space="preserve">
+        <value>Material successfully uploaded</value>
+    </data>
 </root>

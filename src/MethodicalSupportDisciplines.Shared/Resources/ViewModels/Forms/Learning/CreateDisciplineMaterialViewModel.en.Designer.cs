@@ -61,29 +61,56 @@ namespace MethodicalSupportDisciplines.Shared.Resources.ViewModels.Forms.Learnin
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Material type.
+        ///   Looks up a localized string similar to The maximum length of the &apos;DisciplineMaterialDescription&apos; field is 5000 characters.
         /// </summary>
-        internal static string MaterialTypeIdFieldName {
+        internal static string DisciplineMaterialDescriptionMaxLength {
             get {
-                return ResourceManager.GetString("MaterialTypeIdFieldName", resourceCulture);
+                return ResourceManager.GetString("DisciplineMaterialDescriptionMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The &apos;MaterialPath&apos; field is required.
+        ///   Looks up a localized string similar to Discipline material type.
         /// </summary>
-        internal static string RequiredMaterialPath {
+        internal static string DisciplineMaterialFieldName {
             get {
-                return ResourceManager.GetString("RequiredMaterialPath", resourceCulture);
+                return ResourceManager.GetString("DisciplineMaterialFieldName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The &apos;MaterialTypeId&apos; field is required.
+        ///   Looks up a localized string similar to The maximum length of the &apos;DisciplineMaterialName&apos; field is 100 characters.
         /// </summary>
-        internal static string RequiredMaterialTypeId {
+        internal static string DisciplineMaterialNameMaxLength {
             get {
-                return ResourceManager.GetString("RequiredMaterialTypeId", resourceCulture);
+                return ResourceManager.GetString("DisciplineMaterialNameMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;DisciplineMaterialDescription&apos; field is required.
+        /// </summary>
+        internal static string RequiredDisciplineMaterialDescription {
+            get {
+                return ResourceManager.GetString("RequiredDisciplineMaterialDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;DisciplineMaterialName&apos; field is required.
+        /// </summary>
+        internal static string RequiredDisciplineMaterialName {
+            get {
+                return ResourceManager.GetString("RequiredDisciplineMaterialName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;DisciplineMaterialType&apos; field is required.
+        /// </summary>
+        internal static string RequiredDisciplineMaterialType {
+            get {
+                return ResourceManager.GetString("RequiredDisciplineMaterialType", resourceCulture);
             }
         }
     }

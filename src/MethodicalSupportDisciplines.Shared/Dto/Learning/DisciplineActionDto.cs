@@ -10,5 +10,5 @@ public class DisciplineActionDto
     public DateTime DisciplineCreatedDate { get; set; } = DateTime.Now;
     public TeacherUser Teacher { get; set; } = null!;
     public ICollection<DisciplineMaterialActionDto> DisciplineMaterials { get; set; } = new List<DisciplineMaterialActionDto>();
-    public ICollection<DisciplineGroupActionDto> Type { get; set; }
+    public ICollection<DisciplineGroupActionDto> DisciplineGroups { get; set; } = new List<DisciplineGroupActionDto>();
 }

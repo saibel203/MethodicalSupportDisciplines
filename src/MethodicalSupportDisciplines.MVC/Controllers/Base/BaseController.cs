@@ -5,6 +5,7 @@ using MethodicalSupportDisciplines.Shared.Responses;
 using MethodicalSupportDisciplines.Shared.ViewModels.Additional;
 using MethodicalSupportDisciplines.Shared.ViewModels.Forms.Learning;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace MethodicalSupportDisciplines.MVC.Controllers.Base;
 
@@ -33,8 +34,7 @@ public class BaseController(INotificationService notificationService) : Controll
         {
             if (settingsViewModel.PageCount == 0)
             {
-                NotificationService.CustomErrorMessage(
-                    "Записів за вашим записом не знайдено або щось там");
+                NotificationService.CustomErrorMessage("Записів не знайдено");
                 return View(settingsViewModel);
             }
 
@@ -68,7 +68,7 @@ public class BaseController(INotificationService notificationService) : Controll
             if (settingsViewModel.PageCount == 0)
             {
                 NotificationService.CustomErrorMessage(
-                    "Записів за вашим записом не знайдено або щось там");
+                    "Записів не знайдено");
                 return View(settingsViewModel);
             }
 

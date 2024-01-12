@@ -60,6 +60,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Закрити.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата створення.
         /// </summary>
         internal static string CreatedDate {
@@ -78,6 +87,33 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Завантажити файл.
+        /// </summary>
+        internal static string DownloadFile {
+            get {
+                return ResourceManager.GetString("DownloadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Книги та файли.
+        /// </summary>
+        internal static string FilesTitle {
+            get {
+                return ResourceManager.GetString("FilesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Посилання.
+        /// </summary>
+        internal static string LinksTitle {
+            get {
+                return ResourceManager.GetString("LinksTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вкажіть матеріал.
         /// </summary>
         internal static string MaterialPath {
@@ -87,7 +123,70 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Teacher {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Викладач.
+        ///   Looks up a localized string similar to Новий матеріал для дисципліни.
+        /// </summary>
+        internal static string NewDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Опис матеріалу.
+        /// </summary>
+        internal static string NewDisciplineMaterialPlaceholderDescription {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterialPlaceholderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назва матеріалу.
+        /// </summary>
+        internal static string NewDisciplineMaterialPlaceholderName {
+            get {
+                return ResourceManager.GetString("NewDisciplineMaterialPlaceholderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавити матеріал.
+        /// </summary>
+        internal static string NewMaterialDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("NewMaterialDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Відкрити посилання.
+        /// </summary>
+        internal static string OpenLink {
+            get {
+                return ResourceManager.GetString("OpenLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалити матеріал.
+        /// </summary>
+        internal static string RemoveDisciplineMaterial {
+            get {
+                return ResourceManager.GetString("RemoveDisciplineMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видалити матеріал.
+        /// </summary>
+        internal static string RemoveMaterial {
+            get {
+                return ResourceManager.GetString("RemoveMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вчитель.
         /// </summary>
         internal static string Teacher {
             get {

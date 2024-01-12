@@ -78,11 +78,38 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User ID successfully received.
+        /// </summary>
+        internal static string SuccessGetTeacherUserId {
+            get {
+                return ResourceManager.GetString("SuccessGetTeacherUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user with the specified userId was not found, contact the site administration.
+        /// </summary>
+        internal static string TeacherUserNotFound {
+            get {
+                return ResourceManager.GetString("TeacherUserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unknown error occurred while trying to delete a user from the database.
         /// </summary>
         internal static string UnknownError {
             get {
                 return ResourceManager.GetString("UnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve a user id.
+        /// </summary>
+        internal static string UnknownErrorGetTeacherUser {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetTeacherUser", resourceCulture);
             }
         }
         

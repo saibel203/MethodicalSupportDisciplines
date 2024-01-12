@@ -91,6 +91,12 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
             Discipline? discipline = await Context.Set<Discipline>()
                 .Include(disciplineData => disciplineData.Teacher)
                 .Include(disciplineData => disciplineData.DisciplineMaterials)
+                .ThenInclude(disciplineData => disciplineData.Materials)
+                .ThenInclude(disciplineData => disciplineData.Material)
+                .Include(disciplineData => disciplineData.DisciplineGroups)
+                .ThenInclude(groupData => groupData.Group)
+                .ThenInclude(groupData => groupData.StudentUsers)
+                .AsSplitQuery()
                 .FirstOrDefaultAsync(disciplineData => disciplineData.DisciplineId == disciplineId);
 
             if (discipline is null)

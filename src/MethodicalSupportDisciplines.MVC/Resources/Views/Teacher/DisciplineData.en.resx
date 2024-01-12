@@ -33,4 +33,37 @@
     <data name="CreateMaterial" xml:space="preserve">
         <value>Create</value>
     </data>
+    <data name="LinksTitle" xml:space="preserve">
+        <value>Links</value>
+    </data>
+    <data name="FilesTitle" xml:space="preserve">
+        <value>Books &amp; Files</value>
+    </data>
+    <data name="DownloadFile" xml:space="preserve">
+        <value>Download file</value>
+    </data>
+    <data name="OpenLink" xml:space="preserve">
+        <value>Open link</value>
+    </data>
+    <data name="RemoveMaterial" xml:space="preserve">
+        <value>Remove material</value>
+    </data>
+    <data name="NewDisciplineMaterial" xml:space="preserve">
+        <value>New discipline material</value>
+    </data>
+    <data name="NewDisciplineMaterialPlaceholderName" xml:space="preserve">
+        <value>Discipline material name</value>
+    </data>
+    <data name="NewDisciplineMaterialPlaceholderDescription" xml:space="preserve">
+        <value>Discipline material description</value>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+    <data name="NewMaterialDisciplineMaterial" xml:space="preserve">
+        <value>New material</value>
+    </data>
+    <data name="RemoveDisciplineMaterial" xml:space="preserve">
+        <value>Remove discipline material</value>
+    </data>
 </root>

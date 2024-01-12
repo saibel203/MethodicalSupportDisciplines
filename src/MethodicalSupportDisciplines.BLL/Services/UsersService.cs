@@ -258,22 +258,32 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
     {
         try
         {
-            var test = await _repository.GetTeacherUserByApplicationUserIdAsync(userId);
+            UsersRepositoryResponse getUserIdResult = 
+                await _repository.GetTeacherUserByApplicationUserIdAsync(userId);
+
+            if (!getUserIdResult.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getUserIdResult.Message,
+                    IsSuccess = false
+                };
+            }
 
             return new UsersServiceResponse
             {
-                Message = "",
+                Message = getUserIdResult.Message,
                 IsSuccess = true,
-                TeacherUserId = test
+                TeacherUserId = getUserIdResult.TeacherUserId
             };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve a user id.");
 
             return new UsersServiceResponse
             {
-                Message = "",
+                Message = "An unknown error occurred while trying to retrieve a user id",
                 IsSuccess = false
             };
         }

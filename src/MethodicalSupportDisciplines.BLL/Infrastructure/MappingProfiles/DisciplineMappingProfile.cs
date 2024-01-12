@@ -11,11 +11,13 @@ public class DisciplineMappingProfile : Profile
 {
     public DisciplineMappingProfile()
     {
-        CreateMap<DisciplineMaterial, DisciplineMaterialActionDto>();
+        CreateMap<DisciplineMaterial, DisciplineMaterialActionDto>().ReverseMap();
         CreateMap<Discipline, DisciplineActionDto>();
         CreateMap<DisciplineServiceResponse, DisciplinesViewModel>();
         
         CreateMap<NewDisciplineDto, Discipline>();
         CreateMap<CreateDisciplineViewModel, NewDisciplineDto>();
+
+        CreateMap<DisciplineGroupActionDto, DisciplineGroup>().ReverseMap();
     }   
 }

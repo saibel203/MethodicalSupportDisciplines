@@ -77,5 +77,32 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
                 return ResourceManager.GetString("MaterialCreatedUnknownError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Material with the specified ID not found.
+        /// </summary>
+        internal static string RemoveMaterialNotFoundMaterial {
+            get {
+                return ResourceManager.GetString("RemoveMaterialNotFoundMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Material successfully removed.
+        /// </summary>
+        internal static string RemoveMaterialSuccess {
+            get {
+                return ResourceManager.GetString("RemoveMaterialSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to delete material from the database.
+        /// </summary>
+        internal static string RemoveMaterialUnknownError {
+            get {
+                return ResourceManager.GetString("RemoveMaterialUnknownError", resourceCulture);
+            }
+        }
     }
 }

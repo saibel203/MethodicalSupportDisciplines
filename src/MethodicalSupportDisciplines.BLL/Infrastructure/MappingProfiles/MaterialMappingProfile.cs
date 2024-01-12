@@ -9,7 +9,7 @@ public class MaterialMappingProfile : Profile
 {
     public MaterialMappingProfile()
     {
-        CreateMap<NewMaterialDto, Material>();
-        CreateMap<CreateDisciplineMaterialViewModel, NewMaterialDto>();
+        CreateMap<NewMaterialDto, Material>().ReverseMap();
+        CreateMap<CreateDisciplineMaterialSubMaterialViewModel, NewMaterialDto>();
     }
 }

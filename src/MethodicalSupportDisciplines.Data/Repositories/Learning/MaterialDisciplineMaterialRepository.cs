@@ -30,7 +30,7 @@ public class MaterialDisciplineMaterialRepository : RepositoryBase, IMaterialDis
             
             return new MaterialDisciplineMaterialRepositoryResponse
             {
-                Message = "",
+                Message = _stringLocalization["SuccessAddRelationship"],
                 IsSuccess = true
             };
         }
@@ -40,7 +40,7 @@ public class MaterialDisciplineMaterialRepository : RepositoryBase, IMaterialDis
 
             return new MaterialDisciplineMaterialRepositoryResponse
             {
-                Message = "",
+                Message = _stringLocalization["UnknownErrorAddRelationship"],
                 IsSuccess = false
             };
         }

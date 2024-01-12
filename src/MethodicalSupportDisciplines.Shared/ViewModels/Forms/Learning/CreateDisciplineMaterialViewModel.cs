@@ -1,19 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace MethodicalSupportDisciplines.Shared.ViewModels.Forms.Learning;
 
 public class CreateDisciplineMaterialViewModel
 {
-    [Required(ErrorMessage = "RequiredMaterialTypeId")]
-    [Display(Name = "MaterialTypeIdFieldName")]
-    public int MaterialTypeId { get; set; }
-
-    [Required(ErrorMessage = "RequiredMaterialPath")]
-    public string MaterialPath { get; set; } = string.Empty;
-
-    public int DisciplineId { get; set; }
-    public int DisciplineMaterialId { get; set; }
+    [Required(ErrorMessage = "RequiredDisciplineMaterialName")]
+    [MaxLength(100, ErrorMessage = "DisciplineMaterialNameMaxLength")]
+    public string DisciplineMaterialName { get; set; } = string.Empty;
     
-    public IFormFile? FormFile { get; set; }
+    [Required(ErrorMessage = "RequiredDisciplineMaterialDescription")]
+    [MaxLength(5000, ErrorMessage = "DisciplineMaterialDescriptionMaxLength")]
+    public string DisciplineMaterialDescription { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "RequiredDisciplineMaterialType")]
+    [Display(Name = "DisciplineMaterialFieldName")]
+    public int DisciplineMaterialTypeId { get; set; }
+    
+    public int DisciplineId { get; set; }
 }

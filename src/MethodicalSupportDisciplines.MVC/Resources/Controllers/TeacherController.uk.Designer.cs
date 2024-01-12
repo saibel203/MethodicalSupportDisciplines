@@ -67,5 +67,14 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Controllers {
                 return ResourceManager.GetString("CreateDisciplineError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Матеріал успішно завантажено.
+        /// </summary>
+        internal static string SuccessUploadMaterial {
+            get {
+                return ResourceManager.GetString("SuccessUploadMaterial", resourceCulture);
+            }
+        }
     }
 }

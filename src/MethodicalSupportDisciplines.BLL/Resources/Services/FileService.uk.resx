@@ -27,4 +27,13 @@
     <data name="Success" xml:space="preserve">
         <value>Файл матеріалу успішно завантажено</value>
     </data>
+    <data name="RemoveFileUnknownError" xml:space="preserve">
+        <value>Під час спроби видалити файл матеріалів, виникла невідома помилка</value>
+    </data>
+    <data name="RemoveFileSuccess" xml:space="preserve">
+        <value>Файл матеріалу успішно видалено</value>
+    </data>
+    <data name="RemoveFileNotFound" xml:space="preserve">
+        <value>Файл матеріалу не знайдено</value>
+    </data>
 </root>

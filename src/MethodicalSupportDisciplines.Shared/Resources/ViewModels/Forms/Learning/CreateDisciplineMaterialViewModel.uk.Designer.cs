@@ -61,29 +61,56 @@ namespace MethodicalSupportDisciplines.Shared.Resources.ViewModels.Forms.Learnin
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Максимальна довжина поля &apos;DisciplineMaterialDescription&apos; - 5000 символів.
+        /// </summary>
+        internal static string DisciplineMaterialDescriptionMaxLength {
+            get {
+                return ResourceManager.GetString("DisciplineMaterialDescriptionMaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Тип матеріалу.
         /// </summary>
-        internal static string MaterialTypeIdFieldName {
+        internal static string DisciplineMaterialFieldName {
             get {
-                return ResourceManager.GetString("MaterialTypeIdFieldName", resourceCulture);
+                return ResourceManager.GetString("DisciplineMaterialFieldName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поле &apos;MaterialPath&apos; обов&apos;язкове.
+        ///   Looks up a localized string similar to Максимальна довжина поля &apos;DisciplineMaterialName&apos; - 100 символів.
         /// </summary>
-        internal static string RequiredMaterialPath {
+        internal static string DisciplineMaterialNameMaxLength {
             get {
-                return ResourceManager.GetString("RequiredMaterialPath", resourceCulture);
+                return ResourceManager.GetString("DisciplineMaterialNameMaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поле &apos;MaterialTypeId&apos; обов&apos;язкове.
+        ///   Looks up a localized string similar to Поле &apos;DisciplineMaterialDescription&apos; обов&apos;язкове.
         /// </summary>
-        internal static string RequiredMaterialTypeId {
+        internal static string RequiredDisciplineMaterialDescription {
             get {
-                return ResourceManager.GetString("RequiredMaterialTypeId", resourceCulture);
+                return ResourceManager.GetString("RequiredDisciplineMaterialDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле &apos;DisciplineMaterialName&apos; обов&apos;язкове.
+        /// </summary>
+        internal static string RequiredDisciplineMaterialName {
+            get {
+                return ResourceManager.GetString("RequiredDisciplineMaterialName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле &apos;DisciplineMaterialType&apos; обов&apos;язкове.
+        /// </summary>
+        internal static string RequiredDisciplineMaterialType {
+            get {
+                return ResourceManager.GetString("RequiredDisciplineMaterialType", resourceCulture);
             }
         }
     }

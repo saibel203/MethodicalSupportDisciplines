@@ -77,5 +77,32 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
                 return ResourceManager.GetString("MaterialCreatedUnknownError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Матеріал з заданим ID не знайдено.
+        /// </summary>
+        internal static string RemoveMaterialNotFoundMaterial {
+            get {
+                return ResourceManager.GetString("RemoveMaterialNotFoundMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Матеріал успішно видалено.
+        /// </summary>
+        internal static string RemoveMaterialSuccess {
+            get {
+                return ResourceManager.GetString("RemoveMaterialSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби видалини матеріал з бази даних, виникла невідома помилка.
+        /// </summary>
+        internal static string RemoveMaterialUnknownError {
+            get {
+                return ResourceManager.GetString("RemoveMaterialUnknownError", resourceCulture);
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ using MethodicalSupportDisciplines.Shared.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using DisciplineMaterialType = MethodicalSupportDisciplines.Core.Entities.AdditionalLearning.DisciplineMaterialType;
 
 namespace MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 
@@ -1355,6 +1356,19 @@ public class SeedDataDbContext
             await _dataDbContext.SaveChangesAsync();
         }
         
+        /* ====================== SEED DISCIPLINE MATERIAL TYPES RELATIONSHIP ====================== */
+        DisciplineMaterialType[] disciplineMaterialTypes = 
+        [
+            new DisciplineMaterialType { DisciplineMaterialTypeName = "Лекція" },    
+            new DisciplineMaterialType { DisciplineMaterialTypeName = "Практика" },    
+        ];
+
+        if (!await _dataDbContext.DisciplineMaterialTypes.AnyAsync())
+        {
+            await _dataDbContext.DisciplineMaterialTypes.AddRangeAsync(disciplineMaterialTypes);
+            await _dataDbContext.SaveChangesAsync();
+        }
+        
         /* ====================== SEED DISCIPLINE MATERIALS RELATIONSHIP ====================== */
         DisciplineMaterial[] disciplineMaterials =
         [
@@ -1363,56 +1377,56 @@ public class SeedDataDbContext
                 DisciplineMaterialName = "Лекція #1",
                 DisciplineMaterialDescription = "Введення в HTML та HTML5",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.LectureType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.LectureType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Лекція #2",
                 DisciplineMaterialDescription = "Основи CSS та CSS3",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.LectureType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.LectureType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Лекція #3",
                 DisciplineMaterialDescription = "Верстка та розмітка веб-сторінок",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.LectureType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.LectureType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Лекція #4",
                 DisciplineMaterialDescription = "Основи JavaScript",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.LectureType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.LectureType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Лекція #5",
                 DisciplineMaterialDescription = "Робота з DOM (Document Object Model)",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.LectureType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.LectureType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Практичне завдання #1",
                 DisciplineMaterialDescription = "Створити просту HTML/CSS верстку single-page, макет додано",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.PracticeType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.PracticeType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Практичне завдання #2",
                 DisciplineMaterialDescription = "Добавити модальне вікно, яке буде відкриватися при натисканні",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.PracticeType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.PracticeType
             },
             new DisciplineMaterial
             {
                 DisciplineMaterialName = "Практичне завдання #3",
                 DisciplineMaterialDescription = "Зробити slide-bar на головній сторінці",
                 DisciplineId = 2,
-                DisciplineMaterialType = (int)DisciplineMaterialType.PracticeType
+                DisciplineMaterialTypeId = (int)DisciplineMaterialTypes.PracticeType
             }
         ];
 

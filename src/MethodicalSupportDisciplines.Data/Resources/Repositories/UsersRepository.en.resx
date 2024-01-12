@@ -30,4 +30,13 @@
     <data name="GetUserSuccess" xml:space="preserve">
         <value>User successfully received</value>
     </data>
+    <data name="UnknownErrorGetTeacherUser" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve a user id</value>
+    </data>
+    <data name="SuccessGetTeacherUserId" xml:space="preserve">
+        <value>User ID successfully received</value>
+    </data>
+    <data name="TeacherUserNotFound" xml:space="preserve">
+        <value>The user with the specified userId was not found, contact the site administration</value>
+    </data>
 </root>

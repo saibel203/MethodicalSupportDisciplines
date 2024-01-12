@@ -21,4 +21,7 @@
     <data name="CreateDisciplineError" xml:space="preserve">
         <value>Помилка створення дисципліни</value>
     </data>
+    <data name="SuccessUploadMaterial" xml:space="preserve">
+        <value>Матеріал успішно завантажено</value>
+    </data>
 </root>

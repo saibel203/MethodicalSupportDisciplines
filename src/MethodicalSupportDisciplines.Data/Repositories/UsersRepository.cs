@@ -200,20 +200,38 @@ public class UsersRepository : RepositoryBase, IUsersRepository
         }
     }
     
-    public async Task<int> GetTeacherUserByApplicationUserIdAsync(string userId)
+    public async Task<UsersRepositoryResponse> GetTeacherUserByApplicationUserIdAsync(string userId)
     {
         try
         {
-            var test = await Context.Set<TeacherUser>()
+            TeacherUser? teacherUser = await Context.Set<TeacherUser>()
                 .FirstOrDefaultAsync(x => x.ApplicationUserId == userId);
 
-            return test!.TeacherUserId;
+            if (teacherUser is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["TeacherUserNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetTeacherUserId"],
+                IsSuccess = true,
+                TeacherUserId = teacherUser.TeacherUserId
+            };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "");
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve a user id.");
 
-            return 0;
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetTeacherUser"],
+                IsSuccess = false
+            };
         }
     }
 

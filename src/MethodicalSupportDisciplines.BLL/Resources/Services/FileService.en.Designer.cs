@@ -69,6 +69,33 @@ namespace MethodicalSupportDisciplines.BLL.Resources.Services {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content file not found.
+        /// </summary>
+        internal static string RemoveFileNotFound {
+            get {
+                return ResourceManager.GetString("RemoveFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Material file successfully deleted.
+        /// </summary>
+        internal static string RemoveFileSuccess {
+            get {
+                return ResourceManager.GetString("RemoveFileSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to delete a material file.
+        /// </summary>
+        internal static string RemoveFileUnknownError {
+            get {
+                return ResourceManager.GetString("RemoveFileUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material file successfully uploaded.
         /// </summary>
         internal static string Success {

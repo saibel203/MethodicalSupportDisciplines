@@ -15,13 +15,9 @@ for (let i: number = 0; i < pathFields.length; i++) {
         const selectValue = selectField[i].value;
 
         if (selectValue === hrefValue) {
-            // @ts-ignore
-            //pathFields[i].type = 'text';
             filePathInput[i].setAttribute('style', 'display: block');
             fileFileInput[i].setAttribute('style', 'display: none');
         } else if (selectValue === bookValue || selectValue === fileValue) {
-            // @ts-ignore
-            //pathFields[i].type = 'file';
             fileFileInput[i].setAttribute('style', 'display: block');
             filePathInput[i].setAttribute('style', 'display: none');
         } else {

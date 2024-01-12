@@ -97,7 +97,10 @@ public static class ConfigureServices
         services.AddTransient<IMaterialTypeRepository, MaterialTypeRepository>();
         services.AddTransient<IMaterialRepository, MaterialRepository>();
         services.AddTransient<IMaterialDisciplineMaterialRepository, MaterialDisciplineMaterialRepository>();
-        services.AddTransient<IFileService, FileService>();
+        services.AddTransient<IDisciplineMaterialRepository, DisciplineMaterialRepository>();
+        services.AddTransient<IDisciplineMaterialTypeRepository, DisciplineMaterialTypeRepository>();
+        services.AddTransient<IDisciplineGroupRepository, DisciplineGroupRepository>();
+        
 
         /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
@@ -114,6 +117,10 @@ public static class ConfigureServices
         services.AddTransient<IMaterialTypeService, MaterialTypeService>();
         services.AddTransient<IMaterialService, MaterialService>();
         services.AddTransient<IMaterialDisciplineMaterialService, MaterialDisciplineMaterialService>();
+        services.AddTransient<IFileService, FileService>();
+        services.AddTransient<IDisciplineMaterialService, DisciplineMaterialService>();
+        services.AddTransient<IDisciplineMaterialTypeService, DisciplineMaterialTypeService>();
+        services.AddTransient<IDisciplineGroupService, DisciplineGroupService>();
 
         /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");

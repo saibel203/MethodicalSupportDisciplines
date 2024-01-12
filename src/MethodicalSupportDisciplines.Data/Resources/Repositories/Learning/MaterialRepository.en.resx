@@ -24,4 +24,13 @@
     <data name="MaterialCreatedSuccess" xml:space="preserve">
         <value>Material successfully created</value>
     </data>
+    <data name="RemoveMaterialUnknownError" xml:space="preserve">
+        <value>An unknown error occurred while trying to delete material from the database</value>
+    </data>
+    <data name="RemoveMaterialSuccess" xml:space="preserve">
+        <value>Material successfully removed</value>
+    </data>
+    <data name="RemoveMaterialNotFoundMaterial" xml:space="preserve">
+        <value>Material with the specified ID not found</value>
+    </data>
 </root>

@@ -6,9 +6,6 @@ using MethodicalSupportDisciplines.MVC.Extensions;
 using Microsoft.Extensions.Options;
 
 /*                                                  TODOOOOOOOOOOOOOOO
- *  Base controller localization
- *  
- *
  *  
  *
  *

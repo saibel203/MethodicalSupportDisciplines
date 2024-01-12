@@ -67,6 +67,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateDisciplineViewModel.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialSubMaterialViewModel.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineMaterialViewModel.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialSubMaterialViewModel.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CreateDisciplineMaterialViewModel.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CreateDisciplineMaterialViewModel.en.Designer.cs</LastGenOutput>
@@ -147,6 +155,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CreateDisciplineViewModel.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialSubMaterialViewModel.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineMaterialSubMaterialViewModel.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialSubMaterialViewModel.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateDisciplineMaterialSubMaterialViewModel.uk.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\ViewModels\Forms\Learning\CreateDisciplineMaterialViewModel.en.Designer.cs">
       <DesignTime>True</DesignTime>

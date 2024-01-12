@@ -18,13 +18,22 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="RequiredMaterialTypeId" xml:space="preserve">
-        <value>Поле 'MaterialTypeId' обов'язкове</value>
+    <data name="RequiredDisciplineMaterialName" xml:space="preserve">
+        <value>Поле 'DisciplineMaterialName' обов'язкове</value>
     </data>
-    <data name="RequiredMaterialPath" xml:space="preserve">
-        <value>Поле 'MaterialPath' обов'язкове</value>
+    <data name="RequiredDisciplineMaterialDescription" xml:space="preserve">
+        <value>Поле 'DisciplineMaterialDescription' обов'язкове</value>
     </data>
-    <data name="MaterialTypeIdFieldName" xml:space="preserve">
+    <data name="RequiredDisciplineMaterialType" xml:space="preserve">
+        <value>Поле 'DisciplineMaterialType' обов'язкове</value>
+    </data>
+    <data name="DisciplineMaterialNameMaxLength" xml:space="preserve">
+        <value>Максимальна довжина поля 'DisciplineMaterialName' - 100 символів</value>
+    </data>
+    <data name="DisciplineMaterialDescriptionMaxLength" xml:space="preserve">
+        <value>Максимальна довжина поля 'DisciplineMaterialDescription' - 5000 символів</value>
+    </data>
+    <data name="DisciplineMaterialFieldName" xml:space="preserve">
         <value>Тип матеріалу</value>
     </data>
 </root>
