@@ -69,6 +69,15 @@ namespace MethodicalSupportDisciplines.MVC.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disciplines.
+        /// </summary>
+        internal static string Disciplines {
+            get {
+                return ResourceManager.GetString("Disciplines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guests.
         /// </summary>
         internal static string GuestUsers {

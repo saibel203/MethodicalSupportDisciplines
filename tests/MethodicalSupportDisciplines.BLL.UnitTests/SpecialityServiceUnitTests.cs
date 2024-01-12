@@ -33,10 +33,10 @@ public class SpecialityServiceUnitTests
     public async Task GetAllSpecialitiesAsync_NotEmptySpecialitiesList_ReturnSuccessResponse()
     {
         // Arrange
-        IReadOnlyList<Specialty> expectedGroupList = new List<Specialty>
+        IReadOnlyList<Speciality> expectedGroupList = new List<Speciality>
         {
-            It.IsAny<Specialty>(),
-            It.IsAny<Specialty>()
+            It.IsAny<Speciality>(),
+            It.IsAny<Speciality>()
         };
 
         SpecialityRepositoryResponse expectedResponse = new SpecialityRepositoryResponse

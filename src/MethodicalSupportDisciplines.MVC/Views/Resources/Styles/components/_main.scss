@@ -66,3 +66,44 @@ body {
     }
   }
 }
+
+.cards-container {
+  .card {
+    margin-bottom: 20px;
+    
+    .card-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.search-container {
+  margin: 100px auto 20px auto;
+}
+
+.discipline-data-container {
+  border: 1px solid #d4d4d4;
+  padding: 10px 20px;
+  margin-top: 110px;
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.materials-container {
+  margin-top: 20px !important;
+}

@@ -6,6 +6,8 @@ public class Discipline
 {
     public int DisciplineId { get; set; }
     public string DisciplineName { get; set; } = string.Empty;
+    public string DisciplineDescription { get; set; } = string.Empty;
+    public DateTime DisciplineCreatedDate { get; set; } = DateTime.Now;
 
     public int TeacherId { get; set; }
     public TeacherUser Teacher { get; set; } = null!;

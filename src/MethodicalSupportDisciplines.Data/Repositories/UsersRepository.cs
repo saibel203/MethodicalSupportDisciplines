@@ -199,6 +199,41 @@ public class UsersRepository : RepositoryBase, IUsersRepository
             };
         }
     }
+    
+    public async Task<UsersRepositoryResponse> GetTeacherUserByApplicationUserIdAsync(string userId)
+    {
+        try
+        {
+            TeacherUser? teacherUser = await Context.Set<TeacherUser>()
+                .FirstOrDefaultAsync(x => x.ApplicationUserId == userId);
+
+            if (teacherUser is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["TeacherUserNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetTeacherUserId"],
+                IsSuccess = true,
+                TeacherUserId = teacherUser.TeacherUserId
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve a user id.");
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetTeacherUser"],
+                IsSuccess = false
+            };
+        }
+    }
 
     public async Task<UsersRepositoryResponse> RemoveTeacherUserAsync(int userId)
     {
@@ -258,7 +293,7 @@ public class UsersRepository : RepositoryBase, IUsersRepository
                 .Include(studentUserData => studentUserData.FormatLearning)
                 .Include(studentUserData => studentUserData.LearningStatus)
                 .Include(studentUserData => studentUserData.Faculty)
-                .Include(studentUserData => studentUserData.Specialty)
+                .Include(studentUserData => studentUserData.Speciality)
                 .Include(studentUserData => studentUserData.Group)
                 .OrderByDescending(studentUserData => studentUserData.StudentUserId)
                 .ToListAsync();

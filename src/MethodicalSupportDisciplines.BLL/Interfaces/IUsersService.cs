@@ -10,6 +10,7 @@ public interface IUsersService
     Task<UsersServiceResponse> RemoveGuestUserAsync(int userId);
     Task<UsersServiceResponse> RemoveGuestUserWithoutApplicationUserAsync(int userId);
     Task<UsersServiceResponse> GetTeacherUsersAsync(QueryParameters queryParameters);
+    Task<UsersServiceResponse> GetTeacherUserByApplicationUserIdAsync(string userId);
     Task<UsersServiceResponse> RemoveTeacherUserAsync(int userId);
     Task<UsersServiceResponse> GetStudentUsersAsync(QueryParameters queryParameters);
     Task<UsersServiceResponse> RemoveStudentUserAsync(int userId);

@@ -46,10 +46,14 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
                 filteredGuestUsers = filteredGuestUsers
                     .Where(guestUserData =>
                         guestUserData.ApplicationUser != null &&
-                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!) ||
-                         guestUserData.FirstName.Contains(queryParameters.SearchString) ||
-                         guestUserData.LastName.Contains(queryParameters.SearchString) ||
-                         guestUserData.Patronymic.Contains(queryParameters.SearchString)))
+                        (guestUserData.ApplicationUser.UserName!.Contains(queryParameters.SearchString!,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.FirstName.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.LastName.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase) ||
+                         guestUserData.Patronymic.Contains(queryParameters.SearchString,
+                             StringComparison.CurrentCultureIgnoreCase)))
                     .ToList();
             }
 
@@ -245,6 +249,41 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             return new UsersServiceResponse
             {
                 Message = "An unknown error occurred while trying to get teacher users",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<UsersServiceResponse> GetTeacherUserByApplicationUserIdAsync(string userId)
+    {
+        try
+        {
+            UsersRepositoryResponse getUserIdResult = 
+                await _repository.GetTeacherUserByApplicationUserIdAsync(userId);
+
+            if (!getUserIdResult.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getUserIdResult.Message,
+                    IsSuccess = false
+                };
+            }
+
+            return new UsersServiceResponse
+            {
+                Message = getUserIdResult.Message,
+                IsSuccess = true,
+                TeacherUserId = getUserIdResult.TeacherUserId
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve a user id.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to retrieve a user id",
                 IsSuccess = false
             };
         }

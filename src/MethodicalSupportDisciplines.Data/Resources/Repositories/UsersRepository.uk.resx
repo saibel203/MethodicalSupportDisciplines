@@ -30,4 +30,13 @@
     <data name="GetUserSuccess" xml:space="preserve">
         <value>Користувача успішно отримано</value>
     </data>
+    <data name="UnknownErrorGetTeacherUser" xml:space="preserve">
+        <value>Під час спроби отримати id користувача, виникла невідома помилка</value>
+    </data>
+    <data name="SuccessGetTeacherUserId" xml:space="preserve">
+        <value>ID користувача успішно отримано</value>
+    </data>
+    <data name="TeacherUserNotFound" xml:space="preserve">
+        <value>Користувача, з заданим userId не знайдено, зверніться до адміністрації сайту</value>
+    </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using MethodicalSupportDisciplines.Shared.Constants
 @addTagHelper *, MethodicalSupportDisciplines.MVC
 
 @{
@@ -29,7 +30,7 @@
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a asp-controller="Home" asp-action="Index" class="nav-link" is-active-header-route>@ViewLocalization["Home"]</a>
                                 </li>
-                                @if (User.IsInRole("admin"))
+                                @if (User.IsInRole(ApplicationRoles.AdminRole))
                                 {
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a asp-controller="Admin" asp-action="GuestUsers" class="nav-link" is-active-header-route>@ViewLocalization["GuestUsers"]</a>
@@ -39,6 +40,15 @@
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a asp-controller="Admin" asp-action="StudentUsers" class="nav-link" is-active-header-route>@ViewLocalization["StudentUsers"]</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a asp-controller="Admin" asp-action="Disciplines" class="nav-link" is-active-header-route>@ViewLocalization["Disciplines"]</a>
+                                    </li>
+                                }
+                                @if (User.IsInRole(ApplicationRoles.TeacherRole))
+                                {
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a asp-controller="Teacher" asp-action="Disciplines" class="nav-link" is-active-header-route>@ViewLocalization["Disciplines"]</a>
                                     </li>
                                 }
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">

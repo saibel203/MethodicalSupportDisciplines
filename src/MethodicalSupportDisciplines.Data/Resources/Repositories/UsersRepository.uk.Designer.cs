@@ -78,11 +78,38 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID користувача успішно отримано.
+        /// </summary>
+        internal static string SuccessGetTeacherUserId {
+            get {
+                return ResourceManager.GetString("SuccessGetTeacherUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Користувача, з заданим userId не знайдено, зверніться до адміністрації сайту.
+        /// </summary>
+        internal static string TeacherUserNotFound {
+            get {
+                return ResourceManager.GetString("TeacherUserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Під час спроби видалити користувача виникла невідома помилка.
         /// </summary>
         internal static string UnknownError {
             get {
                 return ResourceManager.GetString("UnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати id користувача, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetTeacherUser {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetTeacherUser", resourceCulture);
             }
         }
         

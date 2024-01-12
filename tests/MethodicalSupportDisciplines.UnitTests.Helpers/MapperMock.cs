@@ -22,10 +22,16 @@ public static class MapperMock
         return new MapperConfiguration(mapperConfig =>
         {
             mapperConfig.AddProfile(new AuthAutomapperProfile());
+            mapperConfig.AddProfile(new DisciplineMappingProfile());
+            mapperConfig.AddProfile(new DisciplineMaterialMappingProfile());
+            mapperConfig.AddProfile(new DisciplineMaterialTypeMappingProfile());
             mapperConfig.AddProfile(new FacultyMappingProfile());
             mapperConfig.AddProfile(new FormatLearningMappingProfile());
             mapperConfig.AddProfile(new GroupMappingProfile());
             mapperConfig.AddProfile(new LearningStatusMappingProfile());
+            mapperConfig.AddProfile(new MaterialDisciplineMaterialMappingProfile());
+            mapperConfig.AddProfile(new MaterialMappingProfile());
+            mapperConfig.AddProfile(new MaterialTypeMappingProfile());
             mapperConfig.AddProfile(new QualificationsMappingProfile());
             mapperConfig.AddProfile(new SpecialtyMappingProfile());
             mapperConfig.AddProfile(new UsersAutomapperProfile());

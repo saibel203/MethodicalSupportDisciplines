@@ -1,0 +1,3 @@
+﻿namespace MethodicalSupportDisciplines.Shared.Responses.Services.LearningServicesResponses;
+
+public class DisciplineGroupServiceResponse : BaseResponse;

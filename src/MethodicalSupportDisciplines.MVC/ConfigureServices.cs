@@ -4,14 +4,18 @@ using MethodicalSupportDisciplines.BLL.Infrastructure.ErrorDescribers;
 using MethodicalSupportDisciplines.BLL.Infrastructure.MappingProfiles;
 using MethodicalSupportDisciplines.BLL.Interfaces;
 using MethodicalSupportDisciplines.BLL.Interfaces.Additional;
+using MethodicalSupportDisciplines.BLL.Interfaces.Learning;
 using MethodicalSupportDisciplines.Core.Models.Identity;
 using MethodicalSupportDisciplines.BLL.Services;
 using MethodicalSupportDisciplines.BLL.Services.Additional;
+using MethodicalSupportDisciplines.BLL.Services.Learning;
 using MethodicalSupportDisciplines.Core.IOptions;
 using MethodicalSupportDisciplines.Data.Interfaces;
 using MethodicalSupportDisciplines.Data.Interfaces.Additional;
+using MethodicalSupportDisciplines.Data.Interfaces.Learning;
 using MethodicalSupportDisciplines.Data.Repositories;
 using MethodicalSupportDisciplines.Data.Repositories.Additional;
+using MethodicalSupportDisciplines.Data.Repositories.Learning;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.Infrastructure.Utilities;
@@ -23,19 +27,21 @@ namespace MethodicalSupportDisciplines.MVC;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddBasicsWebServices(this IServiceCollection services, 
+    public static IServiceCollection AddBasicsWebServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         PowerShellTerminal powerShell = new PowerShellTerminal();
         powerShell.RunShellCommand("gulp watch-sass");
         powerShell.RunShellCommand("gulp watch-typescript");
-        
+
         services.AddHttpContextAccessor();
 
         /* ------------------IDENTITY AUTHENTICATION SETTINGS------------------ */
         services.AddIdentity<ApplicationUser, ApplicationRole>(identityOptions =>
             {
-                identityOptions.Password.RequiredLength = 6;
+                const int passwordLength = 6;
+
+                identityOptions.Password.RequiredLength = passwordLength;
                 identityOptions.Password.RequireLowercase = true;
                 identityOptions.Password.RequireUppercase = true;
                 identityOptions.Password.RequireDigit = true;
@@ -50,26 +56,35 @@ public static class ConfigureServices
 
         /* ------------------COOKIE SETTINGS------------------ */
         services.ConfigureApplicationCookie(cookieOptions =>
-            {
-                cookieOptions.LoginPath = new PathString("/auth/login");
-                cookieOptions.SlidingExpiration = true;
-                cookieOptions.ExpireTimeSpan = TimeSpan.FromHours(1);
-                cookieOptions.Cookie.Name = "Identity.Cookie";
-                cookieOptions.AccessDeniedPath = "/Error/AccessDenied";
-            });
+        {
+            const string identityCookieName = "Identity.Cookie";
+            const string loginPathString = "/auth/login";
+            const string accessDeniedPathString = "/Error/AccessDenied";
+
+            const int expireTime = 1;
+
+            cookieOptions.LoginPath = new PathString(loginPathString);
+            cookieOptions.SlidingExpiration = true;
+            cookieOptions.ExpireTimeSpan = TimeSpan.FromHours(expireTime);
+            cookieOptions.Cookie.Name = identityCookieName;
+            cookieOptions.AccessDeniedPath = accessDeniedPathString;
+        });
 
         /* ------------------AUTOMAPPER------------------ */
         services.AddAutoMapper(typeof(AuthAutomapperProfile));
 
         /* ------------------OPTIONS SETTINGS------------------ */
-        services.Configure<SendGridOptions>(configuration.GetSection("SendGridOptions"));
-        services.Configure<WebPathsOptions>(configuration.GetSection("WebPathsOptions"));
-        
+        const string sendGridOptionsSection = "SendGridOptions";
+        const string webPathsOptionsSection = "WebPathsOptions";
+
+        services.Configure<SendGridOptions>(configuration.GetSection(sendGridOptionsSection));
+        services.Configure<WebPathsOptions>(configuration.GetSection(webPathsOptionsSection));
+
         services.AddDistributedMemoryCache();
         services.AddSession(options => { options.IdleTimeout = TimeSpan.FromDays(1); });
 
         services.AddScoped<SeedDataDbContext>();
-        
+
         /* ------------------REPOSITORIES------------------ */
         services.AddTransient<IUsersRepository, UsersRepository>();
         services.AddTransient<IFacultyRepository, FacultyRepository>();
@@ -78,7 +93,15 @@ public static class ConfigureServices
         services.AddTransient<ILearningStatusRepository, LearningStatusRepository>();
         services.AddTransient<IQualificationRepository, QualificationRepository>();
         services.AddTransient<ISpecialityRepository, SpecialityRepository>();
+        services.AddTransient<IDisciplineRepository, DisciplineRepository>();
+        services.AddTransient<IMaterialTypeRepository, MaterialTypeRepository>();
+        services.AddTransient<IMaterialRepository, MaterialRepository>();
+        services.AddTransient<IMaterialDisciplineMaterialRepository, MaterialDisciplineMaterialRepository>();
+        services.AddTransient<IDisciplineMaterialRepository, DisciplineMaterialRepository>();
+        services.AddTransient<IDisciplineMaterialTypeRepository, DisciplineMaterialTypeRepository>();
+        services.AddTransient<IDisciplineGroupRepository, DisciplineGroupRepository>();
         
+
         /* ------------------SERVICES------------------ */
         services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IMailService, MailService>();
@@ -90,7 +113,15 @@ public static class ConfigureServices
         services.AddTransient<ILearningStatusService, LearningStatusService>();
         services.AddTransient<IQualificationService, QualificationService>();
         services.AddTransient<ISpecialityService, SpecialityService>();
-        
+        services.AddTransient<IDisciplineService, DisciplineService>();
+        services.AddTransient<IMaterialTypeService, MaterialTypeService>();
+        services.AddTransient<IMaterialService, MaterialService>();
+        services.AddTransient<IMaterialDisciplineMaterialService, MaterialDisciplineMaterialService>();
+        services.AddTransient<IFileService, FileService>();
+        services.AddTransient<IDisciplineMaterialService, DisciplineMaterialService>();
+        services.AddTransient<IDisciplineMaterialTypeService, DisciplineMaterialTypeService>();
+        services.AddTransient<IDisciplineGroupService, DisciplineGroupService>();
+
         /* ------------------LOCALIZATION------------------ */
         services.AddLocalization(localizationOptions => localizationOptions.ResourcesPath = "Resources");
 
@@ -100,17 +131,17 @@ public static class ConfigureServices
             const string englishCultureName = "en";
 
             CultureInfo[] supportedCultures =
-            {
-                new(defaultCulture),
-                new(englishCultureName)
-            };
+            [
+                new CultureInfo(defaultCulture),
+                new CultureInfo(englishCultureName)
+            ];
 
             localizationOptions.DefaultRequestCulture = new RequestCulture(defaultCulture);
             localizationOptions.SetDefaultCulture(defaultCulture);
             localizationOptions.SupportedCultures = supportedCultures;
             localizationOptions.SupportedUICultures = supportedCultures;
         });
-        
+
         services.AddNotyf(options =>
         {
             options.DurationInSeconds = 10;
@@ -121,7 +152,7 @@ public static class ConfigureServices
         services.AddControllersWithViews()
             .AddViewLocalization(LanguageViewLocationExpanderFormat.SubFolder)
             .AddDataAnnotationsLocalization();
-        
+
         return services;
     }
 }

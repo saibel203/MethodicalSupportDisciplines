@@ -18,12 +18,18 @@ public class DisciplineMaterialEntityConfiguration : IEntityTypeConfiguration<Di
             .HasMaxLength(5000)
             .IsRequired();
         
-        builder.Property(property => property.DisciplineMaterialType)
+        builder.Property(property => property.CreatedDate)
+            .HasDefaultValue(DateTime.Now)
             .IsRequired();
 
         builder.HasOne(property => property.Discipline)
             .WithMany(property => property.DisciplineMaterials)
             .HasForeignKey(property => property.DisciplineId)
+            .IsRequired();
+        
+        builder.HasOne(property => property.DisciplineMaterialType)
+            .WithMany(property => property.DisciplineMaterials)
+            .HasForeignKey(property => property.DisciplineMaterialTypeId)
             .IsRequired();
     }
 }

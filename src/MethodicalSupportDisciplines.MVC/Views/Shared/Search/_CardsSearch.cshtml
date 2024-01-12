@@ -1,0 +1,16 @@
+﻿@model MethodicalSupportDisciplines.Shared.ViewModels.Additional.SettingsViewModel
+
+<form method="get" asp-controller="@Model.CurrentController" asp-action="@Model.CurrentAction">
+    <div class="input-group mb-3">
+        <input type="search" name="SearchString" value="@Model.QueryParameters.SearchString"
+               class="form-control" placeholder="@ViewLocalization["SearchPlaceholder"]"
+               aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">
+                @ViewLocalization["SearchButton"]
+            </button>
+            <a asp-controller="@Model.CurrentController" asp-action="@Model.CurrentAction" 
+               class="btn btn-outline-secondary" type="submit">@ViewLocalization["ResetButton"]</a>
+        </div>
+    </div>
+</form>

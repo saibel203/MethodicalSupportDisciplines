@@ -1,0 +1,93 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Learning
+@using MethodicalSupportDisciplines.MVC.Helpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.DisciplinesViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container search-container">
+    <div class="row">
+        <div class="col-10">
+            @await Html.PartialAsync("Search/_CardsSearch")
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                New discipline
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container cards-container">
+    @foreach (DisciplineActionDto discipline in Model.Disciplines)
+    {
+        <div class="card">
+            <div class="card-header">
+                <div>@ViewHelper.GetUserFullName(discipline.Teacher.FirstName, discipline.Teacher.LastName, discipline.Teacher.Patronymic)</div>
+                <div>@ViewLocalization["MaterialsCount"]: @discipline.DisciplineMaterials.Count</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@discipline.DisciplineName</h5>
+                <p class="card-text">
+                    @discipline.DisciplineDescription.Substring(0, Math.Min(200, discipline.DisciplineDescription.Length))
+                    @if (discipline.DisciplineDescription.Length > 200)
+                    {
+                        <span>...</span>
+                    }
+                </p>
+                <a asp-controller="Teacher" asp-action="DisciplineData"
+                   asp-route-disciplineId="@discipline.DisciplineId" class="btn btn-primary">
+                    @ViewLocalization["Details"]
+                </a>
+            </div>
+            <div class="card-footer">
+                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate.ToString("MM/dd/yyyy")</p>
+                <a class="btn btn-danger btn-sm"
+                   asp-controller="Teacher" asp-action="RemoveDiscipline"
+                   asp-route-disciplineId="@discipline.DisciplineId">
+                    @ViewLocalization["DeleteDiscipline"]
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    @await Html.PartialAsync("Pagination/_CardsPagination")
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Teacher" asp-action="CreateDiscipline" asp-antiforgery="true">
+                    <input asp-for="CreateDisciplineViewModel.TeacherId" type="hidden" value="@(ViewData["CurrentTeacherId"]!)">
+                    <div class="form-errors">
+                        <div asp-validation-summary="All"></div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="CreateDisciplineViewModel.DisciplineName"
+                               placeholder="@ViewLocalization["DisciplineName"]">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control"
+                                                                 asp-for="CreateDisciplineViewModel.DisciplineDescription"
+                                                                 placeholder="@ViewLocalization["DisciplineDescription"]"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">@ViewLocalization["SaveChanges"]</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@ViewLocalization["Close"]</button>
+            </div>
+        </div>
+    </div>
+</div>

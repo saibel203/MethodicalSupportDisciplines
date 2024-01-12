@@ -2,12 +2,10 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using MethodicalSupportDisciplines.Infrastructure;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext.Seeds;
 using MethodicalSupportDisciplines.MVC;
+using MethodicalSupportDisciplines.MVC.Extensions;
 using Microsoft.Extensions.Options;
 
 /*                                                  TODOOOOOOOOOOOOOOO
- *  Base controller localization
- *  
- *
  *  
  *
  *
@@ -47,6 +45,8 @@ if (environment.IsDevelopment())
     await initDataContextSeed.InitializeDatabaseAsync();
     await initDataContextSeed.SeedContextDataAsync();
 }
+
+app.UsePageErrors();
 
 app.UseNotyf();
 app.UseHttpsRedirection();

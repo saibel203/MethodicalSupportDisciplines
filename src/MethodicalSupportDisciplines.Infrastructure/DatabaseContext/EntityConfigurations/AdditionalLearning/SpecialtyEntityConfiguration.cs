@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MethodicalSupportDisciplines.Infrastructure.DatabaseContext.EntityConfigurations.AdditionalLearning;
 
-public class SpecialtyEntityConfiguration : IEntityTypeConfiguration<Specialty>
+public class SpecialtyEntityConfiguration : IEntityTypeConfiguration<Speciality>
 {
-    public void Configure(EntityTypeBuilder<Specialty> builder)
+    public void Configure(EntityTypeBuilder<Speciality> builder)
     {
         builder.HasKey(property => property.SpecialityId);
 
@@ -18,7 +18,7 @@ public class SpecialtyEntityConfiguration : IEntityTypeConfiguration<Specialty>
             .IsRequired();
 
         builder.HasMany(property => property.Students)
-            .WithOne(property => property.Specialty)
+            .WithOne(property => property.Speciality)
             .HasForeignKey(property => property.SpecialtyId)
             .IsRequired();
     }

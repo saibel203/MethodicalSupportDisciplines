@@ -36,4 +36,7 @@
     <data name="Account" xml:space="preserve">
         <value>Акаунт</value>
     </data>
+    <data name="Disciplines" xml:space="preserve">
+        <value>Дисципліни</value>
+    </data>
 </root>

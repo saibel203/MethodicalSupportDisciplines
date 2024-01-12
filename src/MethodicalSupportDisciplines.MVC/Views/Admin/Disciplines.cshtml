@@ -1,0 +1,42 @@
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@using MethodicalSupportDisciplines.Shared.Dto.Learning
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.AdminDisciplinesViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Disciplines"];
+}
+
+<div class="container search-container">
+    @await Html.PartialAsync("Search/_CardsSearch")
+</div>
+
+<div class="container cards-container">
+    @foreach (DisciplineActionDto discipline in Model.Disciplines)
+    {
+        <div class="card">
+            <div class="card-header">
+                <div>@ViewHelper.GetUserFullName(discipline.Teacher.FirstName, discipline.Teacher.LastName, discipline.Teacher.Patronymic)</div>
+                <div>@ViewLocalization["MaterialsCount"]: @discipline.DisciplineMaterials.Count</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@discipline.DisciplineName</h5>
+                <p class="card-text">@discipline.DisciplineDescription.Substring(0, Math.Min(200, discipline.DisciplineDescription.Length))</p>
+                <a asp-controller="Admin" asp-action="DisciplineData"
+                   asp-route-disciplineId="@discipline.DisciplineId" class="btn btn-primary">
+                    @ViewLocalization["Details"]
+                </a>
+            </div>
+            <div class="card-footer">
+                <p>@ViewLocalization["CreatedDate"]: @discipline.DisciplineCreatedDate</p>
+                <a class="btn btn-danger btn-sm" 
+                   asp-controller="Admin" asp-action="RemoveDiscipline" 
+                   asp-route-disciplineId="@discipline.DisciplineId">@ViewLocalization["DeleteDiscipline"]</a>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    @await Html.PartialAsync("Pagination/_CardsPagination")
+</div>

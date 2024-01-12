@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="DisciplineNotFound" xml:space="preserve">
+        <value>Дисципліну з заданим ID не знайдено</value>
+    </data>
+    <data name="NotDisciplineOwner" xml:space="preserve">
+        <value>Неможливо перейти. Ви не є властинок дисципліни з вказаним ID</value>
+    </data>
+    <data name="DisciplineGetUnknownError" xml:space="preserve">
+        <value>Під час спроби отримани дисципліну з вказаним ID, виникла невідома помилка</value>
+    </data>
+    <data name="DisciplineGetSuccess" xml:space="preserve">
+        <value>Дисципліну успішно отимано</value>
+    </data>
+    <data name="CreateUnknownError" xml:space="preserve">
+        <value>Під час спроби створити нову дисципліну, виникла невідома помилка</value>
+    </data>
+    <data name="CreateSuccess" xml:space="preserve">
+        <value>Дисципліну успішно створено</value>
+    </data>
+    <data name="DisciplinesForAdminUnknownError" xml:space="preserve">
+        <value>При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="DisciplinesForAdminSuccess" xml:space="preserve">
+        <value>Список дисциплін успішно отримано</value>
+    </data>
+    <data name="DisciplinesUnknownError" xml:space="preserve">
+        <value>При спробі отримати інформацію про дисципліни з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="DisciplinesSuccess" xml:space="preserve">
+        <value>Список дисциплін успішно отримано</value>
+    </data>
+    <data name="RemoveDisciplineUnknownError" xml:space="preserve">
+        <value>Під час спроби отримати та видалити дисципліну з бази даних, виникла невідома помилка</value>
+    </data>
+    <data name="RemoveDisciplineSuccess" xml:space="preserve">
+        <value>Дисципліну успішно видалено</value>
+    </data>
+</root>

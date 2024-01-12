@@ -2,6 +2,7 @@
 using MethodicalSupportDisciplines.Data.Interfaces.Additional;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Shared.Responses.Repositories.AdditionalRepositoriesResponses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MethodicalSupportDisciplines.Data.Repositories.Additional;
@@ -41,4 +42,25 @@ public class GroupRepository : RepositoryBase, IGroupRepository
             };
         }
     }
+
+    /*public async Task<GroupRepositoryResponse> GetAllGroupsForDisciplineAsync(int disciplineId)
+    {
+        try
+        {
+            IReadOnlyList<Group> groups = await Context.Set<Group>()
+                .Include(x => x.DisciplineGroups)
+                .ThenInclude(x => x.Discipline)
+                .ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "");
+
+            return new GroupRepositoryResponse
+            {
+                Message = "",
+                IsSuccess = false
+            };
+        }
+    }*/
 }

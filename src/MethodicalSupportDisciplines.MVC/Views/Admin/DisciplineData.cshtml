@@ -1,0 +1,18 @@
+﻿@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.DisciplinesViewModel
+
+@{
+    ViewData["Title"] = "";
+}
+
+<div>
+    <h1>@Model.Discipline.DisciplineName</h1>
+    <h5>@Model.Discipline.DisciplineId</h5>
+    <p>TEACHER ID @Model.Discipline.Teacher.TeacherUserId</p>
+    <p>TEACHER NAME @Model.Discipline.Teacher.FirstName</p>
+    @foreach (var x in Model.Discipline.DisciplineMaterials)
+    {
+        <h3>@x.DisciplineMaterialId</h3>
+        <h3>@x.DisciplineMaterialName</h3>
+        <h3>@x.DisciplineMaterialDescription</h3>
+    }
+</div>
