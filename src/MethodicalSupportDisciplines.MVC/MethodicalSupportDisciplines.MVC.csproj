@@ -225,6 +225,38 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DisciplineData.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\Disciplines.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\Disciplines.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Disciplines.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\DisciplineData.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineData.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\DisciplineData.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisciplineData.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\Account.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Account.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Student\Account.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Account.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\Account.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Account.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Teacher\Account.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Account.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -467,6 +499,46 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DisciplineData.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\Disciplines.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\Disciplines.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Disciplines.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\DisciplineData.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineData.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\DisciplineData.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisciplineData.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\Account.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Account.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Student\Account.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Account.uk.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\Account.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Account.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Teacher\Account.uk.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Account.uk.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 ﻿using MethodicalSupportDisciplines.Core.Entities.Learning;
+using MethodicalSupportDisciplines.Core.Entities.Users;
 using MethodicalSupportDisciplines.Data.Interfaces.Learning;
 using MethodicalSupportDisciplines.Infrastructure.DatabaseContext;
 using MethodicalSupportDisciplines.Shared.Responses.Repositories.LearningRepositoriesResponses;
@@ -84,6 +85,52 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
         }
     }
 
+    public async Task<DisciplineRepositoryResponse> GetDisciplinesForStudentGroup(string userId)
+    {
+        try
+        {
+            StudentUser? studentUser = await Context.Set<StudentUser>()
+                .FirstOrDefaultAsync(userData => userData.ApplicationUserId == userId);
+
+            if (studentUser is null)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = _stringLocalization["UserNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            int userGroup = studentUser.GroupId;
+
+            IReadOnlyList<DisciplineGroup> test = await Context.Set<DisciplineGroup>()
+                .Include(disciplineGroupData => disciplineGroupData.Discipline)
+                .ThenInclude(disciplineData => disciplineData.Teacher)
+                .Include(disciplineData => disciplineData.Discipline.DisciplineMaterials)
+                .Include(disciplineGroupData => disciplineGroupData.Group)
+                .AsSplitQuery()
+                .Where(disciplineGroupData => disciplineGroupData.GroupId == userGroup)
+                .ToListAsync();
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetDisciplinesForUser"],
+                IsSuccess = true,
+                DisciplineGroups = test
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve the list of disciplines.");
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetDisciplinesForUser"],
+                IsSuccess = false
+            };
+        }
+    }
+
     public async Task<DisciplineRepositoryResponse> GetDisciplineByIdAsync(int disciplineId, string currentUserId)
     {
         try
@@ -132,6 +179,74 @@ public class DisciplineRepository : RepositoryBase, IDisciplineRepository
             return new DisciplineRepositoryResponse
             {
                 Message = _stringLocalization["DisciplineGetUnknownError"],
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<DisciplineRepositoryResponse> GetDisciplineForStudentByIdAsync(int disciplineId,
+        string currentUserid)
+    {
+        try
+        {
+            Discipline? discipline = await Context.Disciplines
+                .Include(disciplineData => disciplineData.Teacher)
+                .Include(disciplineData => disciplineData.DisciplineMaterials)
+                .ThenInclude(disciplineData => disciplineData.Materials)
+                .ThenInclude(disciplineData => disciplineData.Material)
+                .Include(disciplineData => disciplineData.DisciplineGroups)
+                .ThenInclude(groupData => groupData.Group)
+                .ThenInclude(groupData => groupData.StudentUsers)
+                .AsSplitQuery()
+                .FirstOrDefaultAsync(disciplineData => disciplineData.DisciplineId == disciplineId);
+
+            if (discipline is null)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = _stringLocalization["DisciplineNotFound"],
+                    IsSuccess = false
+                };
+            }
+
+            DisciplineRepositoryResponse currentDisciplines = await GetDisciplinesForStudentGroup(currentUserid);
+
+            if (!currentDisciplines.IsSuccess)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = currentDisciplines.Message,
+                    IsSuccess = false
+                };
+            }
+
+            bool isStudentDiscipline = currentDisciplines.DisciplineGroups
+                .Select(x => x.DisciplineId)
+                .Contains(disciplineId);
+
+            if (!isStudentDiscipline)
+            {
+                return new DisciplineRepositoryResponse
+                {
+                    Message = _stringLocalization["NotStudentDiscipline"],
+                    IsSuccess = false
+                };
+            }
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetDisciplineForStudent"],
+                IsSuccess = true,
+                Discipline = discipline
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to obtain discipline.");
+
+            return new DisciplineRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetDisciplineForStudent"],
                 IsSuccess = false
             };
         }

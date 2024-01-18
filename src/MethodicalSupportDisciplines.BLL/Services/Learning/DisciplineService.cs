@@ -188,6 +188,43 @@ public class DisciplineService : BaseService<IDisciplineRepository>, IDiscipline
         }
     }
 
+    public async Task<DisciplineServiceResponse> GetDisciplineForStudentByIdAsync(int disciplineId, string userId)
+    {
+        try
+        {
+            DisciplineRepositoryResponse getResponse = 
+                await _repository.GetDisciplineForStudentByIdAsync(disciplineId, userId);
+
+            if (!getResponse.IsSuccess)
+            {
+                return new DisciplineServiceResponse
+                {
+                    Message = getResponse.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            DisciplineActionDto dtoResult = _mapper.Map<DisciplineActionDto>(getResponse.Discipline);
+
+            return new DisciplineServiceResponse
+            {
+                Message = getResponse.Message,
+                IsSuccess = true,
+                Discipline = dtoResult
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to obtain discipline.");
+
+            return new DisciplineServiceResponse
+            {
+                Message = "An unknown error occurred while trying to obtain discipline",
+                IsSuccess = false
+            };
+        }
+    }
+    
     public async Task<DisciplineServiceResponse> GetDisciplineForAdminByIdAsync(int disciplineId)
     {
         try
@@ -220,6 +257,67 @@ public class DisciplineService : BaseService<IDisciplineRepository>, IDiscipline
             return new DisciplineServiceResponse
             {
                 Message = "An unknown error occurred while trying to obtain discipline",
+                IsSuccess = false
+            };
+        }
+    }
+
+    public async Task<DisciplineServiceResponse> GetDisciplinesForStudentAsync(string userId, 
+        QueryParameters queryParameters)
+    {
+        try
+        {
+            DisciplineRepositoryResponse getDisciplinesResponse = 
+                await _repository.GetDisciplinesForStudentGroup(userId);
+
+            if (!getDisciplinesResponse.IsSuccess)
+            {
+                return new DisciplineServiceResponse
+                {
+                    Message = getDisciplinesResponse.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            int skipAmount = PagesParameters.DisciplineCardsCount * (queryParameters.PageNumber - 1);
+
+            IReadOnlyList<DisciplineGroup> disciplineGroups = getDisciplinesResponse.DisciplineGroups;
+
+            if (!string.IsNullOrWhiteSpace(queryParameters.SearchString))
+            {
+                disciplineGroups = SearchHelper.ReadOnlySearch(disciplineData =>
+                    disciplineData.Discipline.DisciplineName.Contains(queryParameters.SearchString,
+                        StringComparison.CurrentCultureIgnoreCase) ||
+                    disciplineData.Discipline.DisciplineDescription.Contains(queryParameters
+                        .SearchString, StringComparison.CurrentCultureIgnoreCase), disciplineGroups);
+            }
+
+            int guestUsersCount = disciplineGroups.Count;
+            int pageCount = (int)Math.Ceiling((double)guestUsersCount / PagesParameters.DisciplineCardsCount);
+            
+            IReadOnlyList<DisciplineGroupActionDto> dtoResult = 
+                _mapper.Map<IReadOnlyList<DisciplineGroupActionDto>>(disciplineGroups);
+
+            return new DisciplineServiceResponse
+            {
+                Message = getDisciplinesResponse.Message,
+                IsSuccess = true,
+                DisciplineGroups = dtoResult.Skip(skipAmount)
+                    .Take(PagesParameters.DisciplineCardsCount)
+                    .ToList(),
+                SearchString = queryParameters.SearchString,
+                PageCount = pageCount,
+                ItemsCount = guestUsersCount,
+                Pages = PaginationHelper.PageNumbers(queryParameters.PageNumber, pageCount)
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve the list of disciplines.");
+
+            return new DisciplineServiceResponse
+            {
+                Message = "An unknown error occurred while trying to retrieve the list of disciplines",
                 IsSuccess = false
             };
         }

@@ -13,4 +13,7 @@ public interface IUsersRepository : IRepositoryBase
     Task<UsersRepositoryResponse> RemoveTeacherUserAsync(int userId);
     Task<UsersRepositoryResponse> GetStudentUsersAsync();
     Task<UsersRepositoryResponse> RemoveStudentUserAsync(int userId);
+    Task<UsersRepositoryResponse> GetStudentUserAccountAsync(string userId);
+    Task<UsersRepositoryResponse> GetTeacherUserAccountAsync(string userId);
+    Task<UsersRepositoryResponse> GetAdminUserAccountAsync(string userId);
 }

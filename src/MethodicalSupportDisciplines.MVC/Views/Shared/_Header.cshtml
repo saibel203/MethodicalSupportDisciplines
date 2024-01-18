@@ -51,10 +51,35 @@
                                         <a asp-controller="Teacher" asp-action="Disciplines" class="nav-link" is-active-header-route>@ViewLocalization["Disciplines"]</a>
                                     </li>
                                 }
+                                @if (User.IsInRole(ApplicationRoles.StudentRole))
+                                {
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a asp-controller="Student" asp-action="Disciplines" class="nav-link" is-active-header-route>@ViewLocalization["Disciplines"]</a>
+                                    </li>
+                                }
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@ViewLocalization["Account"]</a>
+                                    <a class="nav-link" data-toggle="dropdown"
+                                       role="button" aria-haspopup="true" aria-expanded="false"
+                                       href="#">
+                                        @ViewLocalization["Account"]
+                                    </a>
                                     <div class="dropdown-menu">
-                                        <a asp-controller="Home" asp-action="Index" class="dropdown-item" is-active-header-route>@ViewLocalization["Account"]</a>
+                                        @if (User.IsInRole(ApplicationRoles.StudentRole))
+                                        {
+                                            <a class="dropdown-item"
+                                               asp-controller="Student" asp-action="Account"
+                                               is-active-header-route>
+                                                @ViewLocalization["Account"]
+                                            </a>
+                                        }
+                                        @if (User.IsInRole(ApplicationRoles.TeacherRole))
+                                        {
+                                            <a class="dropdown-item"
+                                               asp-controller="Teacher" asp-action="Account"
+                                               is-active-header-route>
+                                                @ViewLocalization["Account"]
+                                            </a>
+                                        }
                                         <form method="post" asp-controller="Auth" asp-action="SetCulture"
                                               asp-route-returnUrl="@returnUrl" asp-antiforgery="true">
                                             @if (CultureInfo.CurrentCulture.Equals(new CultureInfo("en")))

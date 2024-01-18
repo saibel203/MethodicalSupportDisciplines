@@ -1,4 +1,5 @@
-﻿using MethodicalSupportDisciplines.Shared.Dto.Users;
+﻿using MethodicalSupportDisciplines.Core.Entities.Users;
+using MethodicalSupportDisciplines.Shared.Dto.Users;
 
 namespace MethodicalSupportDisciplines.Shared.Responses.Services;
 
@@ -9,4 +10,8 @@ public class UsersServiceResponse : ListBaseResponse
     public IReadOnlyList<GetStudentUserDto>? StudentUsers { get; set; } = new List<GetStudentUserDto>();
     public GetGuestUserDto? GuestUser { get; set; }
     public int TeacherUserId { get; set; }
+
+    public StudentUser? StudentUser { get; set; }
+    public TeacherUser? TeacherUser { get; set; }
+    public AdminUser? AdminUser { get; set; }
 }

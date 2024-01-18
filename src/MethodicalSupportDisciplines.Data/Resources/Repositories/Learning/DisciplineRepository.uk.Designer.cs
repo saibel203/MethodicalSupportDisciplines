@@ -151,6 +151,15 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Група даного студента не прив&apos;язана до обраної дисципліни.
+        /// </summary>
+        internal static string NotStudentDiscipline {
+            get {
+                return ResourceManager.GetString("NotStudentDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дисципліну успішно видалено.
         /// </summary>
         internal static string RemoveDisciplineSuccess {
@@ -165,6 +174,51 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         internal static string RemoveDisciplineUnknownError {
             get {
                 return ResourceManager.GetString("RemoveDisciplineUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліну успішно отримано.
+        /// </summary>
+        internal static string SuccessGetDisciplineForStudent {
+            get {
+                return ResourceManager.GetString("SuccessGetDisciplineForStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дисципліни для користувача успішно отримано.
+        /// </summary>
+        internal static string SuccessGetDisciplinesForUser {
+            get {
+                return ResourceManager.GetString("SuccessGetDisciplinesForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати дисципліну, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetDisciplineForStudent {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetDisciplineForStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати список дисциплін, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetDisciplinesForUser {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetDisciplinesForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Користувача не знайдено.
+        /// </summary>
+        internal static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

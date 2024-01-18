@@ -39,4 +39,22 @@
     <data name="TeacherUserNotFound" xml:space="preserve">
         <value>Користувача, з заданим userId не знайдено, зверніться до адміністрації сайту</value>
     </data>
+    <data name="SuccessGetStudentUserData" xml:space="preserve">
+        <value>Інформацію про студента успішно отримано</value>
+    </data>
+    <data name="UnknownErrorGetStudentUserData" xml:space="preserve">
+        <value>Під час спроби отримати інформацію про студента, виникла невідома помилка</value>
+    </data>
+    <data name="UnknownErrorGetTeacherUserData" xml:space="preserve">
+        <value>Під час спроби отримати інформацію про викладача, виникла невідома помилка</value>
+    </data>
+    <data name="SuccessGetAdminUserData" xml:space="preserve">
+        <value>Інформацію про адміна успішно отримано</value>
+    </data>
+    <data name="SuccessGetTeacherUserData" xml:space="preserve">
+        <value>Інформацію про викладача успішно отримано</value>
+    </data>
+    <data name="UnknownErrorGetAdminUserData" xml:space="preserve">
+        <value>Під час спроби отримати інформацію про адміна, виникла невідома помилка</value>
+    </data>
 </root>

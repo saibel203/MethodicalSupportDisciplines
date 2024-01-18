@@ -365,4 +365,118 @@ public class UsersRepository : RepositoryBase, IUsersRepository
             };
         }
     }
+
+    public async Task<UsersRepositoryResponse> GetStudentUserAccountAsync(string userId)
+    {
+        try
+        {
+            StudentUser? user = await Context.Set<StudentUser>()
+                .Include(userData => userData.ApplicationUser)
+                .Include(userData => userData.Group)
+                .Include(userData => userData.Faculty)
+                .Include(userData => userData.Speciality)
+                .Include(userData => userData.LearningStatus)
+                .Include(userData => userData.FormatLearning)
+                .FirstOrDefaultAsync(userData => userData.ApplicationUserId == userId);
+
+            if (user is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["UserNotFound"],
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetStudentUserData"],
+                IsSuccess = true,
+                StudentUser = user
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve student information.");
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetStudentUserData"],
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersRepositoryResponse> GetTeacherUserAccountAsync(string userId)
+    {
+        try
+        {
+            TeacherUser? user = await Context.Set<TeacherUser>()
+                .Include(userData => userData.Qualification)
+                .Include(userData => userData.ApplicationUser)
+                .FirstOrDefaultAsync(userData => userData.ApplicationUserId == userId);
+
+            if (user is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["UserNotFound"],
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetTeacherUserData"],
+                IsSuccess = true,
+                TeacherUser = user
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve teacher information.");
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetTeacherUserData"],
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersRepositoryResponse> GetAdminUserAccountAsync(string userId)
+    {
+        try
+        {
+            AdminUser? user = await Context.Set<AdminUser>()
+                .Include(userData => userData.ApplicationUser)
+                .FirstOrDefaultAsync(userData => userData.ApplicationUserId == userId);
+
+            if (user is null)
+            {
+                return new UsersRepositoryResponse
+                {
+                    Message = _stringLocalization["UserNotFound"],
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["SuccessGetAdminUserData"],
+                IsSuccess = true,
+                AdminUser = user
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve admin information.");
+
+            return new UsersRepositoryResponse
+            {
+                Message = _stringLocalization["UnknownErrorGetAdminUserData"],
+                IsSuccess = false
+            };
+        }
+    }
 }

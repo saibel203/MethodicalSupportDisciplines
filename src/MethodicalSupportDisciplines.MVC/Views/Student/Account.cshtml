@@ -1,0 +1,25 @@
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@model MethodicalSupportDisciplines.Core.Entities.Users.StudentUser
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container" style="margin-top: 80px;">
+    <h2 class="text-center">@ViewLocalization["StudentUserData"], @ViewHelper.GetUserFullName(Model.FirstName, Model.LastName, Model.Patronymic)</h2>
+    
+    <h4>@ViewLocalization["FacultyInformation"]</h4>
+    <p>@Model.Faculty.FacultyName (@Model.Faculty.FacultyShortName)</p>
+    
+    <h4>@ViewLocalization["CourseInformation"]</h4>
+    <p>@Model.Group.GroupName (@Model.Group.GroupCourse @ViewLocalization["Course"])</p>
+    
+    <h4>@ViewLocalization["SpecialityInformation"]</h4>
+    <p>@Model.Speciality.SpecialityName (@Model.Speciality.SpecialityNumber)</p>
+    
+    <h4>@ViewLocalization["FormatLearningInformation"]</h4>
+    <p>@Model.FormatLearning.FormatLearningName</p>
+    
+    <h4>@ViewLocalization["LearningStatusInformation"]</h4>
+    <p>@Model.LearningStatus.LearningStatusName</p>
+</div>

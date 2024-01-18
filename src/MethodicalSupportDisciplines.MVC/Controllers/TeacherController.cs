@@ -361,4 +361,19 @@ public class TeacherController : BaseController
         return RedirectToAction(nameof(DisciplineData), 
             new { disciplineId = viewModel.CreateDisciplineGroupViewModel.DisciplineId });
     }
+    
+    public async Task<IActionResult> Account()
+    {
+        string userId = GetUserId();
+
+        UsersServiceResponse response = await _usersService.GetTeacherUserAccountAsync(userId);
+
+        if (!response.IsSuccess)
+        {
+            NotificationService.CustomErrorMessage(response.Message);
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        return View(response.TeacherUser);
+    }
 }

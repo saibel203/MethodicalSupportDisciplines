@@ -5,5 +5,6 @@ namespace MethodicalSupportDisciplines.Shared.Responses.Services.LearningService
 public class DisciplineServiceResponse : ListBaseResponse
 {
     public IReadOnlyList<DisciplineActionDto> Disciplines { get; set; } = new List<DisciplineActionDto>();
+    public IReadOnlyList<DisciplineGroupActionDto> DisciplineGroups { get; set; } = new List<DisciplineGroupActionDto>();
     public DisciplineActionDto Discipline { get; set; } = null!;
 }

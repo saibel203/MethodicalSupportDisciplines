@@ -78,6 +78,33 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Інформацію про адміна успішно отримано.
+        /// </summary>
+        internal static string SuccessGetAdminUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetAdminUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Інформацію про студента успішно отримано.
+        /// </summary>
+        internal static string SuccessGetStudentUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetStudentUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Інформацію про викладача успішно отримано.
+        /// </summary>
+        internal static string SuccessGetTeacherUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetTeacherUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID користувача успішно отримано.
         /// </summary>
         internal static string SuccessGetTeacherUserId {
@@ -105,11 +132,38 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати інформацію про адміна, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetAdminUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetAdminUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати інформацію про студента, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetStudentUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetStudentUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Під час спроби отримати id користувача, виникла невідома помилка.
         /// </summary>
         internal static string UnknownErrorGetTeacherUser {
             get {
                 return ResourceManager.GetString("UnknownErrorGetTeacherUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Під час спроби отримати інформацію про викладача, виникла невідома помилка.
+        /// </summary>
+        internal static string UnknownErrorGetTeacherUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetTeacherUserData", resourceCulture);
             }
         }
         

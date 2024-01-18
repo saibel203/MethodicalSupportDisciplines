@@ -54,4 +54,22 @@
     <data name="RemoveDisciplineSuccess" xml:space="preserve">
         <value>Discipline successfully removed</value>
     </data>
+    <data name="UserNotFound" xml:space="preserve">
+        <value>User not found</value>
+    </data>
+    <data name="SuccessGetDisciplinesForUser" xml:space="preserve">
+        <value>Disciplines for the user successfully obtained</value>
+    </data>
+    <data name="UnknownErrorGetDisciplinesForUser" xml:space="preserve">
+        <value>An unknown error occurred while trying to obtain discipline</value>
+    </data>
+    <data name="NotStudentDiscipline" xml:space="preserve">
+        <value>The group of this student is not tied to the chosen discipline</value>
+    </data>
+    <data name="SuccessGetDisciplineForStudent" xml:space="preserve">
+        <value>Discipline successfully obtained</value>
+    </data>
+    <data name="UnknownErrorGetDisciplineForStudent" xml:space="preserve">
+        <value>An unknown error occurred while trying to obtain discipline</value>
+    </data>
 </root>

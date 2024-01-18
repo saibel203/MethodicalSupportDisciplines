@@ -39,4 +39,22 @@
     <data name="TeacherUserNotFound" xml:space="preserve">
         <value>The user with the specified userId was not found, contact the site administration</value>
     </data>
+    <data name="SuccessGetStudentUserData" xml:space="preserve">
+        <value>Student information successfully received</value>
+    </data>
+    <data name="UnknownErrorGetStudentUserData" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve student information</value>
+    </data>
+    <data name="UnknownErrorGetTeacherUserData" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve teacher information.</value>
+    </data>
+    <data name="UnknownErrorGetAdminUserData" xml:space="preserve">
+        <value>An unknown error occurred while trying to retrieve admin information</value>
+    </data>
+    <data name="SuccessGetTeacherUserData" xml:space="preserve">
+        <value>Teacher information successfully received</value>
+    </data>
+    <data name="SuccessGetAdminUserData" xml:space="preserve">
+        <value>Admin information successfully received</value>
+    </data>
 </root>
