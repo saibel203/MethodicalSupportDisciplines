@@ -151,6 +151,15 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The group of this student is not tied to the chosen discipline.
+        /// </summary>
+        internal static string NotStudentDiscipline {
+            get {
+                return ResourceManager.GetString("NotStudentDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discipline successfully removed.
         /// </summary>
         internal static string RemoveDisciplineSuccess {
@@ -165,6 +174,51 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories.Learning {
         internal static string RemoveDisciplineUnknownError {
             get {
                 return ResourceManager.GetString("RemoveDisciplineUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discipline successfully obtained.
+        /// </summary>
+        internal static string SuccessGetDisciplineForStudent {
+            get {
+                return ResourceManager.GetString("SuccessGetDisciplineForStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disciplines for the user successfully obtained.
+        /// </summary>
+        internal static string SuccessGetDisciplinesForUser {
+            get {
+                return ResourceManager.GetString("SuccessGetDisciplinesForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to obtain discipline.
+        /// </summary>
+        internal static string UnknownErrorGetDisciplineForStudent {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetDisciplineForStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to obtain discipline.
+        /// </summary>
+        internal static string UnknownErrorGetDisciplinesForUser {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetDisciplinesForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User not found.
+        /// </summary>
+        internal static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

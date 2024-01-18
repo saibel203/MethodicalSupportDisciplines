@@ -10,6 +10,11 @@ public interface IDisciplineService
     Task<DisciplineServiceResponse> GetAllDisciplinesForAdminAsync(QueryParameters queryParameters);
     Task<DisciplineServiceResponse> GetDisciplineByIdAsync(int disciplineId, string currentUserId);
     Task<DisciplineServiceResponse> GetDisciplineForAdminByIdAsync(int disciplineId);
+
+    Task<DisciplineServiceResponse> GetDisciplinesForStudentAsync(string userId,
+        QueryParameters queryParameters);
+
+    Task<DisciplineServiceResponse> GetDisciplineForStudentByIdAsync(int disciplineId, string userId);
     Task<DisciplineServiceResponse> CreateDisciplineAsync(NewDisciplineDto? dto);
     Task<DisciplineServiceResponse> RemoveDisciplineAsync(int disciplineId);
 }

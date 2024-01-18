@@ -78,6 +78,33 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin information successfully received.
+        /// </summary>
+        internal static string SuccessGetAdminUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetAdminUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student information successfully received.
+        /// </summary>
+        internal static string SuccessGetStudentUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetStudentUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teacher information successfully received.
+        /// </summary>
+        internal static string SuccessGetTeacherUserData {
+            get {
+                return ResourceManager.GetString("SuccessGetTeacherUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User ID successfully received.
         /// </summary>
         internal static string SuccessGetTeacherUserId {
@@ -105,11 +132,38 @@ namespace MethodicalSupportDisciplines.Data.Resources.Repositories {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve admin information.
+        /// </summary>
+        internal static string UnknownErrorGetAdminUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetAdminUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve student information.
+        /// </summary>
+        internal static string UnknownErrorGetStudentUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetStudentUserData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve a user id.
         /// </summary>
         internal static string UnknownErrorGetTeacherUser {
             get {
                 return ResourceManager.GetString("UnknownErrorGetTeacherUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred while trying to retrieve teacher information..
+        /// </summary>
+        internal static string UnknownErrorGetTeacherUserData {
+            get {
+                return ResourceManager.GetString("UnknownErrorGetTeacherUserData", resourceCulture);
             }
         }
         

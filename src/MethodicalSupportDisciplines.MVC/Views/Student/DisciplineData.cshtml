@@ -1,0 +1,80 @@
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@using MethodicalSupportDisciplines.Shared.Dto.Learning
+@using MethodicalSupportDisciplines.Shared.Enums
+@using MethodicalSupportDisciplines.Core.Entities.Learning
+@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.StudentDisciplinesViewModel
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container discipline-data-container">
+    <h2 class="text-center">@Model.Discipline.DisciplineName</h2>
+    <p>@Model.Discipline.DisciplineDescription</p>
+    <div class="d-flex justify-content-between">
+        <p>
+            @ViewLocalization["Teacher"]: @ViewHelper.GetUserFullName(Model.Discipline.Teacher.FirstName, Model.Discipline.Teacher.LastName, Model.Discipline.Teacher.Patronymic)
+        </p>
+        <p>
+            @ViewLocalization["CreatedDate"]: @Model.Discipline.DisciplineCreatedDate.ToString("MM/dd/yyyy")
+        </p>
+    </div>
+</div>
+
+<div class="container cards-container materials-container">
+    @foreach (DisciplineMaterialActionDto disciplineMaterial in Model.Discipline.DisciplineMaterials)
+    {
+        <div class="card">
+            <div class="card-header">
+                <div>@ViewHelper.GetDisciplineMaterialType(disciplineMaterial.DisciplineMaterialTypeId)</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@disciplineMaterial.DisciplineMaterialName</h5>
+                <p class="card-text">
+                    @disciplineMaterial.DisciplineMaterialDescription
+                </p>
+                <div>
+                    @if (disciplineMaterial.Materials
+                         .Any(material => material.Material.MaterialTypeId == (int)MaterialTypes.Href))
+                    {
+                        <h6 class="card-subtitle mb-2 text-muted">@ViewLocalization["LinksTitle"]</h6>
+                        @foreach (MaterialDisciplineMaterial material
+                                  in disciplineMaterial.Materials
+                                      .Where(materialData => materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.Href))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="@material.Material.MaterialPath" target="_blank">
+                                        @ViewLocalization["OpenLink"] #@material.MaterialId
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                    @if (disciplineMaterial.Materials
+                         .Any(material => material.Material.MaterialTypeId == (int)MaterialTypes.Book ||
+                                          material.Material.MaterialTypeId == (int)MaterialTypes.File))
+                    {
+                        <h6 class="card-subtitle mb-2 mt-2 text-muted">@ViewLocalization["FilesTitle"]</h6>
+                        @foreach (MaterialDisciplineMaterial material
+                                  in disciplineMaterial.Materials
+                                      .Where(materialData => materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.Book ||
+                                                             materialData.Material.MaterialTypeId
+                                                             == (int)MaterialTypes.File))
+                        {
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="~/@material.Material.MaterialPath" download>
+                                        @ViewLocalization["DownloadFile"] #@material.MaterialId
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

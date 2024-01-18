@@ -1293,6 +1293,7 @@ public class SeedDataDbContext
             new DisciplineGroup { DisciplineId = 2, GroupId = 4 },
             new DisciplineGroup { DisciplineId = 3, GroupId = 2 },
             new DisciplineGroup { DisciplineId = 4, GroupId = 1 },
+            new DisciplineGroup { DisciplineId = 2, GroupId = 1 },
             new DisciplineGroup { DisciplineId = 5, GroupId = 1 },
             new DisciplineGroup { DisciplineId = 5, GroupId = 3 },
             new DisciplineGroup { DisciplineId = 5, GroupId = 4 },

@@ -1,0 +1,13 @@
+﻿@using MethodicalSupportDisciplines.MVC.Helpers
+@model MethodicalSupportDisciplines.Core.Entities.Users.TeacherUser
+
+@{
+    ViewData["Title"] = ViewLocalization["Title"];
+}
+
+<div class="container" style="margin-top: 80px;">
+    <h2 class="text-center">@ViewLocalization["Welcome"], @ViewHelper.GetUserFullName(Model.FirstName, Model.LastName, Model.Patronymic)</h2>
+    
+    <h4>@ViewLocalization["QualificationInformation"]</h4>
+    <p>@Model.Qualification.QualificationName</p>
+</div>

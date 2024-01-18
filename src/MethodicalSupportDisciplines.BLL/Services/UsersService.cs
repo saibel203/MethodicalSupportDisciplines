@@ -418,4 +418,106 @@ public class UsersService : BaseService<IUsersRepository>, IUsersService
             };
         }
     }
+
+    public async Task<UsersServiceResponse> GetStudentUserAccountAsync(string userId)
+    {
+        try
+        {
+            UsersRepositoryResponse getResponse = await _repository.GetStudentUserAccountAsync(userId);
+
+            if (!getResponse.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getResponse.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersServiceResponse
+            {
+                Message = getResponse.Message,
+                IsSuccess = true,
+                StudentUser = getResponse.StudentUser
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve student information.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to retrieve student information",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> GetTeacherUserAccountAsync(string userId)
+    {
+        try
+        {
+            UsersRepositoryResponse getResponse = await _repository.GetTeacherUserAccountAsync(userId);
+
+            if (!getResponse.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getResponse.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersServiceResponse
+            {
+                Message = getResponse.Message,
+                IsSuccess = true,
+                TeacherUser = getResponse.TeacherUser
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve teacher information.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to retrieve teacher information",
+                IsSuccess = false
+            };
+        }
+    }
+    
+    public async Task<UsersServiceResponse> GetAdminUserAccountAsync(string userId)
+    {
+        try
+        {
+            UsersRepositoryResponse getResponse = await _repository.GetAdminUserAccountAsync(userId);
+
+            if (!getResponse.IsSuccess)
+            {
+                return new UsersServiceResponse
+                {
+                    Message = getResponse.Message,
+                    IsSuccess = false
+                };
+            }
+            
+            return new UsersServiceResponse
+            {
+                Message = getResponse.Message,
+                IsSuccess = true,
+                AdminUser = getResponse.AdminUser
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An unknown error occurred while trying to retrieve admin information.");
+
+            return new UsersServiceResponse
+            {
+                Message = "An unknown error occurred while trying to retrieve admin information",
+                IsSuccess = false
+            };
+        }
+    }
 }

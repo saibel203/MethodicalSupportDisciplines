@@ -1,0 +1,44 @@
+﻿@using MethodicalSupportDisciplines.Shared.Dto.Learning
+@using MethodicalSupportDisciplines.MVC.Helpers
+@model MethodicalSupportDisciplines.Shared.ViewModels.Learning.StudentDisciplinesViewModel
+
+@{
+    ViewData["Title"] = @ViewLocalization["Title"];
+}
+
+<div class="container search-container">
+    @await Html.PartialAsync("Search/_CardsSearch")
+</div>
+
+<div class="container cards-container">
+    @foreach (DisciplineGroupActionDto disciplineGroup in Model.DisciplineGroups)
+    {
+        <div class="card">
+            <div class="card-header">
+                <div>@ViewHelper.GetUserFullName(disciplineGroup.Discipline.Teacher.FirstName, disciplineGroup.Discipline.Teacher.LastName, disciplineGroup.Discipline.Teacher.Patronymic)</div>
+                <div>@ViewLocalization["MaterialsCount"]: @disciplineGroup.Discipline.DisciplineMaterials.Count</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@disciplineGroup.Discipline.DisciplineName</h5>
+                <p class="card-text">
+                    @disciplineGroup.Discipline.DisciplineDescription.Substring(0, Math.Min(200, disciplineGroup.Discipline.DisciplineDescription.Length))
+                    @if (disciplineGroup.Discipline.DisciplineDescription.Length > 200)
+                    {
+                        <span>...</span>
+                    }
+                </p>
+                <a asp-controller="Student" asp-action="DisciplineData"
+                   asp-route-disciplineId="@disciplineGroup.DisciplineId" class="btn btn-primary">
+                    @ViewLocalization["Details"]
+                </a>
+            </div>
+            <div class="card-footer">
+                <p>@ViewLocalization["CreatedDate"]: @disciplineGroup.Discipline.DisciplineCreatedDate.ToString("MM/dd/yyyy")</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    @await Html.PartialAsync("Pagination/_CardsPagination")
+</div>

@@ -54,4 +54,22 @@
     <data name="RemoveDisciplineSuccess" xml:space="preserve">
         <value>Дисципліну успішно видалено</value>
     </data>
+    <data name="UserNotFound" xml:space="preserve">
+        <value>Користувача не знайдено</value>
+    </data>
+    <data name="SuccessGetDisciplinesForUser" xml:space="preserve">
+        <value>Дисципліни для користувача успішно отримано</value>
+    </data>
+    <data name="UnknownErrorGetDisciplinesForUser" xml:space="preserve">
+        <value>Під час спроби отримати список дисциплін, виникла невідома помилка</value>
+    </data>
+    <data name="NotStudentDiscipline" xml:space="preserve">
+        <value>Група даного студента не прив'язана до обраної дисципліни</value>
+    </data>
+    <data name="SuccessGetDisciplineForStudent" xml:space="preserve">
+        <value>Дисципліну успішно отримано</value>
+    </data>
+    <data name="UnknownErrorGetDisciplineForStudent" xml:space="preserve">
+        <value>Під час спроби отримати дисципліну, виникла невідома помилка</value>
+    </data>
 </root>

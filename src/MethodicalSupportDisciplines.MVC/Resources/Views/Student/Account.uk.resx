@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Title" xml:space="preserve">
+        <value>Акаунт</value>
+    </data>
+    <data name="StudentUserData" xml:space="preserve">
+        <value>Вітаємо</value>
+    </data>
+    <data name="FacultyInformation" xml:space="preserve">
+        <value>Факультет</value>
+    </data>
+    <data name="CourseInformation" xml:space="preserve">
+        <value>Група</value>
+    </data>
+    <data name="Course" xml:space="preserve">
+        <value>курс</value>
+    </data>
+    <data name="SpecialityInformation" xml:space="preserve">
+        <value>Спеціалізація</value>
+    </data>
+    <data name="FormatLearningInformation" xml:space="preserve">
+        <value>Формат навчання</value>
+    </data>
+    <data name="LearningStatusInformation" xml:space="preserve">
+        <value>Статус</value>
+    </data>
+</root>
